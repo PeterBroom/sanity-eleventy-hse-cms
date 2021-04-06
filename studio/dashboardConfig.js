@@ -1,11 +1,5 @@
 export default {
   widgets: [
-    {
-      name: 'sanity-eleventy-hse-cms',
-      options: {
-        templateRepoId: 'sanity-io/sanity-eleventy-hse-cms'
-      }
-    },
     {name: 'structure-menu'},
     {
       name: 'project-info',
