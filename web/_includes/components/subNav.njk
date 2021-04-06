@@ -1,0 +1,35 @@
+{% set currentPageUrl = sections.slug.current if sections.slug.current else 
+  pages.belongsTo.slug.current %}
+<menu>
+  <nav>
+    {% for menu in getNavigationTree -%}
+
+      {% set pageIdentifier = menu.slug.current %}
+      {% if pageIdentifier == currentPageUrl %}
+
+        {% for subMenus in menu.subMenu -%}
+
+          <ul>
+            <li>
+              <a href="/{{pageIdentifier}}">{{menu.title}}</a>
+            </li>
+            {% for item in subMenus.sections -%}
+              <li>
+                <a class="{{ 'active' if pages.slug.current === item.target.slug.current }}" href="/{{item.target.slug.current}}">{{item.target.title}}</a>
+                {% if item.links %}
+                  <ul>
+                    {% for child in item.links -%}
+                      <li>
+                        <a class="{{ 'active' if pages.slug.current === child.target.slug.current }}" href="/{{child.target.slug.current}}">{{child.title}}</a>
+                      </li>
+                    {%- endfor %}
+                  </ul>
+                {% endif %}
+              </li>
+            {%- endfor %}
+          </ul>
+        {%- endfor %}
+      {% endif %}
+    {%- endfor %}
+  </nav>
+</menu>

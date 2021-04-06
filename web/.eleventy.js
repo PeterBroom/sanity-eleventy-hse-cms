@@ -1,19 +1,22 @@
 const { DateTime } = require("luxon");
 const util = require('util')
 const CleanCSS = require("clean-css");
+const searchFilter = require('./_data/searchPages');
 
 module.exports = function(eleventyConfig) {
-
   // https://www.11ty.io/docs/quicktips/inline-css/
   eleventyConfig.addFilter("cssmin", function(code) {
     return new CleanCSS({}).minify(code).styles;
   });
 
+  eleventyConfig.addFilter('search', searchFilter.search);
+
+
   eleventyConfig.addFilter("debug", function(value) {
     return util.inspect(value, {compact: false})
-   });
+  });
 
-   eleventyConfig.addFilter("readableDate", dateObj => {
+  eleventyConfig.addFilter("readableDate", dateObj => {
     return new Date(dateObj).toDateString()
   });
 
@@ -21,6 +24,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
   });
+
+  // eleventyConfig.addCollection('pages', collection => {
+  //   return [...collection.getFilteredByGlob('./site/pages/**/*.md')];
+  // });
+
 
   let markdownIt = require("markdown-it");
   let markdownItAnchor = require("markdown-it-anchor");
