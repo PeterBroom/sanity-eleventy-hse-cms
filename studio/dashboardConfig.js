@@ -1,9 +1,9 @@
 export default {
   widgets: [
     {
-      name: 'sanity-tutorials',
+      name: 'sanity-eleventy-hse-cms',
       options: {
-        templateRepoId: 'sanity-io/sanity-template-eleventy-blog'
+        templateRepoId: 'sanity-io/sanity-eleventy-hse-cms'
       }
     },
     {name: 'structure-menu'},
@@ -19,13 +19,13 @@ export default {
               sites: [
                 {
                   buildHookId: '6061fe26ec5c3d4b31154446',
-                  title: 'Sanity Studio',
+                  title: 'Sanity HSE Studio',
                   name: 'sanity-eleventy-hse-cms-studio',
                   apiId: 'bd923fa7-1026-4663-a76d-03df302c8ec5'
                 },
                 {
                   buildHookId: '6061fe26d201e54cb954101d',
-                  title: 'Blog Website',
+                  title: 'HSE Website',
                   name: 'sanity-eleventy-hse-cms',
                   apiId: 'c7b5ddfa-e77c-4b54-b3f8-3f7eec951810'
                 }
@@ -46,8 +46,8 @@ export default {
     {name: 'project-users', layout: {height: 'auto'}},
     {
       name: 'document-list',
-      options: {title: 'Recent blog posts', order: '_createdAt desc', types: ['post']},
-      layout: {width: 'medium'}
+      options: {title: 'Recent pages', order: '_createdAt desc', types: ['page', 'section']},
+      layout: {width: 'small'}
     }
   ]
 }

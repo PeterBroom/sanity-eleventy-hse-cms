@@ -5,17 +5,21 @@ import createSchema from 'part:@sanity/base/schema-creator'
 import schemaTypes from 'all:part:@sanity/base/schema-type'
 
 // document schemas
-import author from './documents/author'
-import category from './documents/category'
-import post from './documents/post'
+import page from './documents/pages'
+import section from './documents/sections'
 import siteSettings from './documents/siteSettings'
 
 // Object types
-import bodyPortableText from './objects/bodyPortableText'
-import bioPortableText from './objects/bioPortableText'
-import excerptPortableText from './objects/excerptPortableText'
+import navigation from './objects/navigation'
+import navigationLink from './objects/navigationLink'
+import navigationSection from './objects/navigationSection'
+import hero from './objects/hero'
+import bodyCopy from './objects/bodyCopy/bodyCopy'
+import bodyCopyHeadingElement from './objects/bodyCopy/bodyCopyHeadingElement'
+import bodyCopyTextElement from './objects/bodyCopy/bodyCopyTextElement'
+import form from './objects/form'
+import cards from './objects/cards'
 import mainImage from './objects/mainImage'
-import authorReference from './objects/authorReference'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -27,14 +31,18 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     siteSettings,
-    post,
-    category,
-    author,
-    mainImage,
-    authorReference,
-    bodyPortableText,
-    bioPortableText,
-    excerptPortableText
+    section,
+    navigation,
+    navigationLink,
+    navigationSection,
+    page,
+    hero,
+    bodyCopy,
+    bodyCopyHeadingElement,
+    bodyCopyTextElement,
+    form,
+    cards,
+    mainImage
 
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
