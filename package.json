@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "sanity-eleventy-blog",
+  "name": "sanity-eleventy-hse-cms-web",
   "version": "1.0.0",
   "scripts": {
     "build": "lerna run build --parallel",
@@ -14,5 +14,8 @@
   },
   "devDependencies": {
     "lerna": "^3.16.4"
+  },
+  "dependencies": {
+    "elasticlunr": "^0.9.5"
   }
 }
