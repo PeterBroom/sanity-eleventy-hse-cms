@@ -13,33 +13,32 @@ export default {
       name: 'belongsTo',
       title: 'Belongs to...',
       type: 'reference',
-      to: [{
-        type: 'section'
-      }]
+      description: 'The parent page this belongs to',
+      to: [
+        {
+          type: 'section'
+        }
+      ],
+      validation: Rule => Rule.required()
     },
     {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
-      description: 'Some frontends will require a slug to be set to be able to show the page'
-      // options: {
-      //   source: doc => `${doc.belongsTo.slug.current}/${doc.title}`
-      // }
-    },
-    {
-      name: 'publishedAt',
-      type: 'datetime',
-      title: 'Published at'
-      // readOnly: true
+      description: 'The slug will form the url for this page',
+      options: {
+        source: (doc) => doc.title,
+        maxLength: 96,
+        auto: true
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'pageBuilder',
       type: 'array',
       title: 'Page builder',
+      description: 'Add components to your page to build up your content',
       of: [
-        {
-          type: 'hero'
-        },
         {
           type: 'bodyCopy'
         },
@@ -54,16 +53,29 @@ export default {
     {
       name: 'metaDescription',
       title: 'Description',
-      type: 'text'
+      type: 'text',
+      description: 'Descriptions are important for searches. Please enter a description for this pages content between 50 and 250 characters.',
+      validation: Rule => Rule.required().min(50).max(250).warning('Longer descriptions are usually better')
     },
     {
       name: 'metaKeywords',
       title: 'Keywords',
-      type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'tags'
-      }
+      type: 'object',
+      description: 'Keywords are important for searches.',
+      fields: [
+        {
+          name: 'metaKeywordsArray',
+          title: 'Enter words or phrases',
+          description: 'Hit enter after each entry. ',
+          validation: Rule => Rule.required().min(3),
+          type: 'array',
+          of: [{type: 'string'}],
+          options: {
+            layout: 'tags'
+          }
+        }
+      ]
+      // validation: Rule => Rule.required()
     }
   ],
   orderings: [
@@ -72,7 +84,7 @@ export default {
       title: 'Publishing date new–>old',
       by: [
         {
-          field: 'publishedAt',
+          field: 'updatedAt',
           direction: 'asc'
         },
         {
@@ -86,7 +98,7 @@ export default {
       title: 'Publishing date old->new',
       by: [
         {
-          field: 'publishedAt',
+          field: 'updatedAt',
           direction: 'desc'
         },
         {
@@ -99,6 +111,7 @@ export default {
   preview: {
     select: {
       title: 'title',
+      subtitle: 'updatedAt',
       slug: 'slug'
     },
     prepare ({title = 'No title'}) {

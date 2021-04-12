@@ -33,7 +33,11 @@ export default {
             value: 'https://github.com/PeterBroom/sanity-eleventy-hse-cms',
             category: 'Code'
           },
-          {title: 'Frontend', value: 'https://sanity-eleventy-hse-cms.netlify.app', category: 'apps'}
+          {
+            title: 'Frontend',
+            value: 'https://sanity-eleventy-hse-cms.netlify.app',
+            category: 'apps'
+          }
         ]
       }
     },
@@ -41,7 +45,7 @@ export default {
     {
       name: 'document-list',
       options: {title: 'Recent pages', order: '_createdAt desc', types: ['page', 'section']},
-      layout: {width: 'small'}
+      layout: {width: 'medium'}
     }
   ]
 }

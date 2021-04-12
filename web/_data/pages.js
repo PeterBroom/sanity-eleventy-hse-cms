@@ -12,16 +12,23 @@ function generatePage (page) {
 }
 
 async function getPages () {
-  // Learn more: https://www.sanity.io/docs/data-store/how-queries-work
-  const filter = groq`*[_type == "page" && defined(slug) && publishedAt < now()]`
+  // const filter = groq`*[_type == "page" && defined(slug) && publishedAt < now()]{
+  //   ...,
+  //   "publishingStatus": *[_type == "workflow.metadata" && documentId == ^._id]
+  // }`
+  const filter = groq`*[_type == "page" && defined(slug) && _updatedAt < now()]{
+    ...,
+    "parentSlug": belongsTo->{"slug": slug.current}
+  }`
+
   const projection = groq`{
     _id,
-    publishedAt,
+    _updatedAt,
     title,
+    parentSlug,
     slug,
     metaDescription,
     metaKeywords,
-    belongsTo->{title, slug, _id},
     pageBuilder[]{
       ...,
       markDefs[]{
@@ -32,11 +39,12 @@ async function getPages () {
       }
     }
   }`
-  const order = `| order(publishedAt asc)`
+  const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const preparePages = reducedDocs.map(generatePage)
+  console.log(preparePages)
   return preparePages
 }
 

@@ -21,12 +21,6 @@ export default {
       }
     },
     {
-      name: 'publishedAt',
-      type: 'datetime',
-      title: 'Published at'
-      // readOnly: true
-    },
-    {
       name: 'pageBuilder',
       type: 'array',
       title: 'Page builder',
@@ -74,13 +68,12 @@ export default {
   preview: {
     select: {
       title: 'title',
-      slug: 'slug',
-      media: 'mainImage'
+      subtitle: 'publishedAt',
+      slug: 'slug'
     },
-    prepare ({title = 'No title', media}) {
+    prepare ({title = 'No title'}) {
       return {
-        title,
-        media
+        title
       }
     }
   }

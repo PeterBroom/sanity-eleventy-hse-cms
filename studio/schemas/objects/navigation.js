@@ -28,5 +28,15 @@ export default {
       title: 'Sections',
       of: [{type: 'navigation.section'}]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title'
+    },
+    prepare ({title = 'No title'}) {
+      return {
+        title
+      }
+    }
+  }
 }

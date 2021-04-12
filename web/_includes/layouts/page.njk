@@ -6,8 +6,9 @@ templateClass: tmpl-page
 if
 sections.title
 else 
-    pages.title %}
+  pages.title %}
 
 <h1>{{ pageTitle }}</h1>
+<pre>{{pages._id}}</pre>
 
 {% include "../components/pageBuilder.njk" %}
