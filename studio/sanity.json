@@ -21,15 +21,7 @@
   "parts": [
     {
       "implements": "part:@sanity/base/document-actions/resolver",
-      "path": "./workflow/documentActions"
-    },
-    {
-      "implements": "part:@sanity/base/document-badges/resolver",
-      "path": "./workflow/documentBadges"
-    },
-    {
-      "implements": "part:@sanity/base/tool",
-      "path": "./workflow/tools/board"
+      "path": "./schemas/documentActions.js"
     },
     {
       "name": "part:@sanity/base/schema",
