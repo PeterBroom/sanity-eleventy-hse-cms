@@ -21,6 +21,8 @@ import navigationSection from './objects/navigationSection'
 import bodyCopy from './objects/bodyCopy/bodyCopy'
 import form from './objects/form'
 import cards from './objects/cards'
+import accordion from './objects/accordion/accordion'
+import accordionItem from './objects/accordion/accordionItem'
 // import mainImage from './objects/mainImage'
 
 export default createSchema({
@@ -37,7 +39,9 @@ export default createSchema({
     navigationSection,
     bodyCopy,
     form,
-    cards
+    cards,
+    accordion,
+    accordionItem
     // mainImage
   ])
 })

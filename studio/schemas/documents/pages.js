@@ -26,6 +26,7 @@ export default {
       type: 'slug',
       title: 'Slug',
       description: 'The slug will form the url for this page',
+      readOnly: true,
       options: {
         source: (doc) => doc.title,
         maxLength: 96,
@@ -46,7 +47,7 @@ export default {
           type: 'cards'
         },
         {
-          type: 'form'
+          type: 'accordion'
         }
       ]
     },
