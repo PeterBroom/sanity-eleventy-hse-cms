@@ -1,11 +1,9 @@
 {% for components in pages.pageBuilder %}
 
-    {% if components._type === 'hero' %}
-        {% include "./hero.njk" %}
-    {% endif %}
+    <pre>{{ components | dump(2)}}</pre>
 
-    {% if components._type === 'cards' %}
-        {% include "./cards.njk" %}
+    {% if components._type === 'accordion' %}
+        {% include "./accordion.njk" %}
     {% endif %}
 
     {% if components._type === 'bodyCopy' %}

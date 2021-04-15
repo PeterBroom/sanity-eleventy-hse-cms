@@ -1,0 +1,13 @@
+<div class="accordion">
+    <div class="accordion__inner">
+        <h2 class="accordion__heading">{{components.title}}</h2>
+        {% for items in components.accordionArray %}
+            <div class="accordion__item">
+                <h3>{{items.accordionHeading}}</h3>
+                <div class="accordion__copy">
+                    <p>{{items.accordionCopy}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
