@@ -2,13 +2,20 @@
 layout: layouts/base.njk
 templateClass: tmpl-page
 ---
+
+{% set column = 'columnFull' %}
+
 {% set pageTitle = sections.title
 if
 sections.title
 else 
   pages.title %}
 
-<h1>{{ pageTitle }}</h1>
-<pre>{{pages._id}}</pre>
+{% include '../components/subNav.njk' %}
 
-{% include "../components/pageBuilder.njk" %}
+<h1>{{ pageTitle }}</h1>
+{# <pre>{{pages._id}}</pre> #}
+
+<div class="{{column}}">
+  {% include "../components/pageBuilder.njk" %}
+</div>
