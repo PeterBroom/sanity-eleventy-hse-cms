@@ -1,13 +1,13 @@
+import {topNav} from '../objects/navigation/main/topNav.js'
 export default {
-  name: 'siteSettings',
+  name: 'settingsMeta',
   type: 'document',
-  title: 'Site Settings',
-  __experimental_actions: ['update', /* 'create', 'delete', */ 'publish'],
+  title: 'Metadata',
   fields: [
     {
       name: 'title',
       type: 'string',
-      title: 'Title'
+      title: 'Site title'
     },
     {
       name: 'description',
@@ -25,5 +25,12 @@ export default {
         layout: 'tags'
       }
     }
-  ]
+  ],
+  preview: {
+    prepare ({title = 'Globals'}) {
+      return {
+        title
+      }
+    }
+  }
 }

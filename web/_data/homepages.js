@@ -11,39 +11,22 @@ function generateSection (section) {
   }
 }
 
-async function getSections () {
+async function getHomepages () {
   // Learn more: https://www.sanity.io/docs/data-store/how-queries-work
-  const filter = groq`*[_type == "section" && defined(slug) && _updatedAt < now()]`
+  const filter = groq`*[_type == "homepage" && defined(slug) && _updatedAt < now()]`
   const projection = groq`{
     _id,
     _updatedAt,
     title,
-    parentSlug,
-    slug,
-    metaDescription,
-    metaKeywords,
-    pageBuilder[]{
-      ...,
-      _type == "cards" => {
-        cardItems[]{
-          ...,
-          target {
-            _type == "reference" => {
-              ...,
-              "slug": @.reference->slug
-            }
-          }
-        }
-      }
-    }
+    slug
   }`
   const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
-  const prepareSections = reducedDocs.map(generateSection)
-  console.log('prepareSections',prepareSections)
-  return prepareSections
+  const prepareHomepages = reducedDocs.map(generateSection)
+  // console.log(prepareHomepages)
+  return prepareHomepages
 }
 
-module.exports = getSections
+module.exports = getHomepages

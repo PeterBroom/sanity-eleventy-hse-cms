@@ -44,7 +44,6 @@ async function getPages () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const preparePages = reducedDocs.map(generatePage)
-  console.log(preparePages)
   return preparePages
 }
 

@@ -1,4 +1,4 @@
-export const types = ['section', 'page', 'release']
+export const types = ['section', 'homepage', 'page', 'release']
 
 export const states = [
   {id: 'draft', title: 'Draft'},
