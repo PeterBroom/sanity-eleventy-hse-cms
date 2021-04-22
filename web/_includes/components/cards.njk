@@ -1,5 +1,13 @@
 <div class="cards__container">
     <div class="cards__inner">
         <h2>Card component</h2>
+        {% for item in component.cardItems -%}
+            {{item.target.current | dump}}
+            <h3>
+                <a href="{{item.target.slug}}">{{item.heading}}</a>
+            </h3>
+            <p>{{item.copy}}</p>
+        {%- endfor %}
+        <pre>{{component | dump(2)}}</pre>
     </div>
 </div>

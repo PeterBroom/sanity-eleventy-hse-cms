@@ -1,0 +1,31 @@
+<nav id="footer-nav" aria-label="Footer menu">
+    <footer id="footerContainer">
+        <div id="footer">
+            <h2 class="visually-hidden">Footer links</h2>
+            <div class="footer-links-container">
+                <ul>
+                    <li class="first">
+                        <a href="/search">Search</a>
+                    </li>
+                    {% for item in siteSettings.footerMenu.sections -%}
+                        <li>
+                            <a class="{{ 'active' if pages.slug.current === item.target.slug.current }}" href="/{{item.target.slug.current}}">{{item.title}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div id="baseStrip">
+            <div id="baseStripInner">
+                <p>HSE aims to reduce work-related death, injury and ill
+                    health.</p>
+                <div class="guidance-languages">
+                    <p>
+                        <a href="languages/index.htm">Information in other
+                        languages</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</nav>

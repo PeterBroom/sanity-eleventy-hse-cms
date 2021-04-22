@@ -1,15 +1,22 @@
-{% for components in pages.pageBuilder %}
+{# <pre>{{ sections | dump(2) }}</pre> #}
+{% set components = pages.pageBuilder or sections.pageBuilder %}
 
-    {% if components._type === 'hero' %}
+{% for component in components %}
+
+    {% if component._type === 'hero' %}
         {% include "./hero.njk" %}
     {% endif %}
 
-    {% if components._type === 'cards' %}
+    {% if component._type === 'cards' %}
         {% include "./cards.njk" %}
     {% endif %}
 
-    {% if components._type === 'bodyCopy' %}
+    {% if component._type === 'bodyCopy' %}
         {% include "./bodyCopy.njk" %}
+    {% endif %}
+
+    {% if component._type === 'notificationBanner' %}
+        {% include "./notificationBanner.njk" %}
     {% endif %}
 
 {% endfor %}
