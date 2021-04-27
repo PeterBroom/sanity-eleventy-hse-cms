@@ -7,19 +7,13 @@ const hasToken = !!client.config().token
 
 function generatePage (page) {
   return {
-    ...page
+    ...page,
+    bodyCopy: BlocksToMarkdown(page.bodyCopy, { serializers, ...client.config() })
   }
 }
 
 async function getPages () {
-  // const filter = groq`*[_type == "page" && defined(slug) && publishedAt < now()]{
-  //   ...,
-  //   "publishingStatus": *[_type == "workflow.metadata" && documentId == ^._id]
-  // }`
-  const filter = groq`*[_type == "page" && defined(slug) && _updatedAt < now()]{
-    ...,
-    "parentSlug": belongsTo->{"slug": slug.current}
-  }`
+  const filter = groq`*[_type == "page" && defined(slug) && _updatedAt < now()]`
 
   const projection = groq`{
     _id,
@@ -29,14 +23,20 @@ async function getPages () {
     slug,
     metaDescription,
     metaKeywords,
-    pageBuilder[]{
+    "bodyCopy": pageBuilder[]{
       ...,
-      markDefs[]{
+      editorInterface[]{
         ...,
-        _type == "internalLink" => {
-          "slug": @.reference->slug
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "slug": @.reference->slug
+          }
         }
       }
+    },
+    pageBuilder[]{
+      ...,
     }
   }`
   const order = `| order(_updatedAt asc)`
@@ -44,6 +44,7 @@ async function getPages () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const preparePages = reducedDocs.map(generatePage)
+  // console.log(preparePages)
   return preparePages
 }
 
