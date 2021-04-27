@@ -1,8 +1,6 @@
-{# <pre>{{ sections | dump(2) }}</pre> #}
 {% set components = pages.pageBuilder or sections.pageBuilder %}
 
 {% for component in components %}
-
     {% if component._type === 'hero' %}
         {% include "./hero.njk" %}
     {% endif %}

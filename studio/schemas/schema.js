@@ -30,11 +30,16 @@ import cards from './objects/pageBuilder/cards/card'
 import cardItems from './objects/pageBuilder/cards/cardItems'
 import notificationBanner from './objects/pageBuilder/notificationBanner'
 
+import portableText from './objects/portableText'
+import excerptPortableText from './objects/excerptPortableText'
+
 // import mainImage from './objects/mainImage'
 
 export default createSchema({
   name: 'HSE Schema',
   types: schemaTypes.concat([
+    portableText,
+    excerptPortableText,
     settingsMeta,
     settingsNavigation,
     settingsGlobals,

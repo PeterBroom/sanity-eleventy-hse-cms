@@ -1,9 +1,5 @@
-<h2>Body copy component</h2>
-<pre>{{components | dump(2)}}</pre>
-
-{% for copy in components.children -%}
-    {# {{copy | dump (2)}} #}
-    {# {{copy}} #}
-    {# <h2>{{copy.heading}}</h2>
-        {{copy.text}} #}
-{%- endfor %}
+<div class="component-body-copy">
+    {% if pages.bodyCopy %}
+        {{pages.bodyCopy | markdownify | safe }}
+    {% endif %}
+</div>
