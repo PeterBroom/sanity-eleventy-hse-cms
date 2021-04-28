@@ -7,9 +7,9 @@
                     <li class="first">
                         <a href="/search">Search</a>
                     </li>
-                    {% for item in siteSettings.footerMenu.sections -%}
+                    {% for item in settingsNavigation[0].footerMenu.sections -%}
                         <li>
-                            <a class="{{ 'active' if pages.slug.current === item.target.slug.current }}" href="/{{item.target.slug.current}}">{{item.title}}</a>
+                            <a class="{{ 'active' if pages.slug.current === item.slug.current }}" href="/{{item.slug.current}}">{{item.title}}</a>
                         </li>
                     {% endfor %}
                 </ul>

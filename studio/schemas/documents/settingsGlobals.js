@@ -1,29 +1,18 @@
-import {topNav} from '../objects/navigation/main/topNav.js'
 export default {
-  name: 'settingsMeta',
+  name: 'settingsGlobals',
   type: 'document',
-  title: 'Metadata',
+  title: 'Globals',
   fields: [
     {
-      name: 'title',
-      type: 'string',
-      title: 'Site title'
+      name: 'content',
+      type: 'portableText',
+      title: 'Content',
     },
     {
-      name: 'description',
-      type: 'text',
-      title: 'Description',
-      description: 'Describe your blog for search engines and social media.'
-    },
-    {
-      name: 'keywords',
-      type: 'array',
-      title: 'Keywords',
-      description: 'Add keywords that describes your blog.',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'tags'
-      }
+      name: 'betaBanner',
+      type: 'boolean',
+      title: 'Enabled',
+      description: 'Enable to display across pages sitewide'
     }
   ],
   preview: {

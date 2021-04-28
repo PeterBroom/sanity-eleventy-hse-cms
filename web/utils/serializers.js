@@ -2,13 +2,13 @@ const imageUrl = require('./imageUrl')
 const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
 module.exports = {
   types: {
-    code: props => '```' + props.node.language + '\n' + props.node.code + '\n```',
+    cards: props => props.node.language,
     bodyCopy: (children) => {
       const blocks = children.node.editorInterface;
       const content = BlocksToMarkdown(blocks);
       return content;
     },
-    notificationBanner: props => '```' + props.node.language + '\n' + props.node.code + '\n```',
+    notificationBanner: props => '```' + props.node.language + '\n' + props.node.code + '\n' + '```',
     mainImage: ({node}) => `![${node.alt}](${imageUrl(node).width(600).url()})`,
 
   },

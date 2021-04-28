@@ -7,7 +7,8 @@ const hasToken = !!client.config().token
 
 function generateSection (section) {
   return {
-    ...section
+    ...section,
+    bodyCopy: BlocksToMarkdown(section.bodyCopy, { serializers, ...client.config() })
   }
 }
 
@@ -22,17 +23,24 @@ async function getSections () {
     slug,
     metaDescription,
     metaKeywords,
+    "bodyCopy": pageBuilder[]{
+      ...,
+      editorInterface[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "slug": @.reference->slug
+          }
+        }
+      }
+    },
     pageBuilder[]{
       ...,
       _type == "cards" => {
         cardItems[]{
           ...,
-          target {
-            _type == "reference" => {
-              ...,
-              "slug": @.reference->slug
-            }
-          }
+          "slug": @.target->slug
         }
       }
     }
@@ -42,7 +50,6 @@ async function getSections () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const prepareSections = reducedDocs.map(generateSection)
-  console.log('prepareSections',prepareSections)
   return prepareSections
 }
 

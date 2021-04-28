@@ -5,9 +5,10 @@ const serializers = require('../utils/serializers')
 const overlayDrafts = require('../utils/overlayDrafts')
 const hasToken = !!client.config().token
 
-function generateSection (section) {
+function generateHomepage (homepage) {
   return {
-    ...section
+    ...homepage,
+    bodyCopy: BlocksToMarkdown(homepage.bodyCopy, { serializers, ...client.config() })
   }
 }
 
@@ -18,13 +19,37 @@ async function getHomepages () {
     _id,
     _updatedAt,
     title,
-    slug
+    parentSlug,
+    slug,
+    metaDescription,
+    metaKeywords,
+    "bodyCopy": pageBuilder[]{
+      ...,
+      editorInterface[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "slug": @.reference->slug
+          }
+        }
+      }
+    },
+    pageBuilder[]{
+      ...,
+      _type == "cards" => {
+        cardItems[]{
+          ...,
+          "slug": @.target->slug
+        }
+      }
+    }
   }`
   const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
-  const prepareHomepages = reducedDocs.map(generateSection)
+  const prepareHomepages = reducedDocs.map(generateHomepage)
   // console.log(prepareHomepages)
   return prepareHomepages
 }

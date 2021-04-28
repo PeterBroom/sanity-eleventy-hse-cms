@@ -4,16 +4,23 @@ module.exports = async function() {
   const navigation = await client.fetch(`
         *[_id == "settingsNavigation"]{
           ...,
-          // headerMenu[]{
-          //   ...,
-          //   sections[]{
-          //     _type == "topNav.section" => {
-          //       "slug": @.reference->slug
-          //     }
-          //   }
-          // }
-          'headerMenu': sections[] {
-            'postLink': topNav.section->slug.current,
+          headerMenu {
+            ...,
+            sections[]{
+              ...,
+              _type == "topNav.section" => {
+                "slug": @.target->slug
+              }
+            }
+          },
+          footerMenu {
+            ...,
+            sections[]{
+              ...,
+              _type == "topNav.section" => {
+                "slug": @.target->slug
+              }
+            }
           }
         }
     `);

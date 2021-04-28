@@ -1,7 +1,11 @@
-{% if settingsGlobals.betaBanner == true %}
+{% set settings = settingsGlobals[0] %}
+{% if settings.betaBanner == true %}
     <section id="beta-user-testing" aria-label="Beta feedback">
-        <p>
-            <span class="beta-highlight">Beta</span> This is a new way of showing guidance - <a href="https://www.surveymonkey.co.uk/r/QM7NSJY">your feedback</a> will help us improve it.
-    </p>
+        <div style="display: flex;">
+            <span class="beta-highlight">Beta</span>
+            <div class="beta-content">
+                {{settings.notificationBanner | markdownify | safe }}
+            </div>
+        </div>
     </section>
 {% endif %}
