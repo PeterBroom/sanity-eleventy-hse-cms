@@ -18,24 +18,23 @@ import settingsNavigation from './documents/settingsNavigation'
 import settingsGlobals from './documents/settingsGlobals'
 
 // Object types
-import navigation from './objects/navigation'
-import navigationLink from './objects/navigationLink'
-import navigationSection from './objects/navigationSection'
-import bodyCopy from './objects/bodyCopy/bodyCopy'
-import form from './objects/form'
-import cards from './objects/cards'
-import accordion from './objects/accordion/accordion'
-import accordionItem from './objects/accordion/accordionItem'
-import topNav from './objects/navigation/main/topNav'
-import topNavSection from './objects/navigation/main/topNavSection'
-
 import navigation from './objects/navigation/sub/navigation'
 import navigationLink from './objects/navigation/sub/navigationLink'
 import navigationSection from './objects/navigation/sub/navigationSection'
+
 import bodyCopy from './objects/pageBuilder/bodyCopy/bodyCopy'
+
 import form from './objects/pageBuilder/form'
+
 import cards from './objects/pageBuilder/cards/card'
 import cardItems from './objects/pageBuilder/cards/cardItems'
+
+import accordion from './objects/pageBuilder/accordion/accordion'
+import accordionItem from './objects/pageBuilder/accordion/accordionItem'
+
+import topNav from './objects/navigation/main/topNav'
+import topNavSection from './objects/navigation/main/topNavSection'
+
 import notificationBanner from './objects/pageBuilder/notificationBanner'
 
 import portableText from './objects/portableText'
