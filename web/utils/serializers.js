@@ -3,6 +3,7 @@ const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
 module.exports = {
   types: {
     cards: props => props.node.language,
+    accordion: props => props.node.language,
     bodyCopy: (children) => {
       const blocks = children.node.editorInterface;
       const content = BlocksToMarkdown(blocks);

@@ -1,9 +1,10 @@
 {% for component in components %}
+
     {% if component._type === 'hero' %}
         {% include "./hero.njk" %}
     {% endif %}
 
-    {% if components._type === 'accordion' %}
+    {% if component._type === 'accordion' %}
         {% include "./accordion.njk" %}
     {% endif %}
 
@@ -18,4 +19,5 @@
     {% if component._type === 'notificationBanner' %}
         {% include "./notificationBanner.njk" %}
     {% endif %}
+
 {% endfor %}
