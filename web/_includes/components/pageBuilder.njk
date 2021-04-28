@@ -1,13 +1,21 @@
-{% for components in pages.pageBuilder %}
-
-    <pre>{{ components | dump(2)}}</pre>
+{% for component in components %}
+    {% if component._type === 'hero' %}
+        {% include "./hero.njk" %}
+    {% endif %}
 
     {% if components._type === 'accordion' %}
         {% include "./accordion.njk" %}
     {% endif %}
 
-    {% if components._type === 'bodyCopy' %}
+    {% if component._type === 'cards' %}
+        {% include "./cards.njk" %}
+    {% endif %}
+
+    {% if component._type === 'bodyCopy' %}
         {% include "./bodyCopy.njk" %}
     {% endif %}
 
+    {% if component._type === 'notificationBanner' %}
+        {% include "./notificationBanner.njk" %}
+    {% endif %}
 {% endfor %}

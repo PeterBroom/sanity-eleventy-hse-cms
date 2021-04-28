@@ -6,7 +6,7 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Title',
+      title: 'Page title',
       description: 'Titles should be catchy, descriptive, and not too long'
     },
     {
@@ -16,7 +16,7 @@ export default {
       description: 'The parent page this belongs to',
       to: [
         {
-          type: 'section'
+          type: 'homepage'
         }
       ],
       validation: Rule => Rule.required()

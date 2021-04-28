@@ -1,13 +1,13 @@
 import {navigation} from '../objects/navigation/sub/navigation.js'
 export default {
-  title: 'Sections',
-  name: 'section',
+  title: 'Home pages',
+  name: 'homepage',
   type: 'document',
   fields: [
     {
       name: 'title',
       type: 'string',
-      title: 'Title',
+      title: 'Homepage title',
       description: 'Titles should be catchy, descriptive, and not too long'
     },
     {
@@ -19,6 +19,18 @@ export default {
         source: 'title',
         maxLength: 96
       }
+    },
+    {
+      name: 'belongsTo',
+      title: 'Belongs to...',
+      type: 'reference',
+      description: 'The section this home page belongs to',
+      to: [
+        {
+          type: 'section'
+        }
+      ],
+      validation: Rule => Rule.required()
     },
     {
       name: 'pageBuilder',

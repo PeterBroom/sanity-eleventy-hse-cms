@@ -1,8 +1,32 @@
-<header>
-    <h1 class="home">
-        <a href="{{ '/' | url }}">{{ metadata.title }}</a>
-    </h1>
-    <p>
-        <a href="/search">Search</a>
-    </p>
+<header id="headerContainer">
+    <div id="header">
+        <div class="headerTop header js-header">
+
+            <h1 id="headerLogo" class="headerLogo">
+                <a href="{{ '/' | url }}">Health
+              and Safety<br>
+              Executive</a>
+            </h1>
+
+            <div id="globalSearch" class="desktop-gcs-search"></div>
+
+            <!-- JS Main Navigation -->
+
+            <div class="menuContainer">
+
+                <nav id="main-menu" class="menu js-menu" aria-hidden="false" aria-labelledby="main-menu">
+                    <ul>
+                        <li class="home">
+                            <a href="/">Home</a>
+                        </li>
+                        {% for item in settingsNavigation[0].headerMenu.sections -%}
+                            <li>
+                                <a class="{{ 'active' if pages.slug.current === item.slug.current }}" href="/{{item.slug.current}}">{{item.title}}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
 </header>

@@ -1,8 +1,18 @@
 export default {
-  name: 'bodyCopy',
-  title: 'Body copy',
+  name: 'notificationBanner',
   type: 'object',
-  fields: [{
+  title: 'Notification banner',
+  fields: [
+    {
+      name: 'heading',
+      type: 'string',
+      title: 'Heading'
+    },
+    {
+      name: 'copy',
+      type: 'object',
+      title: 'Text',
+      fields: [{
     name: 'editorInterface',
     title: 'Editor Interface',
     type: 'array',
@@ -59,4 +69,6 @@ export default {
       }
     }]
   }]
+    }
+  ]
 }

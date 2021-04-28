@@ -44,7 +44,7 @@ export default {
     {name: 'project-users', layout: {height: 'auto'}},
     {
       name: 'document-list',
-      options: {title: 'Recent pages', order: '_createdAt desc', types: ['page', 'section']},
+      options: {title: 'Recent pages', order: '_createdAt desc', types: ['page', 'homepage', 'section']},
       layout: {width: 'medium'}
     }
   ]

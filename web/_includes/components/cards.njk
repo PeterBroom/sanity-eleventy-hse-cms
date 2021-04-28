@@ -1,5 +1,16 @@
-<div class="cards__container">
+{% set columns = component.columns %}
+<section class="cards__container">
+    <header>
+        <h2>{{component.title}}</h2>
+    </header>
     <div class="cards__inner">
-        <h2>Card component</h2>
+        {% for item in component.cardItems -%}
+            <div class="card" data-grid="{{columns}}">
+                <h3>
+                    <a href="/{{item.slug.current}}">{{item.heading}}</a>
+                </h3>
+                <p>{{item.copy}}</p>
+            </div>
+        {%- endfor %}
     </div>
-</div>
+</section>

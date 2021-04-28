@@ -1,0 +1,11 @@
+{% set settings = settingsGlobals[0] %}
+{% if settings.betaBanner == true %}
+    <section id="beta-user-testing" aria-label="Beta feedback">
+        <div style="display: flex;">
+            <span class="beta-highlight">Beta</span>
+            <div class="beta-content">
+                {{settings.notificationBanner | markdownify | safe }}
+            </div>
+        </div>
+    </section>
+{% endif %}

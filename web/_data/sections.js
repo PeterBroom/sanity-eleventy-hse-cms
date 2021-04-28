@@ -7,7 +7,8 @@ const hasToken = !!client.config().token
 
 function generateSection (section) {
   return {
-    ...section
+    ...section,
+    bodyCopy: BlocksToMarkdown(section.bodyCopy, { serializers, ...client.config() })
   }
 }
 
@@ -18,7 +19,31 @@ async function getSections () {
     _id,
     _updatedAt,
     title,
-    slug
+    parentSlug,
+    slug,
+    metaDescription,
+    metaKeywords,
+    "bodyCopy": pageBuilder[]{
+      ...,
+      editorInterface[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "slug": @.reference->slug
+          }
+        }
+      }
+    },
+    pageBuilder[]{
+      ...,
+      _type == "cards" => {
+        cardItems[]{
+          ...,
+          "slug": @.target->slug
+        }
+      }
+    }
   }`
   const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')

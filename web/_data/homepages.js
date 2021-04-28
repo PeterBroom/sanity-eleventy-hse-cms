@@ -5,16 +5,16 @@ const serializers = require('../utils/serializers')
 const overlayDrafts = require('../utils/overlayDrafts')
 const hasToken = !!client.config().token
 
-function generatePage (page) {
+function generateHomepage (homepage) {
   return {
-    ...page,
-    bodyCopy: BlocksToMarkdown(page.bodyCopy, { serializers, ...client.config() })
+    ...homepage,
+    bodyCopy: BlocksToMarkdown(homepage.bodyCopy, { serializers, ...client.config() })
   }
 }
 
-async function getPages () {
-  const filter = groq`*[_type == "page" && defined(slug) && _updatedAt < now()]`
-
+async function getHomepages () {
+  // Learn more: https://www.sanity.io/docs/data-store/how-queries-work
+  const filter = groq`*[_type == "homepage" && defined(slug) && _updatedAt < now()]`
   const projection = groq`{
     _id,
     _updatedAt,
@@ -49,8 +49,9 @@ async function getPages () {
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
-  const preparePages = reducedDocs.map(generatePage)
-  return preparePages
+  const prepareHomepages = reducedDocs.map(generateHomepage)
+  // console.log(prepareHomepages)
+  return prepareHomepages
 }
 
-module.exports = getPages
+module.exports = getHomepages
