@@ -2,6 +2,7 @@ const imageUrl = require('./imageUrl')
 const BlocksToMarkdown = require('@sanity/block-content-to-markdown')
 module.exports = {
   types: {
+    chart : props => props.node.language,
     cards: props => props.node.language,
     accordion: props => props.node.language,
     bodyCopy: (children) => {
