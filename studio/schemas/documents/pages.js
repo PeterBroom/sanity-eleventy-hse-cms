@@ -10,6 +10,24 @@ export default {
       description: 'Titles should be catchy, descriptive, and not too long'
     },
     {
+<<<<<<< Updated upstream
+=======
+      name: 'testTable',
+      type: 'table',
+      title: 'Table'
+    },
+    // {
+    //   name: "charts",
+    //   type: "array",
+    //   title: "charts",
+    //   of: [
+    //     {
+    //       type: "highcharts"
+    //     }
+    //   ]
+    // },
+    {
+>>>>>>> Stashed changes
       name: 'belongsTo',
       title: 'Belongs to...',
       type: 'reference',
@@ -48,6 +66,9 @@ export default {
         },
         {
           type: 'accordion'
+        },
+        {
+          type: 'highcharts'
         }
       ]
     },

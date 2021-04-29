@@ -30,7 +30,13 @@
     "react-icons": "^3.11.0",
     "react-use-gesture": "^9.1.3",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.11",
+<<<<<<< Updated upstream
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1"
+=======
+    "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
+    "sanity-plugin-highcharts-editor": "^1.0.2",
+    "sanity-plugin-table": "^2.2.0"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
