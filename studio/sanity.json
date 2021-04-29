@@ -16,13 +16,9 @@
     "@sanity/desk-tool",
     "dashboard-widget-structure-menu",
     "dashboard-widget-document-list",
-<<<<<<< Updated upstream
-    "dashboard-widget-netlify"
-=======
     "dashboard-widget-netlify",
     "table",
     "highcharts-editor"
->>>>>>> Stashed changes
   ],
   "parts": [
     {
