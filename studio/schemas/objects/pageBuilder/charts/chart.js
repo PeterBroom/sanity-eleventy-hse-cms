@@ -1,22 +1,27 @@
 export default {
-  name: 'bodyCopy',
-  title: 'Body copy',
+  name: 'chart',
+  title: 'Chart',
   type: 'object',
   fields: [
     {
-      type: 'portableText',
-      name: 'editorInterface',
-      title: 'Editor Interface',
+      name: 'title',
+      title: 'Title',
+      type: 'string'
     },
     {
       name: 'grid',
       title: 'Grid',
       type: 'gridLayout'
+    },
+    {
+      name: 'highcharts',
+      title: 'Chart',
+      type: 'highcharts',
     }
   ],
   preview: {
     select: {
-      title: 'editorInterface',
+      title: 'title',
       subtitle: 'grid'
     },
     prepare (selection) {
@@ -24,9 +29,9 @@ export default {
       const last = subtitle.gridLast ? 'last' : '';
       const column = subtitle.columns ? subtitle.columns : '12';
       const gridPreview = `${column} ${last}`
-      const contentPreview = title ? `${title[0].children[0].text}` : 'Body copy';
+      const previewTitle = title ? title : 'Chart';
       return {
-        title:  contentPreview,
+        title: `${previewTitle}`,
         subtitle: `Grid of ${gridPreview}`
       }
     }

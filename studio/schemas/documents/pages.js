@@ -50,9 +50,12 @@ export default {
           type: 'accordion'
         },
         {
-          type: 'highcharts'
+          type: 'chart'
         }
-      ]
+      ],
+      options: {
+        editModal: 'fullscreen'
+      }
     },
     {
       name: 'metaDescription',

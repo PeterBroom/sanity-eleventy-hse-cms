@@ -9,34 +9,31 @@ export default {
       type: 'string',
     },
     {
-      name: 'columns',
-      title: 'Columns',
-      type: 'string',
-      options: {
-        list: [
-          { title: '1 column', value: '1'},
-          { title: '2 column', value: '2'},
-          { title: '3 column', value: '3'},
-          { title: '4 column', value: '4'},
-          { title: '5 column', value: '5'},
-          { title: '6 column', value: '6'},
-        ]
-      }
-    },
-    {
       name: 'cardItems',
       title: 'Card Items',
       type: 'array',
       of: [{type: 'card.item'}]
+    },
+    {
+      name: 'grid',
+      title: 'Grid',
+      type: 'gridLayout'
     }
   ],
   preview: {
     select: {
-      title: 'title'
+      title: 'title',
+      subtitle: 'grid'
     },
-    prepare ({title = 'Cards'}) {
+    prepare (selection) {
+      const {title, subtitle} = selection
+      const last = subtitle.gridLast ? 'last' : '';
+      const column = subtitle.columns ? subtitle.columns : '12';
+      const gridPreview = `${column} ${last}`
+      const previewTitle = title ? title : 'Cards';
       return {
-        title
+        title: `${previewTitle}`,
+        subtitle: `Grid of ${gridPreview}`
       }
     }
   }

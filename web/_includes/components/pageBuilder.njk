@@ -4,6 +4,10 @@
         {% include "./hero.njk" %}
     {% endif %}
 
+    {% if component._type === 'highcharts' %}
+        {% include "./chart.njk" %}
+    {% endif %}
+
     {% if component._type === 'accordion' %}
         {% include "./accordion.njk" %}
     {% endif %}

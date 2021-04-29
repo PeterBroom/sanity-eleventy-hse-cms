@@ -1,11 +1,12 @@
 {% set columns = component.columns %}
+{% set gridLast = component.gridLast %}
 <section class="cards__container">
     <header>
         <h2>{{component.title}}</h2>
     </header>
     <div class="cards__inner">
         {% for item in component.cardItems -%}
-            <div class="card" data-grid="{{columns}}">
+            <div class="card"  data-grid="{{ columns }}{{' last' if gridLast === true}}">
                 <h3>
                     <a href="/{{item.slug.current}}">{{item.heading}}</a>
                 </h3>

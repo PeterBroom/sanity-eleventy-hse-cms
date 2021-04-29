@@ -21,6 +21,11 @@ export default {
       options: {
         list: ['newsletter', 'register', 'contact']
       }
+    },
+    {
+      name: 'grid',
+      title: 'Grid',
+      type: 'gridLayout'
     }
   ]
 }

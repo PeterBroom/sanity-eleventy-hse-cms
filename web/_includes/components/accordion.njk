@@ -1,9 +1,11 @@
-<h2>{{component.title}}</h2>
-<div class="accordion" data-aria-accordion data-multi data-transition data-default="none">
-    {% for item in component.accordionArray %}
-        <h3 id="{{item.key}}" class="accordion__heading" data-aria-accordion-heading>{{item.accordionHeading}}</h3>
-        <div class="accordion__panel" data-aria-accordion-panel>
-            <p>{{item.accordionCopy}}</p>
-        </div>
-    {% endfor %}
+<div class="accordion__container" data-grid="{{ component.grid.columns }}{{' last' if component.grid.gridLast === true}}">
+    <h2>{{component.title}}</h2>
+    <div class="accordion" data-aria-accordion data-multi data-transition data-default="none">
+        {% for item in component.accordionArray %}
+            <h3 id="{{item.key}}" class="accordion__heading" data-aria-accordion-heading>{{item.accordionHeading}}</h3>
+            <div class="accordion__panel" data-aria-accordion-panel>
+                <p>{{item.accordionCopy}}</p>
+            </div>
+        {% endfor %}
+    </div>
 </div>

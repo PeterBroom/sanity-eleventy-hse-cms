@@ -22,12 +22,16 @@ import navigation from './objects/navigation/sub/navigation'
 import navigationLink from './objects/navigation/sub/navigationLink'
 import navigationSection from './objects/navigation/sub/navigationSection'
 
+import gridLayout from './objects/gridLayout'
+
 import bodyCopy from './objects/pageBuilder/bodyCopy/bodyCopy'
 
 import form from './objects/pageBuilder/form'
 
 import cards from './objects/pageBuilder/cards/card'
 import cardItems from './objects/pageBuilder/cards/cardItems'
+
+import charts from './objects/pageBuilder/charts/chart'
 
 import accordion from './objects/pageBuilder/accordion/accordion'
 import accordionItem from './objects/pageBuilder/accordion/accordionItem'
@@ -45,6 +49,7 @@ import excerptPortableText from './objects/excerptPortableText'
 export default createSchema({
   name: 'HSE Schema',
   types: schemaTypes.concat([
+    gridLayout,
     portableText,
     excerptPortableText,
     settingsMeta,
@@ -64,6 +69,7 @@ export default createSchema({
     bodyCopy,
     form,
     cards,
+    charts,
     cardItems,
     accordion,
     accordionItem,
