@@ -1,0 +1,127 @@
+<style>
+    .youtube {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .youtube::after {
+        display: block;
+        content: "";
+        padding-top: 56.25%;
+    }
+
+    .youtube iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<div class="video__container">
+    <h2>{{component.title}}</h2>
+    <div class="youtube">
+        <iframe src="http://www.youtube.com/embed/{{component.url}}"
+   width="560" height="315" frameborder="0" allowfullscreen></iframe>
+    </div>
+    {# <p>{{component.tags}}</p> #}
+    {# {% set regExp = r /^foo. * /g %}
+    {% if regExp.test('foo') %}
+        Foo in the house!
+    {% endif %} #}
+    {# {% for item in relatedMedia %}
+        {% for items in item.content %}
+            <p>{{items.title}}</p>
+            <p>{{items.url}}</p>
+
+            {% for tag in items.tags %}
+                <p>{{tag}}</p>
+            {% endfor %}
+        {% endfor %}
+    {% endfor %} #}
+    <div id="playerInfo">
+        <div id="videoTabs" class="tabs">
+            <ul class="tabs__list">
+                <li class="tabs__list-item">
+                    <a class="tabs__tab" href="#descPanel">Description</a>
+                </li>
+                <li class="tabs__list-item">
+                    <a class="tabs__tab" href="#transPanel">Transcript</a>
+                </li>
+                <li class="tabs__list-item">
+                    <a class="tabs__tab" href="#relatedPanel">Related media</a>
+                </li>
+                <li class="tabs__list-item">
+                    <a class="tabs__tab" href="#sharePanel">Share</a>
+                </li>
+            </ul>
+            <div class="tabs__panel" id="descPanel">
+                <h2>Description</h2>
+                {% if component.description %}
+                    {{component.description}}
+                {% else %}
+                    <p>There is no description for this video</p>
+                {% endif %}
+            </div>
+            <div class="tabs__panel" id="transPanel">
+                <h2>Transcript</h2>
+                {% if component.transcript %}
+                    {{component.transcript}}
+                {% else %}
+                    <p>There is no transcript for this video</p>
+                {% endif %}
+            </div>
+            <div class="tabs__panel" id="relatedPanel">
+                <h2>Related Media</h2>
+
+                {% if relatedMedia.tags.related %}
+                    {{relatedMedia.tags.related}}
+                {% else %}
+                    <p>There is no related media for this video</p>
+                {% endif %}
+            </div>
+            <div class="tabs__panel" id="sharePanel">
+                <h2>Share</h2>
+                <div id="embedContent">
+                    <p>Share &quot;{{component.title}}&quot;
+                    <span class="visually-hidden">video</span> by using the following code:</p>
+                    <code>
+                &lt;&#x69;&#x66;&#x72;&#x61;&#x6d;&#x65;&#x20;&#x77;&#x69;&#x64;&#x74;&#x68;&equals;&quot;&#x35;&#x36;&#x30;&quot;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&equals;&quot;&#x33;&#x31;&#x35;&quot;&#x20;&#x73;&#x72;&#x63;&equals;&quot;&#x68;&#x74;&#x74;&#x70;&#x73;&colon;&sol;&sol;&#x77;&#x77;&#x77;&period;&#x79;&#x6f;&#x75;&#x74;&#x75;&#x62;&#x65;&period;&#x63;&#x6f;&#x6d;&sol;&#x65;&#x6d;&#x62;&#x65;&#x64;&sol;{{component.url}}&quot;&#x20;&#x74;&#x69;&#x74;&#x6c;&#x65;&equals;&quot;&#x59;&#x6f;&#x75;&#x54;&#x75;&#x62;&#x65;&#x20;&#x76;&#x69;&#x64;&#x65;&#x6f;&#x20;&#x70;&#x6c;&#x61;&#x79;&#x65;&#x72;&quot;&#x20;&#x66;&#x72;&#x61;&#x6d;&#x65;&#x62;&#x6f;&#x72;&#x64;&#x65;&#x72;&equals;&quot;&#x30;&quot;&#x20;&#x61;&#x6c;&#x6c;&#x6f;&#x77;&equals;&quot;&#x61;&#x63;&#x63;&#x65;&#x6c;&#x65;&#x72;&#x6f;&#x6d;&#x65;&#x74;&#x65;&#x72;&semi;&#x20;&#x61;&#x75;&#x74;&#x6f;&#x70;&#x6c;&#x61;&#x79;&semi;&#x20;&#x63;&#x6c;&#x69;&#x70;&#x62;&#x6f;&#x61;&#x72;&#x64;&#x2d;&#x77;&#x72;&#x69;&#x74;&#x65;&semi;&#x20;&#x65;&#x6e;&#x63;&#x72;&#x79;&#x70;&#x74;&#x65;&#x64;&#x2d;&#x6d;&#x65;&#x64;&#x69;&#x61;&semi;&#x20;&#x67;&#x79;&#x72;&#x6f;&#x73;&#x63;&#x6f;&#x70;&#x65;&semi;&#x20;&#x70;&#x69;&#x63;&#x74;&#x75;&#x72;&#x65;&#x2d;&#x69;&#x6e;&#x2d;&#x70;&#x69;&#x63;&#x74;&#x75;&#x72;&#x65;&quot;&#x20;&#x61;&#x6c;&#x6c;&#x6f;&#x77;&#x66;&#x75;&#x6c;&#x6c;&#x73;&#x63;&#x72;&#x65;&#x65;&#x6e;&gt;&lt;&sol;&#x69;&#x66;&#x72;&#x61;&#x6d;&#x65;&gt;
+                </code>
+                </div>
+                <div id="copyEmbed"></div>
+                <div id="linkContent">
+                    <p>Link directly to &quot;{{component.title}}&quot; <span class="visually-hidden">video</span>:</p>
+                    <p>https://www.youtube.com/embed/{{component.url}}</p>
+                </div>
+
+                <div id ="emailerForm">
+                    <form action="http://streamservice.sc-streaming.com/backend/hseVidEmailer.aspx" method="post" class="emailer">
+                        <div class="form-group">
+                            <label class="label" for='formName'>Your name:</label>
+                            <input class="input input-text" type='text' name='formName' id='formName' maxlength='200'/>
+                        </div>
+                        <div class="form-group">
+
+                            <label class="label" for="formEmail">Send video to:</label>
+                            <input class="input input-text" type="text" name="formEmail" id="formEmail" maxlength='200'/>
+                        </div>
+                        <div class="form-group">
+                            <label class="label" for="formMsg">Additional Comments (optional):</label>
+                            <textarea name="formMsg" id="formMsg" class="textarea"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" id="formLink" name="formLink" value="{{component.url}}"/>
+                            <input type="hidden" id="formTitle" name="formTitle" value="{{component.title}}"/>
+                        </div>
+                        <div class="form-group">
+                            <input value="Submit" type="submit" name="btnSubmit" id="btnSubmit" class="btn btn-primary"/>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
