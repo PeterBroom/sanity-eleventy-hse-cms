@@ -18,7 +18,8 @@
     "dashboard-widget-document-list",
     "dashboard-widget-netlify",
     "table",
-    "highcharts-editor"
+    "highcharts-editor",
+    "@sanity/production-preview"
   ],
   "parts": [
     {
@@ -44,6 +45,10 @@
     {
       "implements": "part:@sanity/dashboard/config",
       "path": "dashboardConfig.js"
+    },
+    {
+      "implements": "part:@sanity/production-preview/resolve-production-url",
+      "path": "./resolveProductionUrl.js"
     }
   ]
 }
