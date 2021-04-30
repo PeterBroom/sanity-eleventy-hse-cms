@@ -1,3 +1,5 @@
+import {BsColumnsGap} from 'react-icons/Bs';
+
 export default {
     name: 'gridLayout',
     type: 'object',
@@ -7,6 +9,7 @@ export default {
             name: 'columns',
             title: 'Grid of...',
             type: 'string',
+            icon: BsColumnsGap,
             options: {
             list: [
                 { title: '1 column', value: '1'},

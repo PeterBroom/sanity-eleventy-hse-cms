@@ -1,7 +1,10 @@
+import {IoIosArrowDropdown} from 'react-icons/Io'
+
 export default {
   name: 'accordion',
   type: 'object',
   title: 'Accordion',
+  icon: IoIosArrowDropdown,
   fields: [
     {
       name: 'title',

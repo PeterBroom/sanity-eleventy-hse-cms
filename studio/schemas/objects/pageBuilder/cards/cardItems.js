@@ -1,7 +1,10 @@
+import {BsCardHeading} from 'react-icons/Bs'
+
 export default {
+  title: 'Item',
   name: 'card.item',
   type: 'object',
-  title: 'Item',
+  icon: BsCardHeading,
   fields: [
     {
       name: 'heading',

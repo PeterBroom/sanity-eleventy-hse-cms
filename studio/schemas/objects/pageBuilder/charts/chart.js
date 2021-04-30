@@ -1,7 +1,10 @@
+import {AiOutlinePieChart} from 'react-icons/Ai'
+
 export default {
   name: 'chart',
   title: 'Chart',
   type: 'object',
+  icon: AiOutlinePieChart,
   fields: [
     {
       name: 'title',

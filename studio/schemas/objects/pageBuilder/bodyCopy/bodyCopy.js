@@ -1,7 +1,9 @@
+import {AiOutlineCopy} from 'react-icons/Ai'
 export default {
   name: 'bodyCopy',
   title: 'Body copy',
   type: 'object',
+  icon: AiOutlineCopy,
   fields: [
     {
       type: 'portableText',

@@ -1,7 +1,10 @@
+import {AiOutlineFileText} from 'react-icons/Ai'
+
 export default {
   title: 'Page',
   name: 'page',
   type: 'document',
+  icon: AiOutlineFileText,
   fields: [
     {
       name: 'title',

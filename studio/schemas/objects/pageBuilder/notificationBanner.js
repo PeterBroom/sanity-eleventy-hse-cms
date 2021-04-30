@@ -1,7 +1,10 @@
+import {AiOutlineNotification} from 'react-icons/Ai'
+
 export default {
   name: 'notificationBanner',
   type: 'object',
   title: 'Notification banner',
+  icon: AiOutlineNotification,
   fields: [
     {
       name: 'heading',

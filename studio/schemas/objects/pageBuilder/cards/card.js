@@ -1,7 +1,10 @@
+import {IoGridOutline} from 'react-icons/io5'
+
 export default {
   name: 'cards',
   title: 'Cards',
   type: 'object',
+  icon: IoGridOutline,
   fields: [
     {
       name: 'title',

@@ -1,7 +1,9 @@
+import {AiOutlineYoutube} from 'react-icons/Ai'
 export default {
   name: 'youtube',
   type: 'object',
   title: 'YouTube Embed',
+  icon: AiOutlineYoutube,
   fields: [
     {
       name: 'url',

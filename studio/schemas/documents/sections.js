@@ -1,8 +1,12 @@
+import { AiOutlineLayout } from 'react-icons/Ai'
+
 import {navigation} from '../objects/navigation/sub/navigation.js'
+
 export default {
   title: 'Sections',
   name: 'section',
   type: 'document',
+  icon: AiOutlineLayout,
   fields: [
     {
       name: 'title',

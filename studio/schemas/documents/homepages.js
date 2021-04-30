@@ -1,8 +1,11 @@
+import {AiOutlineHome} from 'react-icons/Ai'
+
 import {navigation} from '../objects/navigation/sub/navigation.js'
 export default {
   title: 'Home pages',
   name: 'homepage',
   type: 'document',
+  icon: AiOutlineHome,
   fields: [
     {
       name: 'title',
