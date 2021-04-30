@@ -13,6 +13,7 @@
     "test": "sanity check"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@sanity/base": "^2.10.0",
     "@sanity/cli": "^2.10.0",
     "@sanity/components": "^2.0.0",
