@@ -23,6 +23,7 @@
     "luxon": "^1.19.3",
     "markdown-it": "^10.0.0",
     "markdown-it-anchor": "^5.2.5",
-    "elasticlunr": "^0.9.5"
+    "elasticlunr": "^0.9.5",
+    "react-icons": "^4.2.0"
   }
 }
