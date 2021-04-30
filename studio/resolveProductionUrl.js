@@ -1,3 +1,3 @@
 export default function resolveProductionUrl(document) {
-  return `http://localhost:8080/${document.slug.current}`
+  return `https://sanity-eleventy-hse-cms-studio.netlify.app/${document.slug.current}`
 }
