@@ -25,7 +25,7 @@ async function relatedMedia () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const prepareRelatedMedia = reducedDocs.map(generateRelatedMedia)
-  console.log(prepareRelatedMedia)
+  // console.log(prepareRelatedMedia) 
   return prepareRelatedMedia
 }
 
