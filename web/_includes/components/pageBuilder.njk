@@ -1,10 +1,13 @@
 {% for component in components %}
-
     {% if component._type === 'hero' %}
         {% include "./hero.njk" %}
     {% endif %}
 
-    {% if component._type === 'highcharts' %}
+    {% if component._type === 'youtube' %}
+        {% include "./youtube.njk" %}
+    {% endif %}
+
+    {% if component._type === 'chart' %}
         {% include "./chart.njk" %}
     {% endif %}
 

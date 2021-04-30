@@ -24,6 +24,8 @@ import navigationSection from './objects/navigation/sub/navigationSection'
 
 import gridLayout from './objects/gridLayout'
 
+import youtube from './objects/pageBuilder/youtube'
+
 import bodyCopy from './objects/pageBuilder/bodyCopy/bodyCopy'
 
 import form from './objects/pageBuilder/form'
@@ -69,8 +71,9 @@ export default createSchema({
     bodyCopy,
     form,
     cards,
-    charts,
     cardItems,
+    charts,
+    youtube,
     accordion,
     accordionItem,
     notificationBanner

@@ -51,6 +51,9 @@ export default {
         },
         {
           type: 'chart'
+        },
+        {
+          type: 'youtube'
         }
       ],
       options: {
