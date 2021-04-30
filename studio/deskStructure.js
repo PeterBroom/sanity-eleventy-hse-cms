@@ -1,9 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {MdSettings} from 'react-icons/md'
+import {AiFillSetting, AiFillDatabase, AiFillLayout, AiFillHome, AiFillFileText} from 'react-icons/Ai'
+import {GoThreeBars} from 'react-icons/Go'
+import {RiGlobeFill} from 'react-icons/Ri'
 import {workflowListItems} from './workflow/structure/workflow'
 
 const hiddenDocTypes = listItem =>
-  !['settingsMeta', 'settingsNavigation', 'settingsGlobals', 'section', 'homepage', 'page', 'navigation', 'topNav', 'workflow.metadata', 'author', 'release'].includes(listItem.getId())
+  !['settingsMeta', 'settingsNavigation', 'settingsGlobals', 'section', 'homepage', 'page', 'divider', 'navigation', 'topNav', 'workflow.metadata', 'author', 'release'].includes(listItem.getId())
 
 const docTypeListItems = S.documentTypeListItems().filter(hiddenDocTypes)
 
@@ -14,12 +16,14 @@ export default () =>
     .items([
       S.listItem()
         .title('Settings')
+        .icon(AiFillSetting)
         .child(
           S.list()
             .title('Settings')
             .items([
               S.listItem()
                 .title('Globals')
+                .icon(RiGlobeFill)
                 .child(
                   S.document()
                     .schemaType('settingsGlobals')
@@ -27,6 +31,7 @@ export default () =>
                 ),
               S.listItem()
                 .title('Metadata')
+                .icon(AiFillDatabase)
                 .child(
                   S.document()
                     .schemaType('settingsMeta')
@@ -34,6 +39,7 @@ export default () =>
                 ),
                 S.listItem()
                 .title('Navigation')
+                .icon(GoThreeBars)
                 .child(
                   S.document()
                     .schemaType('settingsNavigation')
@@ -41,9 +47,9 @@ export default () =>
                 )
             ])
         ),
-      S.divider(),
       S.listItem()
         .title('Content sections')
+        .icon(AiFillLayout)
         .child(
           S.documentList('section')
             .schemaType('section')
@@ -54,6 +60,7 @@ export default () =>
         ),
       S.listItem()
         .title('Content homepages')
+        .icon(AiFillHome)
         .child(
           S.documentList('homepage')
             .schemaType('homepage')
@@ -64,6 +71,7 @@ export default () =>
         ),
       S.listItem()
         .title('Content pages')
+        .icon(AiFillFileText)
         .child(
           S.documentList('section')
             .schemaType('section')
