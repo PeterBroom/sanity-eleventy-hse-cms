@@ -1,4 +1,4 @@
-import {IoIosArrowDropdown} from 'react-icons/Io'
+import {IoIosArrowDropdown} from 'react-icons/io'
 
 export default {
   name: 'accordion',

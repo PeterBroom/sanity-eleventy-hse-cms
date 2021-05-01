@@ -1,4 +1,4 @@
-import {AiOutlineNotification} from 'react-icons/Ai'
+import {AiOutlineNotification} from 'react-icons/ai'
 
 export default {
   name: 'notificationBanner',

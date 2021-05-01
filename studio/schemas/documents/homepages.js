@@ -1,4 +1,4 @@
-import {AiOutlineHome} from 'react-icons/Ai'
+import {AiOutlineHome} from 'react-icons/ai'
 
 import {navigation} from '../objects/navigation/sub/navigation.js'
 export default {

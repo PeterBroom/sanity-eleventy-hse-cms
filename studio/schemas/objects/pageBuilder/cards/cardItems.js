@@ -1,4 +1,4 @@
-import {BsCardHeading} from 'react-icons/Bs'
+import {BsCardHeading} from 'react-icons/bs'
 
 export default {
   title: 'Item',

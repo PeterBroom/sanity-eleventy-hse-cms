@@ -1,4 +1,4 @@
-import {BsCardText} from 'react-icons/Bs'
+import {BsCardText} from 'react-icons/bs'
 
 export default {
   name: 'accordionItem',

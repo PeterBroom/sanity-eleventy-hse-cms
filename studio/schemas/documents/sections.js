@@ -1,4 +1,4 @@
-import { AiOutlineLayout } from 'react-icons/Ai'
+import { AiOutlineLayout } from 'react-icons/ai'
 
 import {navigation} from '../objects/navigation/sub/navigation.js'
 

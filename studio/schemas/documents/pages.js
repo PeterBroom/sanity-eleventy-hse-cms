@@ -1,4 +1,4 @@
-import {AiOutlineFileText} from 'react-icons/Ai'
+import {AiOutlineFileText} from 'react-icons/ai'
 
 export default {
   title: 'Page',

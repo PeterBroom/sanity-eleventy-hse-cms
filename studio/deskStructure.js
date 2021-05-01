@@ -1,7 +1,7 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {AiFillSetting, AiFillDatabase, AiFillLayout, AiFillHome, AiFillFileText} from 'react-icons/Ai'
-import {GoThreeBars} from 'react-icons/Go'
-import {RiGlobeFill} from 'react-icons/Ri'
+import {AiFillSetting, AiFillDatabase, AiFillLayout, AiFillHome, AiFillFileText} from 'react-icons/ai'
+import {GoThreeBars} from 'react-icons/go'
+import {RiGlobeFill} from 'react-icons/ri'
 import {workflowListItems} from './workflow/structure/workflow'
 
 const hiddenDocTypes = listItem =>

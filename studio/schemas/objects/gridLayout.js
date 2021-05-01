@@ -1,4 +1,4 @@
-import {BsColumnsGap} from 'react-icons/Bs';
+import {BsColumnsGap} from 'react-icons/bs';
 
 export default {
     name: 'gridLayout',
