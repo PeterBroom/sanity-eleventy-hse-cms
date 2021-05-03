@@ -51,7 +51,7 @@
       "path": "./resolveProductionUrl.js"
     },
     {
-      "implements": "part:@sanity/base/logo",
+      "implements": "part:@sanity/base/brand-logo",
       "path": "./components/hseLogo.js"
     },
     {

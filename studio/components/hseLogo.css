@@ -1,5 +1,6 @@
 
 .hseLogo {
   height: 100%;
-  max-height: 3rem;
+  max-height: 2.5rem;
+  vertical-align: middle;
 }
