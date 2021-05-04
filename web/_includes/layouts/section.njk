@@ -9,10 +9,7 @@ templateClass: tmpl-section
 
 {% set pageTitle = sections.title %}
 
-{% include '../components/subNav.njk' %}
-
-<h1>{{ pageTitle }}</h1>
-
 <div class="{{column}}">
+  <h1>{{ pageTitle }}</h1>
   {% include "../components/pageBuilder.njk" %}
 </div>

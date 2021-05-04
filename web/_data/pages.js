@@ -19,7 +19,7 @@ async function getPages () {
     _id,
     _updatedAt,
     title,
-    parentSlug,
+    "parentSlug": @.belongsTo->slug,
     slug,
     metaDescription,
     metaKeywords,

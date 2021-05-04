@@ -19,9 +19,11 @@
                         <li class="home">
                             <a href="/">Home</a>
                         </li>
+                        {# {{ set parent = pages.parentHomepage.current }} #}
+                        {# {{ set parent = pages.parentHomepage.current}} #}
                         {% for item in settingsNavigation[0].headerMenu.sections -%}
                             <li>
-                                <a class="{{ 'active' if pages.slug.current === item.slug.current }}" href="/{{item.slug.current}}">{{item.title}}</a>
+                                <a class="{{ 'active-page' if sections.slug.current === item.slug.current }}" href="/{{item.slug.current}}">{{item.title}}</a>
                             </li>
                         {% endfor %}
                     </ul>

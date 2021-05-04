@@ -10,10 +10,7 @@ templateClass: tmpl-page
 
 {% set pageTitle = homepages.title %}
 
-{% include '../components/subNav.njk' %}
-
-<h1>{{ pageTitle }}</h1>
-
 <div class="{{column}}">
+  <h1>{{ pageTitle }}</h1>
   {% include "../components/pageBuilder.njk" %}
 </div>

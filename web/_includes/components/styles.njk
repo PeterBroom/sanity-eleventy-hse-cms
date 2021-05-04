@@ -108,6 +108,13 @@
         display: block;
         clear: both;
     }
+
+    .content-container {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
     [data-column*='one-third'] {
         width: 33.3333%;
     }
@@ -126,5 +133,14 @@
     [data-column*='full'] {
         width: 66.6666%;
     }
-    .
+
+    /* fixes */
+    .slinky-menu li,
+    .slinky-menu ul {
+        margin: 0 !important;
+    }
+
+    #main-menu .active-page {
+        background-color: #333;
+    }
 </style>

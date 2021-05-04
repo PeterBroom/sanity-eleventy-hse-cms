@@ -10,12 +10,12 @@ function generateMenu (page) {
 }
 
 async function navigationTree () {
-  const filter = groq`*[_type == "section" && defined(slug) && _updatedAt < now()]`
+  const filter = groq`*[_type == "homepage" && defined(slug) && _updatedAt < now()]`
   const projection = groq`{
       slug,
-      section->{title, id},
       title,
       subMenu[]{
+        ...,
         sections[]{
           ...,
           target->{title, slug, _id},
@@ -35,6 +35,7 @@ async function navigationTree () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const prepareMenu = reducedDocs.map(generateMenu)
+  console.log('prepareMenu',prepareMenu)
   return prepareMenu
 }
 
