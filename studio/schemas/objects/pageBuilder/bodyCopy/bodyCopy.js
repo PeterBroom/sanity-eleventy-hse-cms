@@ -6,14 +6,41 @@ export default {
   icon: AiOutlineCopy,
   fields: [
     {
+      name: 'title',
+      type: 'formattedTitle',
+      title: 'Title',
+    },
+    {
       type: 'portableText',
       name: 'editorInterface',
       title: 'Editor Interface',
     },
     {
+      name: 'moreInfo',
+      type: 'object',
+      title: 'More information',
+      fields: [{
+        name: 'title',
+        type: 'string',
+        title: 'Link text',
+        description: 'To use page title leave this field blank.'
+      },
+      {
+        type: 'reference',
+        name: 'target',
+        title: 'Target page',
+        to: [{type: 'page'}]
+      }]
+    },
+    {
       name: 'grid',
       title: 'Grid',
       type: 'gridLayout'
+    },
+    {
+      name: 'backgroundColour',
+      title: 'Background colour',
+      type: 'backgroundColour'
     }
   ],
   preview: {

@@ -24,6 +24,8 @@ import navigationSection from './objects/navigation/sub/navigationSection'
 
 import gridLayout from './objects/gridLayout'
 
+import backgroundColour from './objects/backgroundColour'
+
 import youtube from './objects/pageBuilder/youtube'
 
 import bodyCopy from './objects/pageBuilder/bodyCopy/bodyCopy'
@@ -46,12 +48,16 @@ import notificationBanner from './objects/pageBuilder/notificationBanner'
 import portableText from './objects/portableText'
 import excerptPortableText from './objects/excerptPortableText'
 
+import formattedTitle from './objects/formattedTitle'
+
 // import mainImage from './objects/mainImage'
 
 export default createSchema({
   name: 'HSE Schema',
   types: schemaTypes.concat([
     gridLayout,
+    backgroundColour,
+    formattedTitle,
     portableText,
     excerptPortableText,
     settingsMeta,

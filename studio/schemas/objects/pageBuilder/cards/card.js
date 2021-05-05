@@ -21,6 +21,11 @@ export default {
       name: 'grid',
       title: 'Grid',
       type: 'gridLayout'
+    },
+    {
+      name: 'backgroundColour',
+      title: 'Background colour',
+      type: 'backgroundColour'
     }
   ],
   preview: {
