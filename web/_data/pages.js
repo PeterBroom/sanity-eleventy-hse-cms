@@ -7,8 +7,7 @@ const hasToken = !!client.config().token
 
 function generatePage (page) {
   return {
-    ...page,
-    bodyCopy: BlocksToMarkdown(page.bodyCopy, { serializers, ...client.config() })
+    ...page
   }
 }
 
@@ -17,24 +16,20 @@ async function getPages () {
 
   const projection = groq`{
     _id,
+    _type,
     _updatedAt,
     title,
-    "parentSlug": @.belongsTo->slug,
+    shortTitle,
     slug,
+    breadcrumb[]{
+      ...,
+      "slug": ^->slug,
+      "title": ^->title,
+      "shortTitle": ^->shortTitle
+    },
+    "parentSlug": @.belongsTo->slug,
     metaDescription,
     metaKeywords,
-    "bodyCopy": pageBuilder[]{
-      ...,
-      editorInterface[]{
-        ...,
-        markDefs[]{
-          ...,
-          _type == "internalLink" => {
-            "slug": @.reference->slug
-          }
-        }
-      }
-    },
     pageBuilder[]{
       ...,
       _type == "cards" => {
@@ -50,6 +45,20 @@ async function getPages () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const preparePages = reducedDocs.map(generatePage)
+  console.log('--- Pages ---------------------');
+  console.log('preparePages',preparePages);
+  console.log('-------------------------------');
+
+  preparePages.forEach((item)=>{
+    const pageBuilder = item.pageBuilder;
+    if (pageBuilder) {
+      pageBuilder.forEach((component)=> {
+        if (component._type === "bodyCopy") {
+          component.editorInterface = BlocksToMarkdown(component.editorInterface, { serializers, ...client.config() })
+        }
+      });
+    }
+  })
   return preparePages
 }
 

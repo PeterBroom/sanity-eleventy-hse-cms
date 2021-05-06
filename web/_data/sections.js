@@ -7,8 +7,7 @@ const hasToken = !!client.config().token
 
 function generateSection (section) {
   return {
-    ...section,
-    bodyCopy: BlocksToMarkdown(section.bodyCopy, { serializers, ...client.config() })
+    ...section
   }
 }
 
@@ -17,24 +16,14 @@ async function getSections () {
   const filter = groq`*[_type == "section" && defined(slug) && _updatedAt < now()]`
   const projection = groq`{
     _id,
+    _type,
     _updatedAt,
     title,
+    shortTitle,
     parentSlug,
     slug,
     metaDescription,
     metaKeywords,
-    "bodyCopy": pageBuilder[]{
-      ...,
-      editorInterface[]{
-        ...,
-        markDefs[]{
-          ...,
-          _type == "internalLink" => {
-            "slug": @.reference->slug
-          }
-        }
-      }
-    },
     pageBuilder[]{
       ...,
       _type == "cards" => {
@@ -50,6 +39,16 @@ async function getSections () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const prepareSections = reducedDocs.map(generateSection)
+  prepareSections.forEach((item)=>{
+    const pageBuilder = item.pageBuilder;
+    if (pageBuilder) {
+      pageBuilder.forEach((component)=> {
+        if (component._type === "bodyCopy") {
+          component.editorInterface = BlocksToMarkdown(component.editorInterface, { serializers, ...client.config() })
+        }
+      });
+    }
+  })
   return prepareSections
 }
 

@@ -7,8 +7,7 @@ const hasToken = !!client.config().token
 
 function generateHomepage (homepage) {
   return {
-    ...homepage,
-    bodyCopy: BlocksToMarkdown(homepage.bodyCopy, { serializers, ...client.config() })
+    ...homepage
   }
 }
 
@@ -17,30 +16,40 @@ async function getHomepages () {
   const filter = groq`*[_type == "homepage" && defined(slug) && _updatedAt < now()]`
   const projection = groq`{
     _id,
+    _type,
     _updatedAt,
     title,
-    "parentSlug": @.belongsTo->slug,
+    shortTitle,
     slug,
+    breadcrumb[]{
+      ...,
+      "slug": ^->slug,
+      "title": ^->title,
+      "shortTitle": ^->shortTitle
+    },
+    "parentSlug": @.belongsTo->slug,
     metaDescription,
     metaKeywords,
-    "bodyCopy": pageBuilder[]{
-      ...,
-      editorInterface[]{
-        ...,
-        markDefs[]{
-          ...,
-          _type == "internalLink" => {
-            "slug": @.reference->slug
-          }
-        }
-      }
-    },
     pageBuilder[]{
       ...,
       _type == "cards" => {
         cardItems[]{
           ...,
-          "slug": @.target->slug
+          "slug": @.moreInfo.target->slug
+        }
+      }
+    },
+    "bodyCopy": pageBuilder[]{
+      ...,
+      _type == "bodyCopy" => {
+        editorInterface[]{
+          ...,
+          markDefs[]{
+            ...,
+            _type == "internalLink" => {
+              "slug": @.reference->slug
+            }
+          }
         }
       }
     }
@@ -50,7 +59,19 @@ async function getHomepages () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const prepareHomepages = reducedDocs.map(generateHomepage)
-  // console.log(prepareHomepages)
+  console.log('--- Homepages -----------------');
+  console.log('prepareHomepages',prepareHomepages);
+  console.log('-------------------------------');
+  prepareHomepages.forEach((item)=>{
+    const pageBuilder = item.pageBuilder;
+    if (pageBuilder) {
+      pageBuilder.forEach((component)=> {
+        if (component._type === "bodyCopy") {
+          component.editorInterface = BlocksToMarkdown(component.editorInterface, { serializers, ...client.config() })
+        }
+      });
+    }
+  })
   return prepareHomepages
 }
 
