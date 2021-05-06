@@ -8,10 +8,34 @@ export default {
   icon: AiOutlineHome,
   fields: [
     {
+      name: 'breadcrumb',
+      title: 'Breadcrumb',
+      description: 'Create a heirachy tree.',
+      type: 'array',
+      of: [
+        {
+          name: 'target',
+          type: 'reference',
+          to: [
+            {type: 'section'},
+            {type: 'homepage'},
+            {type: 'page'},
+          ]
+        }
+      ],
+      validation: Rule => Rule.required()
+    },
+    {
       name: 'title',
       type: 'string',
       title: 'Homepage title',
       description: 'Titles should be catchy, descriptive, and not too long'
+    },
+    {
+      name: 'shortTitle',
+      type: 'string',
+      title: 'Short title',
+      description: 'Used in navigation menus'
     },
     {
       name: 'slug',

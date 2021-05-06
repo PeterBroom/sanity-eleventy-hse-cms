@@ -15,6 +15,12 @@ export default {
       description: 'Titles should be catchy, descriptive, and not too long'
     },
     {
+      name: 'shortTitle',
+      type: 'string',
+      title: 'Short title',
+      description: 'Used in navigation menus'
+    },
+    {
       name: 'slug',
       type: 'slug',
       title: 'Slug',

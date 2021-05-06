@@ -1,14 +1,30 @@
 <div id="breadCrumb" aria-label="Previous pages:">
-    <div class="breadCrumbContainer">
+    {% if pages._type === 'page' %}
+        {% set breadcrumbSource = pages %}
+    {% endif %}
+    {% if homepages._type === 'homepage' %}
+        {% set breadcrumbSource = homepages %}
+    {% endif %}
+    {% if sections._type === 'section' %}
+        {% set breadcrumbSource = sections %}
+    {% endif %}
 
+    <div class="breadCrumbContainer">
         <ol>
             <li class="home">
                 <a href="../index.htm">HSE</a>
             </li>
-            <li aria-current="page">Guidance</li>
+            {% for item in breadcrumbSource.breadcrumb %}
+                <li>
+                    <a href="/{{item.slug.current}}">
+                        {{ item.shortTitle if item.shortTitle else item.title }}
+                    </a>
+                </li>
+            {% endfor %}
+            <li>{{ breadcrumbSource.shortTitle if breadcrumbSource.shortTitle else breadcrumbSource.title }}</li>
         </ol>
-
     </div>
+
     <div id="backTo">
         <p class="backto">
             <a id="backnav" href="../index.htm">HSE</a>

@@ -7,10 +7,34 @@ export default {
   icon: AiOutlineFileText,
   fields: [
     {
+      name: 'breadcrumb',
+      title: 'Breadcrumb',
+      description: 'Create a heirachy tree.',
+      type: 'array',
+      of: [
+        {
+          name: 'target',
+          type: 'reference',
+          to: [
+            {type: 'section'},
+            {type: 'homepage'},
+            {type: 'page'},
+          ]
+        }
+      ],
+      validation: Rule => Rule.required()
+    },
+    {
       name: 'title',
       type: 'string',
       title: 'Page title',
       description: 'Titles should be catchy, descriptive, and not too long'
+    },
+    {
+      name: 'shortTitle',
+      type: 'string',
+      title: 'Short title',
+      description: 'Used in navigation menus'
     },
     {
       name: 'belongsTo',
@@ -29,7 +53,7 @@ export default {
       type: 'slug',
       title: 'Slug',
       description: 'The slug will form the url for this page',
-      readOnly: true,
+      readOnly: false,
       options: {
         source: (doc) => doc.title,
         maxLength: 96,
