@@ -95,6 +95,15 @@ export default () =>
                       '_type == "page" && $homepageId == belongsTo._ref'
                     )
                     .params({homepageId})
+                  .child(pageId =>
+                    S.documentList()
+                      .schemaType('page')
+                      .title('Sub pages')
+                        .filter(
+                          '_type == "page" && $pageId == belongsTo._ref'
+                        )
+                        .params({pageId})
+                      )
                 )
               )
         ),
