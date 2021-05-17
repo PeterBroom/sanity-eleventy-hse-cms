@@ -2,15 +2,15 @@
 layout: layouts/base.njk
 templateClass: tmpl-page
 ---
-{% set sourceData = homepages %}
 
 {% set components = homepages.pageBuilder %}
 
-{% set column = 'columnFull' %}
-
-{% set pageTitle = homepages.title %}
-
-<div class="{{column}}">
-  <h1>{{ pageTitle }}</h1>
-  {% include "../components/pageBuilder.njk" %}
+<div class="content-container">
+  <div data-column="one-quarter">
+    {% include '../components/subnavHomepage.njk' %}
+  </div>
+  <div data-column="three-quarters">
+    <h1>{{ homepages.title }}</h1>
+    {% include "../components/pageBuilder.njk" %}
+  </div>
 </div>

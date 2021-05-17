@@ -2,15 +2,19 @@
 layout: layouts/base.njk
 templateClass: tmpl-page
 ---
-{% set sourceData = pages %}
 {% set components = pages.pageBuilder %}
 
 <div class="content-container">
   <div data-column="one-quarter">
-    {% include '../components/subNav.njk' %}
+    {% include '../components/subnavPage.njk' %}
   </div>
   <div data-column="three-quarters">
-    <h1>{{ pages.title }}</h1>
+    <h1>
+      <abbr title="{{pages.pageTitleAccronym.accronymReplace}}">{{pages.pageTitleAccronym.accronymFind}}</abbr>
+      {% filter replace(pages.accronymFind,accr) -%}
+        {{pages.title | safe }}
+      {%- endfilter %}
+    </h1>
     {% include "../components/pageBuilder.njk" %}
   </div>
 </div>
