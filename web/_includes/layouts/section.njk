@@ -2,14 +2,7 @@
 layout: layouts/base.njk
 templateClass: tmpl-section
 ---
-{% set components = sections.pageBuilder %}
-{% set sourceData = sections %}
-
-{% set column = 'columnFull' %}
-
-{% set pageTitle = sections.title %}
-
-<div class="{{column}}">
-  <h1>{{ pageTitle }}</h1>
+<div data-grid="12 last">
+  <h1>{{ sections.title }}</h1>
   {% include "../components/pageBuilder.njk" %}
 </div>
