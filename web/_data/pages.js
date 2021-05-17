@@ -20,6 +20,13 @@ async function getPages () {
     _updatedAt,
     title,
     shortTitle,
+    pageTitleAccronym,
+    belongsTo {
+      ...,
+      "slug": ^->slug,
+      "title": ^->title,
+      "shortTitle": ^->shortTitle
+    },
     slug,
     breadcrumb[]{
       ...,
@@ -37,6 +44,21 @@ async function getPages () {
           ...,
           "slug": @.target->slug
         }
+      },
+      _type == "bodyCopy" => {
+          ...,
+          "slug": @.moreInfo.target->slug
+      },
+      _type == "linkBlock" => {
+        links[]{
+          ...,
+          "slug": ^->slug,
+          "title": ^->title,
+        },
+        more {
+          ...,
+          "slug": @.moreRef->slug
+        }
       }
     }
   }`
@@ -45,9 +67,6 @@ async function getPages () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const preparePages = reducedDocs.map(generatePage)
-  console.log('--- Pages ---------------------');
-  console.log('preparePages',preparePages);
-  console.log('-------------------------------');
 
   preparePages.forEach((item)=>{
     const pageBuilder = item.pageBuilder;
@@ -59,6 +78,7 @@ async function getPages () {
       });
     }
   })
+  console.log(preparePages)
   return preparePages
 }
 
