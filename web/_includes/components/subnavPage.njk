@@ -1,0 +1,39 @@
+<nav id="navSecondary" aria-label="Secondary">
+  <div id="menu" class="slinky-menu slinky-theme-default">
+    {%- for menu in subnavPage -%}
+      {% for subMenus in menu.subMenu -%}
+        {% if subMenus.identifier.current === pages.belongsTo.slug.current or subMenus.identifier.current === pages.slug.current %}
+          <ul>
+            {% for item in subMenus.sections -%}
+              <li class="nav-link{{ ' first' if loop.index === 1 }}"{% if pages.slug.current === item.target.slug.current%} aria-current="page"{% endif %}>
+                {% if item.links -%}
+                  <a href="#" class="nav-link{{ ' active-page' if pages.slug.current === item.target.slug.current }}">{{ item.target.shortTitle if item.target.shortTitle else item.target.title }}</a>
+                {%- else -%}
+                  <a class="nav-link{{ ' active-page' if pages.slug.current === item.target.slug.current }}" href="/{{item.target.slug.current}}">{{ item.target.shortTitle if item.target.shortTitle else item.target.title}}</a>
+                {%- endif %}
+                {% if item.links -%}
+                  {% set active = '' %}
+                  {% for child in item.links -%}
+                    {% if pages.slug.current === child.target.slug.current or pages.slug.current === item.target.slug.current -%}
+                      {% set active = 'active' %}
+                    {%- endif %}
+                  {% endfor -%}
+                  <ul class="{{ active }}">
+                    <li>
+                      <a class="nav-link{{ ' active-page' if pages.slug.current === item.target.slug.current }}" href="/{{item.target.slug.current}}">Overview<span class="visually-hidden"> - {{ item.target.shortTitle if item.target.shortTitle else item.target.title}}</span></a>
+                    </li>
+                    {% for child in item.links -%}
+                      <li>
+                        <a class="nav-link{{ ' active-page' if pages.slug.current === child.target.slug.current }}"{% if pages.slug.current === child.target.slug.current %} aria-current="page"{% endif %} href="/{{child.target.slug.current}}">{{child.title}}</a>
+                      </li>
+                    {%- endfor %}
+                  </ul>
+                {%- endif %}
+              </li>
+            {%- endfor %}
+          </ul>
+        {%- endif %}
+      {%- endfor %}
+    {%- endfor %}
+  </div>
+</nav>
