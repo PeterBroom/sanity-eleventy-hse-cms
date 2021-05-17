@@ -1,9 +1,19 @@
 <link rel="stylesheet" href="https://www.hse.gov.uk/assets/v5-css/v5.min.css" type="text/css" media="screen,print">
 <style>
     [data-grid] {
-        float: left;
+        display: flex;
+        flex-direction: column;
         margin-bottom: 2.85714%;
     }
+
+    div:last-child(not:first-child),
+    input.btn:last-child(not:first-child),
+    p:last-child(not:first-child),
+    span:last-child(not:first-child) {
+        margin-top: auto;
+        margin-bottom: 0;
+    }
+
     [data-grid]:not([data-grid*='last']) {
         margin-right: 2.85714%;
     }
@@ -103,11 +113,6 @@
             width: 100%;
         }
     }
-    .row:after {
-        content: '';
-        display: block;
-        clear: both;
-    }
 
     .content-container {
         flex-grow: 1;
@@ -142,5 +147,41 @@
 
     #main-menu .active-page {
         background-color: #333;
+    }
+
+    .bg-white {
+        background-color: #FFFFFF;
+    }
+    .bg-gray {
+        background-color: #f3f3f3;
+        padding: 10px 10px 0;
+    }
+    .bg-red {
+        background-color: #981e32;
+        padding: 10px 10px 0;
+    }
+
+    .component .more {
+        position: relative;
+        width: 100%;
+    }
+
+    .component .form-group:last-of-type,
+    .component input.btn {
+        margin-bottom: 6px !important;
+    }
+
+    .block {
+        padding: 10px 10px 0;
+    }
+
+    .block .more {
+        position: relative;
+        width: 100%;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
     }
 </style>
