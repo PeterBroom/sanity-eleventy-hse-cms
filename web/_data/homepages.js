@@ -59,9 +59,7 @@ async function getHomepages () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const prepareHomepages = reducedDocs.map(generateHomepage)
-  console.log('--- Homepages -----------------');
-  console.log('prepareHomepages',prepareHomepages);
-  console.log('-------------------------------');
+
   prepareHomepages.forEach((item)=>{
     const pageBuilder = item.pageBuilder;
     if (pageBuilder) {
