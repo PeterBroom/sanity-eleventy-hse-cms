@@ -1,30 +1,39 @@
 {% for component in components %}
-    {% if component._type === 'hero' %}
-        {% include "./hero.njk" %}
+    {% if loop.first %}
+        <div class="row">
+        {% endif %}
+        {% if component._type === 'hero' %}
+            {% include "./hero.njk" %}
+        {% endif %}
+        {% if component._type === 'youtube' %}
+            {% include "./youtube.njk" %}
+        {% endif %}
+        {% if component._type === 'chart' %}
+            {% include "./chart.njk" %}
+        {% endif %}
+        {% if component._type === 'accordion' %}
+            {% include "./accordion.njk" %}
+        {% endif %}
+        {% if component._type === 'cards' %}
+            {% include "./cards.njk" %}
+        {% endif %}
+        {% if component._type === 'bodyCopy' %}
+            {% include "./bodyCopy.njk" %}
+        {% endif %}
+        {% if component._type === 'subscribe' %}
+            {% include "./subscribe.njk" %}
+        {% endif %}
+        {% if component._type === 'linkBlock' %}
+            {% include "./linkBlock.njk" %}
+        {% endif %}
+        {% if component._type === 'notificationBanner' %}
+            {% include "./notificationBanner.njk" %}
+        {% endif %}
+        {% if component.grid.gridLast === true and not loop.last %}
+        </div>
+        <div class="row">
+        {% endif %}
+        {% if loop.last %}
+        </div>
     {% endif %}
-
-    {% if component._type === 'youtube' %}
-        {% include "./youtube.njk" %}
-    {% endif %}
-
-    {% if component._type === 'chart' %}
-        {% include "./chart.njk" %}
-    {% endif %}
-
-    {% if component._type === 'accordion' %}
-        {% include "./accordion.njk" %}
-    {% endif %}
-
-    {% if component._type === 'cards' %}
-        {% include "./cards.njk" %}
-    {% endif %}
-
-    {% if component._type === 'bodyCopy' %}
-        {% include "./bodyCopy.njk" %}
-    {% endif %}
-
-    {% if component._type === 'notificationBanner' %}
-        {% include "./notificationBanner.njk" %}
-    {% endif %}
-
 {% endfor %}
