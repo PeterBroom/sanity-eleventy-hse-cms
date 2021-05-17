@@ -1,3 +1,23 @@
-<div class="component-body-copy" data-grid="{{ component.grid.columns }}{{' last' if component.grid.gridLast === true}}">
-    {{ sourceData.bodyCopy | markdownify | safe }}
-</div>
+{% extends "./componentContainer.njk" %}
+{% block componentContent %}
+    {% if component.title %}
+        {% if component.title.accronym %}
+            <h2>
+                <abbr title="{{component.title.accronym}}">{{component.title.text}}</abbr>
+            </h2>
+        {% else %}
+            <h2>{{component.title.text}}</h2>
+        {% endif %}
+    {% endif %}
+    {{ component.editorInterface | markdownify | safe }}
+
+    {% if component.moreInfo %}
+        <p class="more">
+            {% if component.moreInfo.title %}
+                <a href="/{{component.slug.current}}">{{ component.moreInfo.title }}</a>
+            {% else %}
+                <a href="/{{component.moreInfo.slug.current}}">{{ component.moreInfo.heading }}</a>
+            {% endif %}
+        </p>
+    {% endif %}
+{% endblock %}
