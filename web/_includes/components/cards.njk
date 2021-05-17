@@ -1,16 +1,29 @@
-{% set columns = component.columns %}
-{% set gridLast = component.gridLast %}
 <section class="cards__container">
-    <header>
+    <header class="cards__header hidden">
         <h2>{{component.title}}</h2>
     </header>
     <div class="cards__inner">
         {% for item in component.cardItems -%}
-            <div class="card"  data-grid="{{ columns }}{{' last' if gridLast === true}}">
-                <h3>
-                    <a href="/{{item.slug.current}}">{{item.heading}}</a>
-                </h3>
-                <p>{{item.copy}}</p>
+            {% set break = 12 / component.grid.columns %}
+            {% set lastCol = loop.index % break %}
+            <div class="card {{component.backgroundColour.value}} equalHeights{{component._key}}" data-grid="{{ component.grid.columns }}{{' last' if lastCol === 0}}">
+                <h2>
+                    {{item.heading}}
+                </h2>
+                {% if item.copy %}
+                    <p>{{item.copy}}</p>
+                {% endif %}
+
+                {% if item.slug %}
+                    <p class="more">
+                        {% if item.moreInfo.title %}
+                            <a href="/{{item.slug.current}}">{{ item.moreInfo.title }}</a>
+                        {% else %}
+                            <a href="/{{item.slug.current}}">{{ item.heading }}</a>
+                        {% endif %}
+                    </p>
+                {% endif %}
+
             </div>
         {%- endfor %}
     </div>
