@@ -25,11 +25,6 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
   });
 
-  // eleventyConfig.addCollection('pages', collection => {
-  //   return [...collection.getFilteredByGlob('./site/pages/**/*.md')];
-  // });
-
-
   let markdownIt = require("markdown-it");
   let markdownItAnchor = require("markdown-it-anchor");
   let options = {
