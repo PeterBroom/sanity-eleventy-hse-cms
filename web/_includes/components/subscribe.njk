@@ -1,0 +1,17 @@
+{% extends "./componentContainer.njk" %}
+{% block componentContent %}
+    <h2>{{component.title}}</h2>
+    <p>{{component.copy}}</p>
+    <form action="https://public.govdelivery.com/accounts/UKHSE/subscriber/new?topic_id={{component.topicId}}">
+        <fieldset>
+            <input id="topic_id" name="topic_id" type="hidden" value="{{component.topicId}}">
+            <div class="form-group">
+                <label class="label required" for="email">E-mail address:</label>
+                <input class="input input-text input-width-full" id="email" name="email" type="text">
+            </div>
+            <div class="form-group">
+                <input class="btn btn-primary" name="commit" type="submit" value="Subscribe">
+            </div>
+        </fieldset>
+    </form>
+{% endblock %}
