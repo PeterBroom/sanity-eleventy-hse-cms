@@ -20,5 +20,15 @@ export default {
       title: 'Links',
       of: [{type: 'navigation.link'}]
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'navigation.title'
+    },
+    prepare ({title = 'No title'}) {
+      return {
+        title
+      }
+    }
+  },
 }

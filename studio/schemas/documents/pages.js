@@ -1,4 +1,5 @@
 import {AiOutlineFileText} from 'react-icons/ai'
+import {navigation} from '../objects/navigation/sub/navigation.js'
 
 export default {
   title: 'Page',
@@ -6,6 +7,68 @@ export default {
   type: 'document',
   icon: AiOutlineFileText,
   fields: [
+    {
+      name: 'title',
+      type: 'string',
+      title: 'Page title',
+      description: 'Titles should be catchy, descriptive, and not too long'
+    },
+    {
+      name: 'shortTitle',
+      type: 'string',
+      title: 'Short title',
+      description: 'Used in navigation menus'
+    },
+    {
+      name: 'pageTitleAccronym',
+      type: 'object',
+      title: 'Accronym',
+      description: 'Does this title contain an accronym? Give it a full title',
+      options: {
+        collapsible: true,
+        collapsed: true
+      },
+      fields: [
+        {
+          name: 'accronymFind',
+          type: 'string',
+          title: 'Accronym',
+        },
+            {
+          name: 'accronymReplace',
+          type: 'string',
+          title: 'Full title',
+        }
+      ]
+    },
+    {
+      name: 'belongsTo',
+      title: 'Belongs to...',
+      type: 'reference',
+      description: 'The page this belongs to',
+      to: [
+        {
+          type: 'homepage'
+        },
+        {
+          type: 'page'
+        }
+      ],
+      validation: Rule => Rule.required()
+    },
+    {
+      name: 'slug',
+      type: 'slug',
+      title: 'Slug',
+      description: 'The slug will form the url for this page',
+      readOnly: false,
+      options: {
+        source: (doc) => doc.title,
+        maxLength: 96,
+        auto: true
+      },
+      validation: Rule => Rule.required()
+    },
     {
       name: 'breadcrumb',
       title: 'Breadcrumb',
@@ -22,43 +85,6 @@ export default {
           ]
         }
       ],
-      validation: Rule => Rule.required()
-    },
-    {
-      name: 'title',
-      type: 'string',
-      title: 'Page title',
-      description: 'Titles should be catchy, descriptive, and not too long'
-    },
-    {
-      name: 'shortTitle',
-      type: 'string',
-      title: 'Short title',
-      description: 'Used in navigation menus'
-    },
-    {
-      name: 'belongsTo',
-      title: 'Belongs to...',
-      type: 'reference',
-      description: 'The parent page this belongs to',
-      to: [
-        {
-          type: 'homepage'
-        }
-      ],
-      validation: Rule => Rule.required()
-    },
-    {
-      name: 'slug',
-      type: 'slug',
-      title: 'Slug',
-      description: 'The slug will form the url for this page',
-      readOnly: false,
-      options: {
-        source: (doc) => doc.title,
-        maxLength: 96,
-        auto: true
-      },
       validation: Rule => Rule.required()
     },
     {
@@ -80,12 +106,30 @@ export default {
           type: 'chart'
         },
         {
+          type: 'subscribe'
+        },
+        {
+          type: 'linkBlock'
+        },
+        {
           type: 'youtube'
         }
       ],
       options: {
         editModal: 'fullscreen'
       }
+    },
+    {
+      name: 'subMenu',
+      title: 'Sub menus',
+      type: 'array',
+      of: [
+        {
+          type: 'navigation',
+          name: 'navigation'
+        }
+      ],
+      inputComponent: navigation
     },
     {
       name: 'metaDescription',

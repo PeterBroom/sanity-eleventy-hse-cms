@@ -30,7 +30,11 @@ import youtube from './objects/pageBuilder/youtube'
 
 import bodyCopy from './objects/pageBuilder/bodyCopy/bodyCopy'
 
+import subscribe from './objects/pageBuilder/subscribe/subscribe'
+
 import form from './objects/pageBuilder/form'
+
+import linkBlock from './objects/pageBuilder/linkBlock/linkBlock'
 
 import cards from './objects/pageBuilder/cards/card'
 import cardItems from './objects/pageBuilder/cards/cardItems'
@@ -75,9 +79,11 @@ export default createSchema({
     navigationLink,
     navigationSection,
     bodyCopy,
+    subscribe,
     form,
     cards,
     cardItems,
+    linkBlock,
     charts,
     youtube,
     accordion,

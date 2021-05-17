@@ -9,13 +9,11 @@ export default {
       hidden: false,
       title: 'Identifier',
       options: {
-        source: (doc, options) => options.parent.title
+        source: (options, doc) => options.slug.current,
+        slugify: input => input
+          .toLowerCase()
+          .replace(/\s+/g, '/')
       }
-    },
-    {
-      type: 'string',
-      name: 'name',
-      title: 'Name'
     },
     {
       type: 'string',
