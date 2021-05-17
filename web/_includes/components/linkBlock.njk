@@ -1,0 +1,18 @@
+<div class="resource-box block {{component.backgroundColour.value}}" data-grid="{{ component.grid.columns }}{{' last' if component.grid.gridLast === true}}">
+    <h2>{{component.title}}</h2>
+    {% if component.links %}
+        <ul class="linkList">
+            {% for item in component.links %}
+                <li>
+                    <a href="/{{item.slug.current}}">{{item.title}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if component.more %}
+        <p class="more">
+            <a href="/{{component.more.slug.current}}">{{component.more.moreTitle}}</a>
+        </p>
+    {% endif %}
+</div>
