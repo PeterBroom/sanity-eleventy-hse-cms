@@ -1,0 +1,5 @@
+<div class="component {{component.backgroundColour.value}}" data-grid="{{ component.grid.columns }}{{' last' if component.grid.gridLast === true}}">
+    {% block componentContent %}
+        {{componentContent}}
+    {% endblock %}
+</div>
