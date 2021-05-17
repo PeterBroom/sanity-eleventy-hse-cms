@@ -7,8 +7,9 @@
               and Safety<br>
               Executive</a>
             </h1>
-
-            <div id="globalSearch" class="desktop-gcs-search"></div>
+            <div id="globalSearch" class="desktop-gcs-search">
+                <gcse:searchbox-only></gcse:searchbox-only>
+            </div>
 
             <!-- JS Main Navigation -->
 
@@ -23,7 +24,7 @@
                         {# {{ set parent = pages.parentHomepage.current}} #}
                         {% for item in settingsNavigation[0].headerMenu.sections -%}
                             <li>
-                                <a class="{{ 'active-page' if sections.slug.current === item.slug.current }}" href="/{{item.slug.current}}">{{item.title}}</a>
+                                <a class="{{ 'active-page' if sections.slug.current === item.slug.current }}"{% if sections.slug.current === item.slug.current%} aria-current="page"{% endif %} href="/{{item.slug.current}}">{{item.title}}</a>
                             </li>
                         {% endfor %}
                     </ul>
