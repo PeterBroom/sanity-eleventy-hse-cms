@@ -19,7 +19,7 @@
             console.log(data);
             const setCookieSettings = {
                 path: '/',
-                domain: 'localhost',
+                domain: 'https://sanity-eleventy-hse-cms.netlify.app',
                 secure: false,
                 sameSite: 'strict',
                 expires: 365
@@ -27,11 +27,6 @@
             const stringPreferences = JSON.stringify(data);
             const encodedPreferences = window.btoa(stringPreferences);
             Cookies.set('search', encodedPreferences, setCookieSettings);
-
-            //window
-            //  .location
-            //  .replace("http://localhost:8080/search");
-            //return false;
         });
 
         const searchInputPage = document.querySelector('.search-page-input');
