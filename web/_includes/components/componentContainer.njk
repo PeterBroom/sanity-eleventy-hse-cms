@@ -1,4 +1,9 @@
-<div class="component {{component.backgroundColour.value}}" data-grid="{{ component.grid.columns }}{{' last' if component.grid.gridLast === true}}">
+{% if component.backgroundColour.value %}
+    {% set bgColour = 'bg-'+component.backgroundColour.value %}
+{% else %}
+    {% set bgColour = 'bg-white' %}
+{% endif %}
+<div class="component {{bgColour}}" data-grid="{{ component.grid.columns }}{{' last' if component.grid.gridLast === true}}">
     {% block componentContent %}
         {{componentContent}}
     {% endblock %}

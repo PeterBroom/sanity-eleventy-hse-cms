@@ -10,6 +10,7 @@ import release from '../workflow/schema/release'
 import workflowMetadata from '../workflow/schema/workflow/metadata'
 
 // document schemas
+import home from './documents/home'
 import page from './documents/pages'
 import homepage from './documents/homepages'
 import section from './documents/sections'
@@ -24,13 +25,19 @@ import navigationSection from './objects/navigation/sub/navigationSection'
 
 import gridLayout from './objects/gridLayout'
 
+import solutions from './objects/home/solutions/solutions'
+import solutionItems from './objects/home/solutions/solutionItems'
+
 import backgroundColour from './objects/backgroundColour'
+import altBackgroundColour from './objects/altBackgroundColour'
 
 import youtube from './objects/pageBuilder/youtube'
 
 import bodyCopy from './objects/pageBuilder/bodyCopy/bodyCopy'
 
 import subscribe from './objects/pageBuilder/subscribe/subscribe'
+
+import hero from './objects/hero'
 
 import form from './objects/pageBuilder/form'
 
@@ -54,6 +61,8 @@ import excerptPortableText from './objects/excerptPortableText'
 
 import formattedTitle from './objects/formattedTitle'
 
+import divider from './objects/pageBuilder/divider'
+
 // import mainImage from './objects/mainImage'
 
 export default createSchema({
@@ -61,6 +70,9 @@ export default createSchema({
   types: schemaTypes.concat([
     gridLayout,
     backgroundColour,
+    altBackgroundColour,
+    solutions,
+    solutionItems,
     formattedTitle,
     portableText,
     excerptPortableText,
@@ -71,6 +83,7 @@ export default createSchema({
     release,
     workflowMetadata,
     section,
+    home,
     homepage,
     page,
     topNav,
@@ -78,6 +91,7 @@ export default createSchema({
     navigation,
     navigationLink,
     navigationSection,
+    hero,
     bodyCopy,
     subscribe,
     form,
@@ -88,7 +102,8 @@ export default createSchema({
     youtube,
     accordion,
     accordionItem,
-    notificationBanner
+    notificationBanner,
+    divider
     // mainImage
   ])
 })

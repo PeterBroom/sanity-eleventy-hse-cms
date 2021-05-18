@@ -1,30 +1,48 @@
-<section class="cards__container">
-    <header class="cards__header hidden">
-        <h2>{{component.title}}</h2>
-    </header>
-    <div class="cards__inner">
-        {% for item in component.cardItems -%}
-            {% set break = 12 / component.grid.columns %}
-            {% set lastCol = loop.index % break %}
-            <div class="card {{component.backgroundColour.value}} equalHeights{{component._key}}" data-grid="{{ component.grid.columns }}{{' last' if lastCol === 0}}">
-                <h2>
-                    {{item.heading}}
-                </h2>
-                {% if item.copy %}
-                    <p>{{item.copy}}</p>
-                {% endif %}
-
-                {% if item.slug %}
-                    <p class="more">
-                        {% if item.moreInfo.title %}
-                            <a href="/{{item.slug.current}}">{{ item.moreInfo.title }}</a>
-                        {% else %}
-                            <a href="/{{item.slug.current}}">{{ item.heading }}</a>
+{% extends "./componentContainer.njk" %}
+{% block componentContent %}
+    <section class="cards__container">
+        <header class="cards__header {{ 'hidden' if component.titleHidden}}">
+            <h2>{{component.title}}</h2>
+        </header>
+        <div class="cards__inner">
+            {% for item in component.cardItems -%}
+                {% if loop.first %}
+                    <div class="row">
+                    {% endif %}
+                    {% set break = 12 / component.cardGrid.columns %}
+                    {% set lastCol = loop.index % break %}
+                    <div class="card component {{component.backgroundColour.value}}" data-grid="{{ component.cardGrid.columns }}{{' last' if lastCol === 0}}">
+                        <h3>
+                            <a href="/{{item.moreInfo.slug.current}}">{{item.heading}}</a>
+                        </h3>
+                        {% if item.copy %}
+                            <p>{{item.copy}}</p>
                         {% endif %}
-                    </p>
-                {% endif %}
 
-            </div>
-        {%- endfor %}
-    </div>
-</section>
+                        {% if item.moreInfo.title %}
+                            <p class="more">
+                                {% if item.moreInfo.title %}
+                                    <a href="/{{item.moreInfo.slug.current}}">{{ item.moreInfo.title }}</a>
+                                {% else %}
+                                    <a href="/{{item.moreInfo.slug.current}}">{{ item.heading }}</a>
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                    </div>
+                    {% if lastCol === 0 and not loop.last %}
+                    </div>
+                    <div class="row">
+                    {% endif %}
+                    {% if loop.last %}
+                    </div>
+                {% endif %}
+            {%- endfor %}
+
+            {% if component.furtherInfo.slug.current %}
+                <p class="moreLink">
+                    <a href="{{component.furtherInfo.slug.current}}">{{component.furtherInfo.title}}</a>
+                </p>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}

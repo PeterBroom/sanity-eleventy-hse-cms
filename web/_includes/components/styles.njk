@@ -118,7 +118,7 @@
         flex-grow: 1;
         display: flex;
         flex-direction: row;
-        gap: 20px;
+        gap: 10px;
     }
     [data-column*='one-third'] {
         width: 33.3333%;
@@ -136,7 +136,7 @@
         width: 75%;
     }
     [data-column*='full'] {
-        width: 66.6666%;
+        width: 100%;
     }
 
     /* fixes */
@@ -145,8 +145,23 @@
         margin: 0 !important;
     }
 
-    #main-menu .active-page {
-        background-color: #333;
+    #main-menu .active-page {}
+
+    .bg-blue {
+        background-color: #2846A5;
+        color: #FFFFFF;
+    }
+    .bg-purple {
+        background-color: #4F2170;
+        color: #FFFFFF;
+    }
+    .bg-orange {
+        background-color: #CE421B;
+        color: #FFFFFF;
+    }
+    .bg-green {
+        background-color: #287826;
+        color: #FFFFFF;
     }
 
     .bg-white {
@@ -159,6 +174,17 @@
     .bg-red {
         background-color: #981e32;
         padding: 10px 10px 0;
+    }
+
+    .bg-red *,
+    .bg-red *:active,
+    .bg-red *:hover,
+    .bg-red *:link,
+    .bg-red *:visited {
+        color: #ffffff;
+    }
+    .bg-red ul.linkList li {
+        background-image: url("http://www.hse.gov.uk/assets/v5-images/icons/svg/solid/caret-right-white.svg") !important;
     }
 
     .component .more {
@@ -183,5 +209,106 @@
     .row {
         display: flex;
         flex-direction: row;
+    }
+
+    #breadCrumb {
+        margin-bottom: 0 !important;
+    }
+    #breadCrumb ol li {
+        font-size: 1rem;
+    }
+    #pageContainer {
+        padding-top: 20px;
+    }
+
+    .menu li.active {
+        background-color: #333;
+    }
+    .divider {
+        border-bottom: 2px solid #981e32;
+        margin-bottom 20px;
+    }
+
+    p.moreLink {
+        font-weight: 700;
+        margin: auto 0 !important;
+    }
+    .bg-white p.moreLink a::before {
+        content: " ";
+        position: relative;
+        top: 2px;
+        background-image: url("http://www.hse.gov.uk/assets/v5-images/icons/svg/solid/arrow-right-red.svg");
+        background-repeat: no-repeat;
+        display: inline-block;
+        padding-right: 5px;
+        width: 16px;
+        height: 16px;
+        margin: 0;
+    }
+    .bg-gray p.moreLink a:hover::before,
+    p.moreLink a:hover::before {
+        content: " ";
+        background-image: url("http://www.hse.gov.uk/assets/v5-images/icons/svg/solid/arrow-right-black.svg");
+        background-repeat: no-repeat;
+        display: inline-block;
+        padding-right: 5px;
+        width: 16px;
+        height: 16px;
+        margin: 0;
+    }
+
+    .bg-red p.moreLink a::before {
+        content: " ";
+        background-image: url("http://www.hse.gov.uk/assets/v5-images/icons/svg/solid/arrow-right-white.svg");
+        background-repeat: no-repeat;
+        display: inline-block;
+        padding-right: 5px;
+        width: 16px;
+        height: 16px;
+        margin: 0;
+    }
+
+    #globalSearch input {
+        min-width: 250px;
+    }
+    .site-search-label {
+        display: none;
+    }
+    .site-search-input {
+        box-sizing: border-box;
+        appearance: none;
+        -ms-appearance: none;
+        -webkit-appearance: none;
+        border: 0;
+        outline: 0;
+        height: 38px;
+        margin: 0;
+        padding: 6px 10px;
+        font-size: 16px;
+        overflow: visible;
+        width: 100%;
+    }
+    .site-search button {
+        appearance: none;
+        -ms-appearance: none;
+        -webkit-appearance: none;
+        border: 0;
+        outline: 0;
+        font-size: 0.9rem;
+        padding: 0;
+        width: auto;
+        background: #333;
+        color: #fff;
+        min-width: 38px !important;
+        max-width: 38px !important;
+        min-height: 38px !important;
+        max-height: 38px !important;
+    }
+    .site-search button svg {
+        fill: #fff;
+    }
+
+    .hsl-links li {
+        margin-right: 0.3% !important;
     }
 </style>

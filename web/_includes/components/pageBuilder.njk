@@ -2,6 +2,9 @@
     {% if loop.first %}
         <div class="row">
         {% endif %}
+        {% if component._type === 'divider' %}
+            {% include "./divider.njk" %}
+        {% endif %}
         {% if component._type === 'hero' %}
             {% include "./hero.njk" %}
         {% endif %}

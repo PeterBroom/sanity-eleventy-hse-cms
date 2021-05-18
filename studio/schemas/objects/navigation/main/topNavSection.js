@@ -12,9 +12,25 @@ export default {
       ]
     },
     {
+      name: 'externalLink',
+      title: 'External link',
       type: 'string',
-      name: 'title',
-      title: 'Title'
+      description: 'Is this link to an external site?'
     },
-  ]
+    {
+      name: 'title',
+      title: 'Title',
+      type: 'string'
+    },
+  ],
+  preview: {
+    select: {
+      title: 'title'
+    },
+    prepare ({title = 'No title'}) {
+      return {
+        title
+      }
+    }
+  }
 }

@@ -1,11 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
-import {AiFillSetting, AiFillDatabase, AiFillLayout, AiFillHome, AiFillFileText} from 'react-icons/ai'
+import {AiFillSetting, AiFillDatabase, AiFillLayout, AiOutlineHome, AiFillHome, AiFillFileText} from 'react-icons/ai'
 import {GoThreeBars} from 'react-icons/go'
 import {RiGlobeFill} from 'react-icons/ri'
 import {workflowListItems} from './workflow/structure/workflow'
 
 const hiddenDocTypes = listItem =>
-  !['settingsMeta', 'settingsNavigation', 'settingsGlobals', 'section', 'homepage', 'page', 'divider', 'navigation', 'topNav', 'workflow.metadata', 'author', 'release'].includes(listItem.getId())
+  !['settingsMeta', 'settingsNavigation', 'settingsGlobals', 'section', 'home', 'homepage', 'page', 'divider', 'navigation', 'topNav', 'workflow.metadata', 'author', 'release'].includes(listItem.getId())
 
 const docTypeListItems = S.documentTypeListItems().filter(hiddenDocTypes)
 
@@ -48,8 +48,18 @@ export default () =>
             ])
         ),
       S.listItem()
+        .id('hse-home-page')
+        .title('HSE Home page')
+        .icon(AiOutlineHome)
+          .child(
+            S.editor()
+            .schemaType('home')
+            .documentId('home')
+          ),
+      S.listItem()
         .title('Content sections')
         .icon(AiFillLayout)
+
         .child(
           S.documentList('section')
             .schemaType('section')

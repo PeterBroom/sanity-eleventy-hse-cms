@@ -10,7 +10,7 @@
     {% include '../components/styles.njk' %}
     <title>{{ renderData.title or title or settingsMeta.title }}</title>
   </head>
-  <body>
+  <body class="{{templateClass}}">
 
     {% include '../components/header.njk' %}
     {% include '../components/breadcrumb.njk' %}
@@ -26,6 +26,7 @@
 
     {% include '../components/footer.njk' %}
     {% include '../components/scripts-footer.njk' %}
+    {% include '../components/search-script.njk' %}
 
     <!-- Current page: {{ page.url | url }} -->
   </body>

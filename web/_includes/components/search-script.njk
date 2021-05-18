@@ -1,0 +1,160 @@
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
+<script>
+
+    (function (window, document) {
+        "use strict";
+
+        const headerSearchForm = document.getElementById('siteSearch');
+
+        if (!headerSearchForm) {
+            return;
+        }
+
+        const headerSearchInput = document.querySelector('.site-search-input');
+
+        headerSearchForm.addEventListener('submit', (e) => {
+            //e.preventDefault();
+            const data = Object.fromEntries(new FormData(e.target).entries());
+            console.log(data);
+            const setCookieSettings = {
+                path: '/',
+                domain: 'localhost',
+                secure: false,
+                sameSite: 'strict',
+                expires: 365
+            };
+            const stringPreferences = JSON.stringify(data);
+            const encodedPreferences = window.btoa(stringPreferences);
+            Cookies.set('search', encodedPreferences, setCookieSettings);
+
+            //window
+            //  .location
+            //  .replace("http://localhost:8080/search");
+            //return false;
+        });
+
+        const searchInputPage = document.querySelector('.search-page-input');
+        const searchInputHeader = document.querySelector('.header-search');
+
+        if (!searchInputPage) {
+            return;
+        }
+
+        const search = (e) => {
+            let searchFor;
+            if (e.target) {
+                searchFor = e.target.value;
+            } else {
+                searchFor = e;
+            }
+            const results = window
+                .searchIndex
+                .search(searchFor, {
+                    bool: "OR",
+                    expand: true,
+                    fields: {
+                        title: {
+                            boost: 3
+                        },
+                        keywords: {
+                            boost: 2
+                        },
+                        description: {
+                            boost: 1
+                        }
+                    }
+                });
+
+            const resEl = document.getElementById('searchResults');
+            const noResultsEl = document.getElementById('noResultsFound');
+
+            resEl.innerHTML = '';
+            if (results) {
+                noResultsEl.style.display = 'none';
+
+                const count = document.createElement('h3');
+                const length = results.length;
+                let plural = (length === 0 || length > 1)
+                    ? 's'
+                    : '';
+                count.className = 'box search-result-count';
+                count.textContent = `${parseFloat(length).toLocaleString('en')} result${plural}`;
+                resEl.appendChild(count);
+
+                const truncateString = (string, maxLength = 50) => {
+                    if (!string) 
+                        return null;
+                    if (string.length <= maxLength) 
+                        return string;
+                    return `${string.substring(0, maxLength)}...`;
+                };
+
+                results.map((r) => {
+                    const {id, title, urlPath, description} = r.doc;
+                    const el = document.createElement('li');
+                    el.className = 'search-results__item';
+                    resEl.appendChild(el);
+
+                    const h3 = document.createElement('h3');
+                    h3.className = 'search-result-heading';
+                    el.appendChild(h3);
+
+                    const path = document.createElement('p');
+                    path.className = 'search-result-path subtext';
+                    path.textContent = urlPath;
+                    el.appendChild(path);
+
+                    const a = document.createElement('a');
+                    a.setAttribute('href', `/${id}`);
+                    a.textContent = title;
+                    h3.appendChild(a);
+
+                    const p = document.createElement('p');
+                    p.textContent = truncateString(description, 200);
+                    el.appendChild(p);
+                });
+            } else {
+                noResultsEl.style.display = 'block';
+            }
+        };
+
+        const searchCookie = Cookies.get('search');
+
+        if (searchCookie) {
+            const decodedSearch = window.atob(searchCookie);
+            const json = JSON.parse(decodedSearch);
+            const searched = json
+                .siteSearch
+                .toString();
+            searchInputPage.value = searched;
+
+            fetch('/search-index.json').then((response) => response.json().then((rawIndex) => {
+                window.searchIndex = elasticlunr
+                    .Index
+                    .load(rawIndex);
+                search(searched);
+            }).then(() => {
+                Cookies.remove('search');
+            }));
+        }
+
+        fetch('/search-index.json').then((response) => response.json().then((rawIndex) => {
+            window.searchIndex = elasticlunr
+                .Index
+                .load(rawIndex);
+            searchInputPage.addEventListener('input', search);
+            headerSearchInput.addEventListener('input', search);
+        }));
+
+        // clear out inputs when searching
+        let inputs = [headerSearchInput, searchInputPage];
+        inputs.forEach(function (elem, i) {
+            elem.addEventListener('keyup', (e) => {
+                inputs = [searchInputPage, headerSearchInput]
+                inputs[i].value = '';
+            });
+        });
+
+    })(window, document);
+</script>

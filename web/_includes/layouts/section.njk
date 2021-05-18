@@ -2,6 +2,8 @@
 layout: layouts/base.njk
 templateClass: tmpl-section
 ---
+{% set components = sections.pageBuilder %}
+
 <div data-grid="12 last">
   <h1>{{ sections.title }}</h1>
   {% include "../components/pageBuilder.njk" %}

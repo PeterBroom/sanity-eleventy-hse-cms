@@ -2,4 +2,68 @@
 layout: layouts/base.njk
 templateClass: tmpl-home
 ---
-{{ content | safe }}
+{% set components = home[0].pageBuilder %}
+
+<div class="content-container">
+    <div data-column="full">
+        <div class="row">
+            <nav class="bg-red mostPopular" aria-label="Popular" data-grid="4">
+                <h2>Popular</h2>
+                <ul class="linkList">
+                    {% for item in home[0].popular %}
+                        <li>
+                            <a href="./{{item.slug.current}}">{{item.title}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+
+            <div class="homepageBanner noBoxPadding last coronaPoster" data-grid="8 last">
+                <a href="{{home[0].hero.heroLink.target}}" class="noIcon">
+                    <div class="homepageBannerImage">
+                        <picture>
+                            <source media="(min-width: 980px)" srcset="https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer.png, https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer-2x.png 2x">
+                            <source media="(max-width: 980px)" srcset="https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer-mobile.png, https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer-mobile-2x.png 2x">
+                            <img src="assets/v4-homepage/images/corona-hand-sanitizer-mobile.png" alt="Image of a person washing their hands with sanitizer">
+                        </picture>
+                    </div>
+                    <div class="homepageBannerInner">
+                        <h2>{{home[0].hero.title.text}}</h2>
+                        <p>
+                            {{home[0].hero.editorInterface}}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="component" data-grid="12 last">
+                <div class="divider"></div>
+            </div>
+        </div>
+
+        {% include "../components/pageBuilder.njk" %}
+
+        <div class="row">
+            <div class="component" data-grid="12 last">
+                <nav aria-label="Solutions from HSE">
+                    <h2>{{home[0].solutions.title}}</h2>
+                    {# <pre>{{home[0].solutions|dump(2)}}</p> #}
+                    <ul class="hsl-links row">
+                        {% for items in home[0].solutions.solutionItems %}
+                            {% set break = 12 / home[0].solutions.grid.columns %}
+                            {% set lastCol = loop.index % break %}
+                            <li data-grid="{{home[0].solutions.grid.columns}}{{' last' if lastCol === 0}}">
+                                <a class="bg-{{items.backgroundColour.value}}" href="{{items.link}}">{{items.title}}
+                                    {% if items.hiddenTitlePart %}
+                                        <span class="visually-hidden">{{items.hiddenTitlePart}}</span>
+                                    {% endif %}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

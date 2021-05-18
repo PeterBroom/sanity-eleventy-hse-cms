@@ -1,4 +1,3 @@
-import {topNav} from '../objects/navigation/main/topNav.js'
 export default {
   title: 'Navigation',
   name: 'settingsNavigation',

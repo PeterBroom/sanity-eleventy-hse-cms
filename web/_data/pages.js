@@ -21,6 +21,11 @@ async function getPages () {
     title,
     shortTitle,
     pageTitleAccronym,
+    navHighlight{
+      ...,
+      "slug": ^->slug,
+      "title": ^->title,
+    },
     belongsTo {
       ...,
       "slug": ^->slug,
@@ -40,9 +45,17 @@ async function getPages () {
     pageBuilder[]{
       ...,
       _type == "cards" => {
+        furtherInfo {
+          "slug": @.target->slug,
+          "title": @.target->title,
+        },
         cardItems[]{
           ...,
-          "slug": @.target->slug
+          "slug": @.target->slug,
+          moreInfo {
+            title,
+            "slug": @.target->slug,
+          },
         }
       },
       _type == "bodyCopy" => {
@@ -78,7 +91,6 @@ async function getPages () {
       });
     }
   })
-  console.log(preparePages)
   return preparePages
 }
 

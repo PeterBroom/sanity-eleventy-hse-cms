@@ -31,6 +31,24 @@ export default {
       }
     },
     {
+      name: 'breadcrumb',
+      title: 'Breadcrumb',
+      description: 'Create a heirachy tree.',
+      type: 'array',
+      of: [
+        {
+          name: 'target',
+          type: 'reference',
+          to: [
+            {type: 'section'},
+            {type: 'homepage'},
+            {type: 'page'},
+          ]
+        }
+      ],
+      validation: Rule => Rule.required()
+    },
+    {
       name: 'pageBuilder',
       type: 'array',
       title: 'Page builder',
@@ -44,6 +62,9 @@ export default {
         },
         {
           type: 'cards'
+        },
+        {
+          type: 'divider'
         }
       ]
     },
@@ -58,6 +79,13 @@ export default {
         }
       ],
       inputComponent: navigation
+    },
+    {
+      name: 'navHighlight',
+      title: 'Navigation highlight',
+      type: 'reference',
+      description: 'This will highlight the nav in the header for a section',
+      to: [{type: 'section'}]
     }
   ],
   orderings: [

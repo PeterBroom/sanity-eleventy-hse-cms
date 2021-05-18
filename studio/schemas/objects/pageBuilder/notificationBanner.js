@@ -16,62 +16,84 @@ export default {
       type: 'object',
       title: 'Text',
       fields: [{
-    name: 'editorInterface',
-    title: 'Editor Interface',
-    type: 'array',
-    of: [{
-      type: 'block',
-      styles: [
-        {title: 'Normal', value: 'normal'},
-        {title: 'H2', value: 'h2'},
-        {title: 'H3', value: 'h3'},
-        {title: 'H4', value: 'h4'}
-      ],
-      marks: {
-        decorators: [
-          {title: 'Strong', value: 'strong'},
-          {title: 'Emphasis', value: 'em'}
-        ],
-        annotations: [
-          {
-            name: 'link',
-            type: 'object',
-            title: 'External link',
-            fields: [
+        name: 'editorInterface',
+        title: 'Editor Interface',
+        type: 'array',
+        of: [{
+          type: 'block',
+          styles: [
+            {title: 'Normal', value: 'normal'},
+            {title: 'H2', value: 'h2'},
+            {title: 'H3', value: 'h3'},
+            {title: 'H4', value: 'h4'}
+          ],
+          marks: {
+            decorators: [
+              {title: 'Strong', value: 'strong'},
+              {title: 'Emphasis', value: 'em'}
+            ],
+            annotations: [
               {
-                name: 'href',
-                type: 'url',
-                title: 'URL'
+                name: 'link',
+                type: 'object',
+                title: 'External link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL'
+                  },
+                  {
+                    title: 'Open in new tab',
+                    name: 'blank',
+                    description: 'Read https://css-tricks.com/use-target_blank/',
+                    type: 'boolean'
+                  }
+                ]
               },
               {
-                title: 'Open in new tab',
-                name: 'blank',
-                description: 'Read https://css-tricks.com/use-target_blank/',
-                type: 'boolean'
-              }
-            ]
-          },
-          {
-            name: 'internalLink',
-            type: 'object',
-            title: 'Internal link',
-            fields: [
-              {
-                name: 'reference',
-                type: 'reference',
-                title: 'Reference',
-                weak: true,
-                to: [
-                  {type: 'section'},
-                  {type: 'page'}
+                name: 'internalLink',
+                type: 'object',
+                title: 'Internal link',
+                fields: [
+                  {
+                    name: 'reference',
+                    type: 'reference',
+                    title: 'Reference',
+                    weak: true,
+                    to: [
+                      {type: 'section'},
+                      {type: 'page'}
+                    ]
+                  }
                 ]
               }
             ]
           }
-        ]
-      }
-    }]
-  }]
+        }]
+      }]
+    },
+    {
+      name: 'grid',
+      title: 'Container grid',
+      type: 'gridLayout'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'heading',
+      subtitle: 'grid'
+    },
+    prepare (selection) {
+      const {title, subtitle} = selection
+      const last = subtitle.gridLast ? 'last' : '';
+      const column = subtitle.columns ? subtitle.columns : '12';
+      const gridPreview = `${column} ${last}`
+      const previewTitle = title ? title : 'Notification banner';
+      return {
+        title: `${previewTitle}`,
+        subtitle: `Grid of ${gridPreview}`
+      }
+    }
+  }
 }

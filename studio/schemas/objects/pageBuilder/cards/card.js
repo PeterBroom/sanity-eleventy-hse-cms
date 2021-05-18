@@ -12,21 +12,49 @@ export default {
       type: 'string',
     },
     {
+      name: 'titleHidden',
+      title: 'Hide title',
+      type: 'boolean',
+      description: 'Will hide the title but not for the visually impaired.'
+    },
+    {
       name: 'cardItems',
       title: 'Card Items',
       type: 'array',
       of: [{type: 'card.item'}]
     },
     {
+      name: 'cardGrid',
+      title: 'Card grid',
+      type: 'gridLayout'
+    },
+    {
       name: 'grid',
-      title: 'Grid',
+      title: 'Container grid',
       type: 'gridLayout'
     },
     {
       name: 'backgroundColour',
       title: 'Background colour',
       type: 'backgroundColour'
-    }
+    },
+    {
+      name: 'furtherInfo',
+      type: 'object',
+      title: 'Further information',
+      fields: [{
+        name: 'title',
+        type: 'string',
+        title: 'Link text',
+        description: 'To use page title leave this field blank.'
+      },
+      {
+        type: 'reference',
+        name: 'target',
+        title: 'Target page',
+        to: [{type: 'section'}, {type: 'homepage'}, {type: 'page'}]
+      }]
+    },
   ],
   preview: {
     select: {

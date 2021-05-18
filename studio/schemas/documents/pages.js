@@ -57,6 +57,13 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: 'navHighlight',
+      title: 'Navigation highlight',
+      type: 'reference',
+      description: 'This will highlight the nav in the header for a section',
+      to: [{type: 'section'}]
+    },
+    {
       name: 'slug',
       type: 'slug',
       title: 'Slug',

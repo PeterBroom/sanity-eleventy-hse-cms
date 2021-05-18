@@ -21,6 +21,11 @@ async function getHomepages () {
     title,
     shortTitle,
     slug,
+    navHighlight{
+      ...,
+      "slug": ^->slug,
+      "title": ^->title,
+    },
     breadcrumb[]{
       ...,
       "slug": ^->slug,
@@ -33,9 +38,17 @@ async function getHomepages () {
     pageBuilder[]{
       ...,
       _type == "cards" => {
+        furtherInfo {
+          "slug": @.target->slug,
+          "title": @.target->title,
+        },
         cardItems[]{
           ...,
-          "slug": @.moreInfo.target->slug
+          "slug": @.target->slug,
+          moreInfo {
+            title,
+            "slug": @.target->slug,
+          },
         }
       }
     },

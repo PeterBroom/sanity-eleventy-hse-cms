@@ -36,9 +36,6 @@ async function navigationTree () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const prepareMenu = reducedDocs.map(generateMenu)
-    console.log('--- prepareMenu ---------------------');
-  console.log('prepareMenu',prepareMenu);
-  console.log('-------------------------------');
 
   return prepareMenu
 }

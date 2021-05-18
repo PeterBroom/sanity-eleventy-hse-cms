@@ -32,99 +32,13 @@ templateClass: tmpl-search
 <h1>Search HSE website</h1>
 <div class="field">
   <label for="searchField">Search</label>
-  <input class="input input-text input-width-full search-page-input" type="search" placeholder="Search..." id="searchField"/>
+  <input class="input input-text input-width-full search-input search-page-input" type="search" placeholder="Search..." id="searchField"/>
 </div>
 <ol id="searchResults" class="search-results__list"></ol>
 <div id="noResultsFound" style="display: none">
   <p>No results found.</p>
 </div>
 <!--Only 5.7kb GZipped. You may want to bundle this with your application code. -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/elasticlunr/0.9.6/elasticlunr.min.js"></script>
-<script>
-  (function (window, document) {
-    "use strict";
+{% include '../components/search-script.njk' %}
 
-    const searchInputPage = document.querySelector('.search-page-input');
-    const searchInputHeader = document.querySelector('.header-search');
-
-    const search = (e) => {
-      const results = window
-        .searchIndex
-        .search(e.target.value, {
-          bool: "OR",
-          expand: true,
-          fields: {
-            title: {
-              boost: 3
-            },
-            keywords: {
-              boost: 2
-            },
-            description: {
-              boost: 1
-            }
-          }
-        });
-
-      const resEl = document.getElementById('searchResults');
-      const noResultsEl = document.getElementById('noResultsFound');
-
-      resEl.innerHTML = '';
-      if (results) {
-        noResultsEl.style.display = 'none';
-
-        const count = document.createElement('h3');
-        const length = results.length;
-        let plural = (length === 0 || length > 1)
-          ? 's'
-          : '';
-        count.className = 'box search-result-count';
-        count.textContent = `${parseFloat(length).toLocaleString('en')} result${plural}`;
-        resEl.appendChild(count);
-
-        const truncateString = (string, maxLength = 50) => {
-          if (!string) 
-            return null;
-          if (string.length <= maxLength) 
-            return string;
-          return `${string.substring(0, maxLength)}...`;
-        };
-
-        results.map((r) => {
-          const {id, title, urlPath, description} = r.doc;
-          const el = document.createElement('li');
-          el.className = 'search-results__item';
-          resEl.appendChild(el);
-
-          const h3 = document.createElement('h3');
-          h3.className = 'search-result-heading';
-          el.appendChild(h3);
-
-          const path = document.createElement('p');
-          path.className = 'search-result-path subtext';
-          path.textContent = urlPath;
-          el.appendChild(path);
-
-          const a = document.createElement('a');
-          a.setAttribute('href', `/${id}`);
-          a.textContent = title;
-          h3.appendChild(a);
-
-          const p = document.createElement('p');
-          p.textContent = truncateString(description, 200);
-          el.appendChild(p);
-        });
-      } else {
-        noResultsEl.style.display = 'block';
-      }
-    };
-
-    fetch('/search-index.json').then((response) => response.json().then((rawIndex) => {
-      window.searchIndex = elasticlunr
-        .Index
-        .load(rawIndex);
-      searchInputPage.addEventListener('input', search);
-    }));
-  })(window, document);
-</script>
 </div>

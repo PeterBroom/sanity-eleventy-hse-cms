@@ -22,16 +22,35 @@ async function getSections () {
     shortTitle,
     parentSlug,
     slug,
+    breadcrumb[]{
+      ...,
+      "slug": ^->slug,
+      "title": ^->title,
+      "shortTitle": ^->shortTitle
+    },
+    navHighlight{
+      ...,
+      "slug": ^->slug,
+      "title": ^->title,
+    },
     metaDescription,
     metaKeywords,
     pageBuilder[]{
       ...,
       _type == "cards" => {
+        furtherInfo {
+          "slug": @.target->slug,
+          "title": @.target->title,
+        },
         cardItems[]{
           ...,
-          "slug": @.target->slug
+          "slug": @.target->slug,
+          moreInfo {
+            title,
+            "slug": @.target->slug,
+          },
         }
-      }
+      },
     }
   }`
   const order = `| order(_updatedAt asc)`
