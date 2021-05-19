@@ -77,7 +77,7 @@ export default {
       subtitle: 'publishedAt',
       slug: 'slug'
     },
-    prepare ({title = 'No title'}) {
+    prepare ({title = 'HSE Homepage'}) {
       return {
         title
       }
