@@ -17,6 +17,7 @@ import section from './documents/sections'
 import settingsMeta from './documents/settingsMeta'
 import settingsNavigation from './documents/settingsNavigation'
 import settingsGlobals from './documents/settingsGlobals'
+import settingsSitemap from './documents/settingsSitemap'
 
 // Object types
 import navigation from './objects/navigation/sub/navigation'
@@ -54,6 +55,10 @@ import accordionItem from './objects/pageBuilder/accordion/accordionItem'
 import topNav from './objects/navigation/main/topNav'
 import topNavSection from './objects/navigation/main/topNavSection'
 
+import sitemapNav from './objects/navigation/sitemap/sitemapNav'
+import sitemapNavSection from './objects/navigation/sitemap/sitemapNavSection'
+import sitemapNavLink from './objects/navigation/sitemap/sitemapNavLink'
+
 import notificationBanner from './objects/pageBuilder/notificationBanner'
 
 import portableText from './objects/portableText'
@@ -79,6 +84,7 @@ export default createSchema({
     settingsMeta,
     settingsNavigation,
     settingsGlobals,
+    settingsSitemap,
     author,
     release,
     workflowMetadata,
@@ -86,6 +92,9 @@ export default createSchema({
     home,
     homepage,
     page,
+    sitemapNav,
+    sitemapNavSection,
+    sitemapNavLink,
     topNav,
     topNavSection,
     navigation,
