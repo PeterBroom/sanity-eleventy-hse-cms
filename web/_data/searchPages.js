@@ -11,7 +11,7 @@ function generateSearch (page) {
 }
 
 async function getSearch () {
-  const filter = groq`*[_type in ["page", "section"] && defined(slug)]`
+  const filter = groq`*[_type in ["page", "homepage", "section"] && defined(slug)]`
   const projection = groq`{
     _id,
     title,
