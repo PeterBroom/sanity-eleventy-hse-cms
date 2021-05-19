@@ -23,7 +23,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'navigation.title'
+      title: 'title'
     },
     prepare ({title = 'No title'}) {
       return {
