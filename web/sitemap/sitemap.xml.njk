@@ -1,0 +1,12 @@
+---
+permalink: sitemap.xml
+---
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  {% for page in xmlSitemap -%}
+    <url>
+      <loc>{{ pkg.url }}/{{ page.slug.current }}/index.html</loc>
+      <lastmod>{{ page._updatedAt }}</lastmod>
+    </url>
+  {%- endfor %}
+</urlset>

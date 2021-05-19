@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-page
+---
+<div class="content-container">
+    <div data-column="one-quarter">
+        {% include '../components/subnavPage.njk' %}
+    </div>
+    <div data-column="three-quarters">
+        <h1>HSE website sitemap</h1>
+        {% for list in sitemap[0].sitemapSection %}
+            {% set element = list.listType if list.listType else 
+                'ul' %}
+            <h2>{{list.title}}</h2>
+
+            <{{element}}>
+                {% for section in list.sections %}
+                    <li>
+                        <a href="/{{section.target.slug.current}}">{{section.title}}</a>
+                        {% if section.links %}
+                            <ul>
+                                {% for child in section.links -%}
+                                    <li>
+                                        <a href="/{{child.target.slug.current}}">{{child.title}}</a>
+                                    </li>
+                                {%- endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </{{element}}>
+
+            <p>
+                <a href="/{{list.seeMore.slug.current}}">{{list.seeMore.text}}</a>
+            </p>
+
+        {% endfor %}
+    </div>
+</div>
