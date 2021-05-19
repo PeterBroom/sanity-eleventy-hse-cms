@@ -38,6 +38,10 @@ async function getHome () {
         cardItems[]{
           ...,
           "slug": @.target->slug,
+          moreInfo {
+            title,
+            "slug": @.target->slug,
+          },
         }
       },
     }
