@@ -1,11 +1,11 @@
 import S from '@sanity/desk-tool/structure-builder'
 import {AiFillSetting, AiFillDatabase, AiFillLayout, AiOutlineHome, AiFillHome, AiFillFileText} from 'react-icons/ai'
 import {GoThreeBars} from 'react-icons/go'
-import {RiGlobeFill} from 'react-icons/ri'
+import {RiMap2Line, RiGlobeFill} from 'react-icons/ri'
 import {workflowListItems} from './workflow/structure/workflow'
 
 const hiddenDocTypes = listItem =>
-  !['settingsMeta', 'settingsNavigation', 'settingsGlobals', 'section', 'home', 'homepage', 'page', 'divider', 'navigation', 'topNav', 'workflow.metadata', 'author', 'release'].includes(listItem.getId())
+  !['settingsMeta', 'settingsSitemap', 'settingsNavigation', 'settingsGlobals', 'section', 'home', 'homepage', 'page', 'divider', 'navigation', 'topNav', 'sitemapNav','workflow.metadata', 'author', 'release'].includes(listItem.getId())
 
 const docTypeListItems = S.documentTypeListItems().filter(hiddenDocTypes)
 
@@ -37,13 +37,21 @@ export default () =>
                     .schemaType('settingsMeta')
                     .documentId('settingsMeta')
                 ),
-                S.listItem()
+              S.listItem()
                 .title('Navigation')
                 .icon(GoThreeBars)
                 .child(
                   S.document()
                     .schemaType('settingsNavigation')
                     .documentId('settingsNavigation')
+                ),
+              S.listItem()
+                .title('Sitemap')
+                .icon(RiMap2Line)
+                .child(
+                  S.document()
+                    .schemaType('settingsSitemap')
+                    .documentId('settingsSitemap')
                 )
             ])
         ),
