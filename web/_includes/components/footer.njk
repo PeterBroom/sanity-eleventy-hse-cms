@@ -7,9 +7,18 @@
                     <li class="first">
                         <a href="/search">Search</a>
                     </li>
+                    <li class="first">
+                        <a href="/sitemap">Sitemap</a>
+                    </li>
+
                     {% for item in settingsNavigation[0].footerMenu.sections -%}
+                        {% if item.externalLink %}
+                            {% set link = item.externalLink %}
+                        {% elif item.slug.current %}
+                            {% set link = '/' + item.slug.current %}
+                        {% endif %}
                         <li>
-                            <a class="{{ 'active' if pages.slug.current === item.slug.current }}" href="/{{item.slug.current}}">{{item.title}}</a>
+                            <a class="{{ 'active' if pages.slug.current === item.slug.current }}" href="{{link}}">{{item.title}}</a>
                         </li>
                     {% endfor %}
                 </ul>
