@@ -34,6 +34,18 @@ import altBackgroundColour from './objects/altBackgroundColour'
 
 import youtube from './objects/pageBuilder/youtube'
 
+import formBuilder  from './objects/pageBuilder/forms/formBuilder'
+import inputWidth from './objects/pageBuilder/forms/width'
+import ariaAttributes from './objects/pageBuilder/forms/ariaAttributes'
+import ariaItem from './objects/pageBuilder/forms/ariaItem'
+import inputType from './objects/pageBuilder/forms/inputType'
+import selectionType from './objects/pageBuilder/forms/selectionType'
+import inputAttributes from './objects/pageBuilder/forms/inputAttributes'
+import input from './objects/pageBuilder/forms/input'
+import textarea from './objects/pageBuilder/forms/textarea'
+import selection from './objects/pageBuilder/forms/selection'
+import selectionItem from './objects/pageBuilder/forms/selectionItem'
+
 import bodyCopy from './objects/pageBuilder/bodyCopy/bodyCopy'
 
 import subscribe from './objects/pageBuilder/subscribe/subscribe'
@@ -101,6 +113,17 @@ export default createSchema({
     navigationLink,
     navigationSection,
     hero,
+    formBuilder,
+    ariaAttributes,
+    ariaItem,
+    inputWidth,
+    inputAttributes,
+    inputType,
+    selectionType,
+    selection,
+    selectionItem,
+    input,
+    textarea,
     bodyCopy,
     subscribe,
     form,

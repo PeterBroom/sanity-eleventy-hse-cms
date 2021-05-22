@@ -120,6 +120,9 @@ export default {
         },
         {
           type: 'youtube'
+        },
+        {
+          type: 'formBuilder'
         }
       ],
       options: {
