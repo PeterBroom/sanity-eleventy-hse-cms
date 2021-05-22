@@ -1,0 +1,18 @@
+{% extends "../componentContainer.njk" %}
+{% block componentContent %}
+    <h2>{{component.title}}</h2>
+    <form action="{{component.action}}">
+        {% for field in component.fields %}
+            <pre>{{field|dump(2)}}</pre>
+            {% if field._type == 'input' %}
+                {% include "./input.njk" %}
+            {% endif %}
+            {% if field._type == 'textarea' %}
+                {% include "./textarea.njk" %}
+            {% endif %}
+            {% if field._type == 'selection' %}
+                {% include "./selection.njk" %}
+            {% endif %}
+        {% endfor %}
+    </form>
+{% endblock %}
