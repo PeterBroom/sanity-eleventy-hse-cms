@@ -1,4 +1,9 @@
-<div class="form-group">
+{% extends "./formGroup.njk" %}
+{% block formGroup %}
     <label class="label" for="">{{field.label}}</label>
-    <textarea class="textarea" name="" id="" cols="30" rows="10"></textarea>
-</div>
+    {% if field.hint -%}
+        <span id="{{field.label | slug }}-hint" class="hint">{{field.hint}}</span>
+    {%- endif %}
+
+    <textarea class="textarea {{ field.width.value }}" name="" id="" cols="30" rows="10"></textarea>
+{% endblock %}

@@ -1,0 +1,16 @@
+<fieldset class="fieldset">
+    <legend class="fieldset__legend fieldset__legend--xl">
+        <h3 class="fieldset__heading">{{fieldsets.title}}</h3>
+    </legend>
+    {% for field in fieldsets.fields %}
+        {% if field._type == 'input' %}
+            {% include "./input.njk" %}
+        {% endif %}
+        {% if field._type == 'textarea' %}
+            {% include "./textarea.njk" %}
+        {% endif %}
+        {% if field._type == 'selection' %}
+            {% include "./selection.njk" %}
+        {% endif %}
+    {% endfor %}
+</fieldset>

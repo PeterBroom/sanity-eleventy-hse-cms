@@ -1,4 +1,9 @@
-<div class="form-group">
+{% extends "./formGroup.njk" %}
+{% block formGroup %}
     <label class="label" for="{{ field.label | slug }}">{{field.label}}</label>
-    <input class="input input-text" name="{{field.label | slug }}"{% if field.value %} value="{{field.value}}"{% endif %}{% if field.placeholder %} value="{{field.placeholder}}"{% endif %}/>
-</div>
+    {% if field.hint -%}
+        <span id="{{field.label | slug }}-hint" class="hint">{{field.hint}}</span>
+    {%- endif %}
+
+    <input class="input input-text {{ field.width.value }}" name="{{field.label | slug }}"{% if field.value %} value="{{field.value}}"{% endif %}{% if field.placeholder %} value="{{field.placeholder}}"{% endif %}/>
+{% endblock %}

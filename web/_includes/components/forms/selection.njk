@@ -4,35 +4,27 @@
 {% if field.type.value == 'radio' %}
     {% set classSetter = 'radios' %}
 {% endif %}
-<div class="form-group">
-    <fieldset class="fieldset"{% if field.hint %} aria-describedby="{{field.label | slug }}-hint"{%  endif %}>
-        <legend class="fieldset__legend fieldset__legend--xl" for="{{ field.label | slug }}">
-            <h3 class="fieldset__heading">{{field.label}}</h3>
-        </legend>
-        {% if field.hint -%}
-            <span id="{{field.label | slug }}-hint" class="hint">{{field.hint}}</span>
-        {%- endif %}
-
-        {% if field.type.value == 'checkbox' or field.type.value == 'radio' -%}
-            <div class="{{field.type.value}}{% if field.type.inline == true %} {{classSetter}}--inline{% endif %}">
+{% extends "./formGroup.njk" %}
+{% block formGroup %}
+    {% if field.type.value == 'checkbox' or field.type.value == 'radio' -%}
+        <div class="{{field.type.value}}{% if field.type.inline == true %} {{classSetter}}--inline{% endif %}">
+            {% for items in field.selectionItems -%}
+                <div class="{{classSetter}}__item">
+                    <input class="{{classSetter}}__input" type="{{field.type.value}}" id="{{items.label | slug }}" name="{{field.label | slug }}"{% if items.value %} value="{{items.value}}"{% endif %}{% if items.placeholder %} value="{{field.placeholder}}"{% endif %}/>
+                    <label class="label {{classSetter}}__label" for="{{ items.label | slug }}">{{items.label}}</label>
+                </div>
+            {%- endfor %}
+        </div>
+    {%- endif %}
+    {% if field.type.value == 'select' -%}
+        <label class="label" for="{{ field.label | slug }}">{{field.label}}</label>
+        <div class="select-styled">
+            <select class="select" name="{{ field.label | slug }}" id="{{ field.label | slug }}">
                 {% for items in field.selectionItems -%}
-                    <div class="{{classSetter}}__item">
-                        <input class="{{classSetter}}__input" type="{{field.type.value}}" id="{{items.label | slug }}" name="{{field.label | slug }}"{% if items.value %} value="{{items.value}}"{% endif %}{% if items.placeholder %} value="{{field.placeholder}}"{% endif %}/>
-                        <label class="label {{classSetter}}__label" for="{{ items.label | slug }}">{{items.label}}</label>
-                    </div>
+                    <option value="{{items.value}}">{{items.label}}</option>
                 {%- endfor %}
-            </div>
-        {%- endif %}
-        {% if field.type.value == 'select' -%}
-            <label class="label" for="{{ field.label | slug }}">{{field.label}}</label>
-            <div class="select-styled">
-                <select class="select" name="{{ field.label | slug }}" id="{{ field.label | slug }}">
-                    {% for items in field.selectionItems -%}
-                        <option value="{{items.value}}">{{items.label}}</option>
-                    {%- endfor %}
-                </select>
-            </div>
-        {%- endif %}
+            </select>
+        </div>
+    {%- endif %}
 
-    </fieldset>
-</div>
+{% endblock %}
