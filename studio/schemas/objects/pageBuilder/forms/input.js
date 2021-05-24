@@ -9,6 +9,12 @@ export default {
             type: 'string'
         },
         {
+            name: 'hint',
+            title: 'Field hint',
+            type: 'string',
+            description: 'Additional text to hint to user what value to enter'
+        },
+        {
             name: 'type',
             title: 'Field type',
             type: 'inputType'
