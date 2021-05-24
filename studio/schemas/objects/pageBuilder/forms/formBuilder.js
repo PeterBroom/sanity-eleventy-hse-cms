@@ -4,11 +4,6 @@ export default {
     type: 'object',
     fields: [
         {
-            name: 'title',
-            title: 'Form title',
-            type: 'string'
-        },
-        {
             name: 'action',
             title: 'Form action',
             type: 'url'
@@ -20,17 +15,11 @@ export default {
         },
         {
             name: 'fields',
-            title: 'Form fields',
+            title: 'Field set',
             type: 'array',
             of: [
                 {
-                  type: 'input'
-                },
-                {
-                  type: 'textarea'
-                },
-                {
-                  type: 'selection'
+                  type: 'fieldset'
                 }
             ]
         }

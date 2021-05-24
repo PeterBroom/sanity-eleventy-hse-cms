@@ -35,6 +35,7 @@ import altBackgroundColour from './objects/altBackgroundColour'
 import youtube from './objects/pageBuilder/youtube'
 
 import formBuilder  from './objects/pageBuilder/forms/formBuilder'
+import fieldset  from './objects/pageBuilder/forms/fieldset'
 import inputWidth from './objects/pageBuilder/forms/width'
 import ariaAttributes from './objects/pageBuilder/forms/ariaAttributes'
 import ariaItem from './objects/pageBuilder/forms/ariaItem'
@@ -114,6 +115,7 @@ export default createSchema({
     navigationSection,
     hero,
     formBuilder,
+    fieldset,
     ariaAttributes,
     ariaItem,
     inputWidth,
