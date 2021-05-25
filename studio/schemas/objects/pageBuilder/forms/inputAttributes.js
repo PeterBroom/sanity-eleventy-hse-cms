@@ -23,34 +23,16 @@ export default {
             description: 'Specifies the value of a field'
         },
         {
-            name: 'max',
-            title: 'Max',
-            type: 'string',
-            description: 'Specifies the maximum value for number and date fields'
-        },
-        {
-            name: 'maxlength',
-            title: 'Max length',
-            type: 'string',
-            description: 'Specifies the maximum number of characters allowed for a field'
-        },
-        {
-            name: 'autocomplete',
-            title: 'Auto complete',
-            type: 'boolean',
-            description: 'Specifies whether a field should have autocomplete enabled'
-        },
-        {
             name: 'autofocus',
             title: 'Auto focus',
             type: 'boolean',
             description: 'Specifies that a field should automatically get focus when the page loads'
         },
         {
-            name: 'required',
-            title: 'Required',
+            name: 'readonly',
+            title: 'Ready only',
             type: 'boolean',
-            description: 'Specifies that a field must be filled out before submitting the form'
+            description: 'Specifies that a field is read-only'
         }
     ]
 }
