@@ -1,0 +1,27 @@
+{% extends "./formGroup.njk" %}
+{% block formGroup %}
+    <p class="label">{{field.label}}</h3>
+    {% if field.hint -%}
+        <span id="{{field.label | slug }}-hint" class="hint">{{field.hint}}</span>
+    {%- endif %}
+    <div class="date-input" id="{{field.label | slug}}">
+        <div class="date-input__item">
+            <div class="form-group">
+                <label class="label date-input__label" for="{{field.label | slug }}-date-day">Day</label>
+                <input class="input date-input__input input-digits-2" id="{{field.label | slug }}-date-day" name="{{field.label | slug }}-date-day" type="text" minlength="2" maxlength="2" pattern="[0-9]+" inputmode="numeric"{% if field.required == true %} title="Please enter a day" required{% endif %}/>
+            </div>
+        </div>
+        <div class="date-input__item">
+            <div class="form-group">
+                <label class="label date-input__label" for="{{field.label | slug }}-date-month">Month</label>
+                <input class="input date-input__input input-digits-2" id="{{field.label | slug }}-date-month" name="{{field.label | slug }}-date-month" type="text" minlength="2" maxlength="2" pattern="[0-9]+" inputmode="numeric"{% if field.required == true %} title="Please enter a month" required{% endif %}/>
+            </div>
+        </div>
+        <div class="date-input__item">
+            <div class="form-group">
+                <label class="label date-input__label" for="{{field.label | slug }}-date-year">Year</label>
+                <input class="input date-input__input input-digits-4" id="{{field.label | slug }}-date-year" name="{{field.label | slug }}-date-year" type="text" minlength="4" maxlength="4" pattern="[0-9]+" inputmode="numeric"{% if field.required == true %} title="Please enter a year" required{% endif %}/>
+            </div>
+        </div>
+    </div>
+{% endblock %}
