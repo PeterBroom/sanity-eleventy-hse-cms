@@ -1,8 +1,13 @@
 {% extends "../componentContainer.njk" %}
 {% block componentContent %}
-    <form action="{{component.action}}">
+    {% if component.title %}
+        <h2>{{component.title}}</h2>
+    {% endif %}
+    {% if component.introductoryText %}
+        {{ component.introductoryText | markdownify | safe }}
+    {% endif %}
+    <form action="{{component.action}}"{% if component.autocomplete == true %} autocomplete="on"{% endif %}>
         {% for fieldsets in component.fields %}
-            {# {{fieldsets|dump(2)}} #}
             {% include './fieldset.njk' %}
         {% endfor %}
     </form>
