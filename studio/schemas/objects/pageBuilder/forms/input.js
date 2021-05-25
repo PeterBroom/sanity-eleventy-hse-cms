@@ -20,6 +20,11 @@ export default {
             type: 'inputType'
         },
         {
+            name: 'validation',
+            title: 'Field validation',
+            type: 'validation'
+        },
+        {
             name: 'width',
             title: 'Field width',
             type: 'inputWidth'
