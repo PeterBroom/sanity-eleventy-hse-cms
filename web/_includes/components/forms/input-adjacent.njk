@@ -1,0 +1,20 @@
+{% extends "./formGroup.njk" %}
+{% block formGroup %}
+    <div class="form-group-adjacent">
+        <div class="input-width-half">
+            <label class="label" for="fistNname">First name</label>
+            {% if field.hint -%}
+                <span id="{{field.label | slug }}-hint" class="hint">{{field.hint}}</span>
+            {%- endif %}
+            <input class="input input-text" id="fistNname" name="fistNname" type="text">
+        </div>
+        <div class="input-width-half">
+            <label class="label" for="lastName">Last name</label>
+            {% if field.hint -%}
+                <span id="{{field.label | slug }}-hint" class="hint">{{field.hint}}</span>
+            {%- endif %}
+
+            <input class="input input-text" id="lastName" name="lastName" type="text">
+        </div>
+    </div>
+{% endblock %}
