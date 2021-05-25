@@ -1,3 +1,4 @@
+import ConditionalField from 'sanity-plugin-conditional-field'
 import {AiOutlineFileText} from 'react-icons/ai'
 import {navigation} from '../objects/navigation/sub/navigation.js'
 
@@ -6,46 +7,67 @@ export default {
   name: 'page',
   type: 'document',
   icon: AiOutlineFileText,
+  fieldsets: [
+    {name: 'pageTitle', title: 'Page title'},
+    {name: 'pageNavigation', title: 'Page navigation'},
+    {name: 'pageContent', title: 'Page content'},
+    {name: 'pageMeta', title: 'Meta data'}
+  ],
   fields: [
     {
       name: 'title',
       type: 'string',
       title: 'Page title',
-      description: 'Titles should be catchy, descriptive, and not too long'
+      description: 'Titles should be catchy, descriptive, and not too long',
+      fieldset: 'pageTitle'
     },
     {
       name: 'shortTitle',
       type: 'string',
       title: 'Short title',
-      description: 'Used in navigation menus'
+      description: 'Used in navigation menus',
+      fieldset: 'pageTitle'
     },
     {
       name: 'pageTitleAccronym',
-      type: 'object',
+      title: 'Does this page title contain an accronym?',
+      type: 'boolean',
+      fieldset: 'pageTitle',
+    },
+    {
+      name: 'accronymFind',
+      type: 'string',
       title: 'Accronym',
-      description: 'Does this title contain an accronym? Give it a full title',
+      fieldset: 'pageTitle',
+      inputComponent: ConditionalField,
       options: {
-        collapsible: true,
-        collapsed: true
-      },
-      fields: [
-        {
-          name: 'accronymFind',
-          type: 'string',
-          title: 'Accronym',
-        },
-            {
-          name: 'accronymReplace',
-          type: 'string',
-          title: 'Full title',
-        }
-      ]
+        condition: document => document.pageTitleAccronym === true
+      }
+    },
+    {
+      name: 'accronymReplace',
+      type: 'string',
+      title: 'Full title',
+      fieldset: 'pageTitle',
+      inputComponent: ConditionalField,
+      options: {
+        condition: document => document.pageTitleAccronymSelect === true
+      }
+    },
+    {
+      name: 'navHighlight',
+      title: 'Navigation highlight',
+      type: 'reference',
+      description: 'This will highlight the nav in the header for a section',
+      fieldset: 'pageNavigation',
+      to: [{type: 'section'}]
     },
     {
       name: 'belongsTo',
       title: 'Belongs to...',
       type: 'reference',
       description: 'The page this belongs to',
+      fieldset: 'pageNavigation',
       to: [
         {
           type: 'homepage'
@@ -57,17 +79,11 @@ export default {
       validation: Rule => Rule.required()
     },
     {
-      name: 'navHighlight',
-      title: 'Navigation highlight',
-      type: 'reference',
-      description: 'This will highlight the nav in the header for a section',
-      to: [{type: 'section'}]
-    },
-    {
       name: 'slug',
       type: 'slug',
       title: 'Slug',
       description: 'The slug will form the url for this page',
+      fieldset: 'pageNavigation',
       readOnly: false,
       options: {
         source: (doc) => doc.title,
@@ -80,6 +96,7 @@ export default {
       name: 'breadcrumb',
       title: 'Breadcrumb',
       description: 'Create a heirachy tree.',
+      fieldset: 'pageNavigation',
       type: 'array',
       of: [
         {
@@ -98,6 +115,7 @@ export default {
       name: 'pageBuilder',
       type: 'array',
       title: 'Page builder',
+      fieldset: 'pageContent',
       description: 'Add components to your page to build up your content',
       of: [
         {
@@ -133,6 +151,7 @@ export default {
       name: 'subMenu',
       title: 'Sub menus',
       type: 'array',
+      fieldset: 'pageNavigation',
       of: [
         {
           type: 'navigation',
@@ -145,28 +164,21 @@ export default {
       name: 'metaDescription',
       title: 'Description',
       type: 'text',
-      description: 'Descriptions are important for searches. Please enter a description for this pages content between 50 and 250 characters.',
+      description: 'Descriptions are important for page searches and search engines. Please enter a description for this pages content between 50 and 250 characters.',
+      fieldset: 'pageMeta',
       validation: Rule => Rule.required().min(50).max(250).warning('Longer descriptions are usually better')
     },
     {
       name: 'metaKeywords',
       title: 'Keywords',
-      type: 'object',
-      description: 'Keywords are important for searches.',
-      fields: [
-        {
-          name: 'metaKeywordsArray',
-          title: 'Enter words or phrases',
-          description: 'Hit enter after each entry. ',
-          validation: Rule => Rule.required().min(3),
-          type: 'array',
-          of: [{type: 'string'}],
-          options: {
-            layout: 'tags'
-          }
-        }
-      ]
-      // validation: Rule => Rule.required()
+      description: 'Keywords are important for page searches and search engines.',
+      fieldset: 'pageMeta',
+      validation: Rule => Rule.required().min(3),
+      type: 'array',
+      of: [{type: 'string'}],
+      options: {
+        layout: 'tags'
+      }
     }
   ],
   orderings: [
