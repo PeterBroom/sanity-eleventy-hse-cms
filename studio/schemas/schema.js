@@ -46,6 +46,10 @@ import input from './objects/pageBuilder/forms/input'
 import textarea from './objects/pageBuilder/forms/textarea'
 import selection from './objects/pageBuilder/forms/selection'
 import selectionItem from './objects/pageBuilder/forms/selectionItem'
+import inputDate from './objects/pageBuilder/forms/inputDate'
+import actions from './objects/pageBuilder/forms/actions'
+import actionType from './objects/pageBuilder/forms/actionType'
+import validation from './objects/pageBuilder/forms/validation'
 
 import bodyCopy from './objects/pageBuilder/bodyCopy/bodyCopy'
 
@@ -116,8 +120,12 @@ export default createSchema({
     hero,
     formBuilder,
     fieldset,
+    validation,
+    actions,
+    actionType,
     ariaAttributes,
     ariaItem,
+    inputDate,
     inputWidth,
     inputAttributes,
     inputType,
