@@ -88,6 +88,9 @@ async function getPages () {
         if (component._type === "bodyCopy") {
           component.editorInterface = BlocksToMarkdown(component.editorInterface, { serializers, ...client.config() })
         }
+        if (component._type === "formBuilder") {
+          component.introductoryText = BlocksToMarkdown(component.introductoryText, { serializers, ...client.config() })
+        }
       });
     }
   })
@@ -95,3 +98,4 @@ async function getPages () {
 }
 
 module.exports = getPages
+
