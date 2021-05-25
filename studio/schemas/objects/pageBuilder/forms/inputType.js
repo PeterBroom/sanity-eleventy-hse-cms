@@ -16,6 +16,7 @@ export default {
                 { title: 'Telephone', value: 'tel'},
                 { title: 'Email', value: 'email'},
                 { title: 'Date', value: 'date'},
+                { title: 'URL', value: 'url'},
                 { title: 'Hidden', value: 'hidden'},
                 ]
             }
