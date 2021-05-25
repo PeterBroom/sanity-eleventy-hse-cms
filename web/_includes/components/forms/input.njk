@@ -4,6 +4,38 @@
     {% if field.hint -%}
         <span id="{{field.label | slug }}-hint" class="hint">{{field.hint}}</span>
     {%- endif %}
+    {% if field.type.value == 'email' -%}
+        {% set pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$' %}
+    {%- endif %}
+    {% if field.type.value == 'url' -%}
+        {% set pattern = 'https?://.+' %}
+    {%- endif %}
+    {% if field.type.value == 'tel' -%}
+        {% set pattern = '[0-9]{4}[0-9]{3}[0-9]{4}' %}
+    {%- endif %}
+    {% if field.validation.customPattern -%}
+        {% set pattern = field.validation.customPattern %}
+    {%- endif %}
 
-    <input class="input input-text {{ field.width.value }}" name="{{field.label | slug }}"{% if field.value %} value="{{field.value}}"{% endif %}{% if field.placeholder %} value="{{field.placeholder}}"{% endif %}/>
+    <input
+        type"{{field.type.value}}"
+        class="input input-text {{ field.width.value }}"
+        id="{{field.label | slug }}"
+        name="{{field.label | slug }}"
+        {% if pattern -%} pattern="{{pattern}}"{%- endif %}
+        {% if field.value %} value="{{field.value}}"{% endif %}
+        {% if field.placeholder %} value="{{field.placeholder}}"{% endif %}
+        {% if field.validation.customMessage %} title="{{field.validation.customMessage}}"{% endif %}
+        {% if field.validation.required == true %} required{% endif %}
+        {% if field.validation.min %} min="{{field.validation.min}}"{% endif %}
+        {% if field.validation.max %} max="{{field.validation.max}}"{% endif %}
+        {% if field.validation.minlength %} minlength="{{field.validation.minlength}}"{% endif %}
+        {% if field.validation.maxlength %} maxlength="{{field.validation.maxlength}}"{% endif %}
+        {% if field.fieldAttributes.autofocus === true %} autofocus{% endif %}
+        {% if field.fieldAttributes.readonly === true %} readonly{% endif %}
+        {% if field.fieldAttributes.placeholder %} placeholder="{{field.fieldAttributes.placeholder}}"{% endif %}
+        {% for item in field.ariaAttributes.ariaItems %}
+            data-{{item.attribute}}="{{item.value}}"
+        {% endfor %}
+/>
 {% endblock %}
