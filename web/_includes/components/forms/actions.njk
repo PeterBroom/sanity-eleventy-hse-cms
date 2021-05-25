@@ -1,0 +1,12 @@
+{% extends "./formGroup.njk" %}
+{% block formGroup %}
+    {% for types in field.type %}
+        {% if types.value == 'submit' %}
+            {% set className = ' btn-primary' %}
+        {% endif %}
+        {% if types.value == 'reset' %}
+            {% set className = ' btn-important' %}
+        {% endif %}
+        <button type="{{ types.value }}" class="btn{{ className }}">{{ types.value | capitalize }}</button>
+    {% endfor %}
+{% endblock %}
