@@ -17,12 +17,19 @@ export default {
                   type: 'input'
                 },
                 {
+                  type: 'inputDate'
+                },
+                {
                   type: 'textarea'
                 },
                 {
                   type: 'selection'
+                },
+                {
+                  type: 'action'
                 }
             ]
         }
     ]
 }
+
