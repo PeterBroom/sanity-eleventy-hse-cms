@@ -1,6 +1,7 @@
+import ConditionalField from 'sanity-plugin-conditional-field'
 import {AiOutlineHome} from 'react-icons/ai'
-
 import {navigation} from '../objects/navigation/sub/navigation.js'
+
 export default {
   title: 'Home pages',
   name: 'homepage',
@@ -24,8 +25,37 @@ export default {
       name: 'shortTitle',
       type: 'string',
       title: 'Short title',
-      description: 'Used in navigation menus',
+      description: 'Used in navigation menus and breadcrumb',
       fieldset: 'pageTitle'
+    },
+    {
+      name: 'pageTitleAccronym',
+      title: 'Does this page title contain an accronym?',
+      type: 'boolean',
+      description: 'Will tag abbreviations in the page title with a full title on hover',
+      fieldset: 'pageTitle'
+    },
+    {
+      name: 'accronymFind',
+      type: 'string',
+      title: 'Accronym',
+      description: 'Accronym to target',
+      fieldset: 'pageTitle',
+      inputComponent: ConditionalField,
+      options: {
+        condition: document => document.pageTitleAccronym === true
+      }
+    },
+    {
+      name: 'accronymReplace',
+      type: 'string',
+      title: 'Accronym full title',
+      description: 'Full title to display for accronym',
+      fieldset: 'pageTitle',
+      inputComponent: ConditionalField,
+      options: {
+        condition: document => document.pageTitleAccronym === true
+      }
     },
     {
       name: 'navHighlight',

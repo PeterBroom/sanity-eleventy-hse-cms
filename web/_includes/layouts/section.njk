@@ -5,6 +5,12 @@ templateClass: tmpl-section
 {% set components = sections.pageBuilder %}
 
 <div data-grid="12 last">
-  <h1>{{ sections.title }}</h1>
+  <h1>
+    {% if sections.pageTitleAccronym == true %}
+      {{ sections.title |abbr(sections.accronymFind, sections.accronymReplace ) | safe }}
+    {% else %}
+      {{ sections.title }}
+    {% endif %}
+  </h1>
   {% include "../components/pageBuilder.njk" %}
 </div>

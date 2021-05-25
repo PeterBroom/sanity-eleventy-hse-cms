@@ -25,7 +25,7 @@ export default {
       name: 'shortTitle',
       type: 'string',
       title: 'Short title',
-      description: 'Used in navigation menus',
+      description: 'Used in navigation menus and breadcrumb',
       fieldset: 'pageTitle'
     },
     {
@@ -39,6 +39,7 @@ export default {
       name: 'accronymFind',
       type: 'string',
       title: 'Accronym',
+      description: 'Accronym to target',
       fieldset: 'pageTitle',
       inputComponent: ConditionalField,
       options: {
@@ -48,7 +49,8 @@ export default {
     {
       name: 'accronymReplace',
       type: 'string',
-      title: 'Full title',
+      title: 'Accronym full title',
+      description: 'Full title to display for accronym',
       fieldset: 'pageTitle',
       inputComponent: ConditionalField,
       options: {

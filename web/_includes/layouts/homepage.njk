@@ -10,8 +10,13 @@ templateClass: tmpl-page
     {% include '../components/subnavHomepage.njk' %}
   </div>
   <div data-column="three-quarters">
-    <h1>{{ homepages.title }}</h1>
-
+    <h1>
+      {% if homepages.pageTitleAccronym == true %}
+        {{ homepages.title |abbr(homepages.accronymFind, homepages.accronymReplace ) | safe }}
+      {% else %}
+        {{ homepages.title }}
+      {% endif %}
+    </h1>
     {% include "../components/pageBuilder.njk" %}
   </div>
 </div>
