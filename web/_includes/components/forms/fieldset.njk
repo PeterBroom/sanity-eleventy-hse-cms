@@ -12,5 +12,11 @@
         {% if field._type == 'selection' %}
             {% include "./selection.njk" %}
         {% endif %}
+        {% if field._type == 'inputDate' %}
+            {% include "./date.njk" %}
+        {% endif %}
+        {% if field._type == 'action' %}
+            {% include "./actions.njk" %}
+        {% endif %}
     {% endfor %}
 </fieldset>
