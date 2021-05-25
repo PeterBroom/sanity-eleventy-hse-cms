@@ -32,7 +32,8 @@ export default {
       name: 'pageTitleAccronym',
       title: 'Does this page title contain an accronym?',
       type: 'boolean',
-      fieldset: 'pageTitle',
+      description: 'Will tag abbreviations in the page title with a full title on hover',
+      fieldset: 'pageTitle'
     },
     {
       name: 'accronymFind',
@@ -51,7 +52,7 @@ export default {
       fieldset: 'pageTitle',
       inputComponent: ConditionalField,
       options: {
-        condition: document => document.pageTitleAccronymSelect === true
+        condition: document => document.pageTitleAccronym === true
       }
     },
     {

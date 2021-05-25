@@ -21,6 +21,8 @@ async function getPages () {
     title,
     shortTitle,
     pageTitleAccronym,
+    accronymReplace,
+    accronymFind,
     navHighlight{
       ...,
       "slug": ^->slug,

@@ -10,10 +10,11 @@ templateClass: tmpl-page
   </div>
   <div data-column="three-quarters">
     <h1>
-      <abbr title="{{pages.pageTitleAccronym.accronymReplace}}">{{pages.pageTitleAccronym.accronymFind}}</abbr>
-      {% filter replace(pages.accronymFind,accr) -%}
-        {{pages.title | safe }}
-      {%- endfilter %}
+      {% if pages.pageTitleAccronym == true %}
+        {{ pages.title |abbr(pages.accronymFind, pages.accronymReplace ) | safe }}
+      {% else %}
+        {{ pages.title }}
+      {% endif %}
     </h1>
     {% include "../components/pageBuilder.njk" %}
   </div>
