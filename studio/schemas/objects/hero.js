@@ -9,9 +9,19 @@ export default {
       title: 'Title',
     },
     {
+      name: 'heroClass',
+      type: 'string',
+      title: 'Class name'
+    },
+    {
       type: 'portableText',
       name: 'editorInterface',
       title: 'Editor Interface',
+    },
+    {
+      type: "cloudinary.asset",
+      name: "heroImage",
+      description: "This asset is served from Cloudinary",
     },
     {
       name: 'heroLink',

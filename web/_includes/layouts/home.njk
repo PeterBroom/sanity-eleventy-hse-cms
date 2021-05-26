@@ -18,13 +18,18 @@ templateClass: tmpl-home
                 </ul>
             </nav>
 
-            <div class="homepageBanner noBoxPadding last coronaPoster" data-grid="8 last">
+            {# <pre>{{home[0].hero.heroImage | dump(2)}}</pre> #}
+            {% set src = home[0].hero.heroImage.secure_url %}
+            {% set imageDesktop = src | cloudinaryImage(src, 1200) | safe %}
+            {% set imageMobile = src | cloudinaryImage(src, 680) | safe %}
+            <div class="homepageBanner noBoxPadding last{% if home[0].hero.heroClass %} {{home[0].hero.heroClass}}{% endif %}" data-grid="8 last">
                 <a href="{{home[0].hero.heroLink.target}}" class="noIcon">
+
                     <div class="homepageBannerImage">
                         <picture>
-                            <source media="(min-width: 980px)" srcset="https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer.png, https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer-2x.png 2x">
-                            <source media="(max-width: 980px)" srcset="https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer-mobile.png, https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer-mobile-2x.png 2x">
-                            <img src="assets/v4-homepage/images/corona-hand-sanitizer-mobile.png" alt="Image of a person washing their hands with sanitizer">
+                            <source media="(min-width: 980px)" srcset="{{imageDesktop}} 2x">
+                            <source media="(max-width: 980px)" srcset="{{imageMobile}} 2x">
+                            <img src="{{imageMobile}}" alt="Image of a person washing their hands with sanitizer" loading="lazy">
                         </picture>
                     </div>
                     <div class="homepageBannerInner">
@@ -48,7 +53,7 @@ templateClass: tmpl-home
             <div class="component" data-grid="12 last">
                 <nav aria-label="Solutions from HSE">
                     <h2>{{home[0].solutions.title}}</h2>
-                    {# <pre>{{home[0].solutions|dump(2)}}</p> #}
+                    {# <pre>{{home[0].solutions|dump(2)}}</pre> #}
                     <ul class="hsl-links row">
                         {% for items in home[0].solutions.solutionItems %}
                             {% set break = 12 / home[0].solutions.grid.columns %}
