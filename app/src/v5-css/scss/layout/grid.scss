@@ -44,31 +44,31 @@ $susy: (
 
 [data-column*="one-third"] {
   width: 100%;
-  @media (max-width: $tablet) {
+  @media (min-width: $tablet) {
     width: 33.3333%;
   }
 }
 [data-column*="two-thirds"] {
   width: 100%;
-  @media (max-width: $tablet) {
+  @media (min-width: $tablet) {
     width: 66.6666%;
   }
 }
 [data-column*="one-quarter"] {
   width: 100%;
-  @media (max-width: $tablet) {
+  @media (min-width: $tablet) {
     width: 25%;
   }
 }
 [data-column*="two-quarters"] {
   width: 100%;
-  @media (max-width: $tablet) {
+  @media (min-width: $tablet) {
     width: 50%;
   }
 }
 [data-column*="three-quarters"] {
   width: 100%;
-  @media (max-width: $tablet) {
+  @media (min-width: $tablet) {
     width: 75%;
   }
 }
