@@ -40,10 +40,11 @@
                             <a href="/">Home</a>
                         </li>
                         {% for item in settingsNavigation[0].headerMenu.sections -%}
+                            {% if item.slug !== 'null' %}
+                                {% set link = '/' + item.slug.current %}
+                            {% endif %}
                             {% if item.externalLink %}
                                 {% set link = item.externalLink %}
-                            {% elif item.slug.current %}
-                                {% set link = '/' + item.slug.current %}
                             {% endif %}
                             <li class="{{ 'active' if headerSource.navHighlight.title === item.title }}">
                                 <a class="{{ 'active' if sections.slug.current === item.slug.current }}"{% if sections.slug.current === item.slug.current%} aria-current="page"{% endif %} href="{{link}}">{{item.title}}</a>

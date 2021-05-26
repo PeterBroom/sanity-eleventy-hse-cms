@@ -9,8 +9,7 @@ module.exports = async function() {
             sections[]{
               ...,
               _type == "topNav.section" => {
-                "slug": @.target->slug,
-                "title": @.target->title
+                "slug": @.target->slug
               }
             }
           },

@@ -22,17 +22,8 @@ async function getSections () {
     shortTitle,
     parentSlug,
     slug,
-    breadcrumb[]{
-      ...,
-      "slug": ^->slug,
-      "title": ^->title,
-      "shortTitle": ^->shortTitle
-    },
-    navHighlight{
-      ...,
-      "slug": ^->slug,
-      "title": ^->title,
-    },
+    "breadcrumb": breadcrumb[]->{title, shortTitle, slug},
+    "navHighlight": navHighlight->{title, slug},
     metaDescription,
     metaKeywords,
     pageBuilder[]{
@@ -52,7 +43,7 @@ async function getSections () {
         }
       },
     }
-  }`
+  }`;
   const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))
