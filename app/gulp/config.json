@@ -1,0 +1,62 @@
+{
+    "all": [
+        "./src/**/*+(js|scss|css|htm|html|njk|png|jpg|jpeg|gif|svg|ico)"
+    ],
+    "shared": {
+        "js": {
+            "vendor": "./src/shared/js/vendor/**/*.js",
+            "vendorOutput": "../web/_site/assets/v5-js/vendor",
+            "all": "./src/shared/js/**/*.js",
+            "entrypoint": [
+                "./src/shared/js/v5-main.js",
+                "./src/shared/js/v5-cookies.js"
+            ],
+            "outputSecureroot": "../web/_site/assets/v5-js"
+        }
+    },
+    "secureroot": {
+        "all": [
+            "./src/**/*+(js|css|html|png|jpg|jpeg|gif|svg|ico)"
+        ],
+        "assetPath": "../web/_site/assets/",
+        "output": "../web/_site/assets",
+        "scripts": {
+            "path": "./src/v5-scripts",
+            "all": [
+                "./src/v5-scripts/google-custom-search.js",
+                "./src/v5-scripts/base64-poly.js",
+                "./src/v5-scripts/v5-hse-primary.min.js",
+                "./src/v5-scripts/slinky-ie11-fix.js",
+                "./src/v5-scripts/top-tasks.js",
+                "./src/v5-scripts/left-nav.js",
+                "./src/v5-scripts/aria.accordion.min.js"
+            ],
+            "entry": "./src/v5-js/v5-footer.js",
+            "output": "../web/_site/assets/v5-js"
+        },
+        "styles": {
+            "all": "./src/v5-css/scss/**/*.scss",
+            "entry": "./src/v5-css/scss/v5.scss",
+            "output": "../web/_site/assets/v5-css/",
+            "vendor": "./src/v5-css/vendor/**/*.css",
+            "vendorOutput": "../web/_site/assets/v5-css/vendor/"
+        },
+        "images": {
+            "v4": {
+                "all": "./src/v4-images/**/*.+(png|jpg|jpeg|gif|svg|ico)",
+                "entry": "./src/v4-images/",
+                "output": "../web/_site/assets/v4-images/"
+            },
+            "v4homepage": {
+                "all": "./src/v4-homepage/**/*.+(png|jpg|jpeg|gif|svg|ico)",
+                "entry": "./src/v4-homepage/",
+                "output": "../web/_site/assets/v4-homepage/"
+            },
+            "v5": {
+                "all": "./src/v5-images/**/*.+(png|jpg|jpeg|gif|svg|ico)",
+                "entry": "./src/v5-images/",
+                "output": "../web/_site/assets/v5-images/"
+            }
+        }
+    }
+}

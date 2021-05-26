@@ -21,17 +21,8 @@ async function getHomepages () {
     title,
     shortTitle,
     slug,
-    navHighlight{
-      ...,
-      "slug": ^->slug,
-      "title": ^->title,
-    },
-    breadcrumb[]{
-      ...,
-      "slug": ^->slug,
-      "title": ^->title,
-      "shortTitle": ^->shortTitle
-    },
+    "navHighlight": navHighlight->{title, slug},
+    "breadcrumb": breadcrumb->{title, shortTitle, slug},
     "parentSlug": @.belongsTo->slug,
     metaDescription,
     metaKeywords,
@@ -66,7 +57,7 @@ async function getHomepages () {
         }
       }
     }
-  }`
+  }`;
   const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))

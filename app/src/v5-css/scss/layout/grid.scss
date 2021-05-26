@@ -1,0 +1,77 @@
+@import "susy";
+
+$susy: (
+  "columns": susy-repeat(12),
+  "gutters": 0.34,
+  "spread": "narrow",
+  "container-spread": "narrow",
+);
+
+.content-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+[data-grid] {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: gutter();
+
+  &:not([data-grid*="last"]) {
+    margin-right: gutter();
+  }
+}
+
+@for $span from 1 through length(susy-get("columns")) {
+  [data-grid*="#{$span}"] {
+    width: span($span);
+
+    @media (max-width: $tablet) {
+      width: 100%;
+    }
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  @media (min-width: $tablet) {
+    flex-direction: row;
+  }
+}
+
+[data-column*="one-third"] {
+  width: 100%;
+  @media (min-width: $tablet) {
+    width: 33.3333%;
+  }
+}
+[data-column*="two-thirds"] {
+  width: 100%;
+  @media (min-width: $tablet) {
+    width: 66.6666%;
+  }
+}
+[data-column*="one-quarter"] {
+  width: 100%;
+  @media (min-width: $tablet) {
+    width: 25%;
+  }
+}
+[data-column*="two-quarters"] {
+  width: 100%;
+  @media (min-width: $tablet) {
+    width: 50%;
+  }
+}
+[data-column*="three-quarters"] {
+  width: 100%;
+  @media (min-width: $tablet) {
+    width: 75%;
+  }
+}
+[data-column*="full"] {
+  width: 100%;
+}

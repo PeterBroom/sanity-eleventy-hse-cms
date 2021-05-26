@@ -1,6 +1,6 @@
-<script src="https://www.hse.gov.uk/assets/v5-js/v5-main.min.js"></script>
-<script src="https://www.hse.gov.uk/assets/v5-js/jquery.min.js"></script>
-<script src="https://www.hse.gov.uk/assets/v5-js/v5-footer-slinky-js.min.js"></script>
+<script src="/assets/v5-js/v5-main.min.js"></script>
+<script src="/assets/v5-js/jquery.min.js"></script>
+<script src="/assets/v5-js/v5-footer-slinky-js.min.js"></script>
 <script>
   // Google Custom Search
   function addGoogleAlt() {
@@ -266,7 +266,7 @@
         .length
     }
     a.ui = a.ui || {};
-    if (a.ui.version) 
+    if (a.ui.version)
       return;
     a.extend(a.ui, {
       version: "1.8.20",
@@ -343,7 +343,7 @@
             : b
         },
         zIndex: function (c) {
-          if (c !== b) 
+          if (c !== b)
             return this.css("zIndex", c);
           if (this.length) {
             var d = a(this[0]),
@@ -353,7 +353,7 @@
               e = d.css("position");
               if (e === "absolute" || e === "relative" || e === "fixed") {
                 f = parseInt(d.css("zIndex"), 10);
-                if (!isNaN(f) && f !== 0) 
+                if (!isNaN(f) && f !== 0)
                   return f
               }
               d = d.parent()
@@ -447,7 +447,7 @@
           var e = a
             .ui[b]
             .prototype;
-          for (var f in d) 
+          for (var f in d)
             e.plugins[f] = e.plugins[f] || [],
             e
               .plugins[f]
@@ -457,9 +457,9 @@
           },
         call: function (a, b, c) {
           var d = a.plugins[b];
-          if (!d || !a.element[0].parentNode) 
+          if (!d || !a.element[0].parentNode)
             return;
-          for (var e = 0; e < d.length; e++) 
+          for (var e = 0; e < d.length; e++)
             a.options[d[e][0]] && d[e][1].apply(a.element, c)
         }
       },
@@ -469,7 +469,7 @@
           : a !== b && a.contains(b)
       },
       hasScroll: function (b, c) {
-        if (a(b).css("overflow") === "hidden") 
+        if (a(b).css("overflow") === "hidden")
           return !1;
         var d = c && c === "left"
             ? "scrollLeft"
@@ -498,7 +498,7 @@
     if (a.cleanData) {
       var c = a.cleanData;
       a.cleanData = function (b) {
-        for (var d = 0, e; (e = b[d]) != null; d++) 
+        for (var d = 0, e; (e = b[d]) != null; d++)
           try {
             a(e).triggerHandler("remove")
           } catch (f) {}
@@ -569,7 +569,7 @@
                 f = d && a.isFunction(d[e])
                   ? d[e].apply(d, g)
                   : d;
-              if (f !== d && f !== b) 
+              if (f !== d && f !== b)
                 return h = f,
                 !1
             })
@@ -630,10 +630,10 @@
       },
       option: function (c, d) {
         var e = c;
-        if (arguments.length === 0) 
+        if (arguments.length === 0)
           return a.extend({}, this.options);
         if (typeof c == "string") {
-          if (d === b) 
+          if (d === b)
             return this.options[c];
           e = {},
           e[c] = d
@@ -677,8 +677,8 @@
           : this.widgetEventPrefix + b).toLowerCase(),
         c.target = this.element[0],
         f = c.originalEvent;
-        if (f) 
-          for (e in f) 
+        if (f)
+          for (e in f)
             e in c || (c[e] = f[e]);
       return this
           .element
@@ -699,7 +699,7 @@
       g = a.fn.position,
       h = a.fn.offset;
     a.fn.position = function (b) {
-      if (!b || !b.of) 
+      if (!b || !b.of)
         return g.apply(this, arguments);
       b = a.extend({}, b);
       var h = a(b.of),
@@ -825,7 +825,7 @@
       },
       flip: {
         left: function (b, c) {
-          if (c.at[0] === e) 
+          if (c.at[0] === e)
             return;
           var d = a(window),
             f = c.collisionPosition.left + c.collisionWidth - d.width() - d.scrollLeft(),
@@ -845,7 +845,7 @@
               : 0
         },
         top: function (b, c) {
-          if (c.at[1] === e) 
+          if (c.at[1] === e)
             return;
           var d = a(window),
             f = c.collisionPosition.top + c.collisionHeight - d.height() - d.scrollTop(),
@@ -918,7 +918,7 @@
         left: "-1000px",
         top: "-1000px"
       });
-      for (var j in g) 
+      for (var j in g)
         d.style[j] = g[j];
       d.appendChild(c),
       e = b || document.documentElement,
@@ -1010,13 +1010,13 @@
           .addClass(g)
           .attr("role", "button")
           .bind("mouseenter.button", function () {
-            if (h.disabled) 
+            if (h.disabled)
               return;
             a(this).addClass("ui-state-hover"),
             this === c && a(this).addClass("ui-state-active")
           })
           .bind("mouseleave.button", function () {
-            if (h.disabled) 
+            if (h.disabled)
               return;
             a(this).removeClass(l)
           })
@@ -1036,26 +1036,26 @@
               .removeClass(m)
           }),
         i && (this.element.bind("change.button", function () {
-          if (f) 
+          if (f)
             return;
           b.refresh()
         }), this.buttonElement.bind("mousedown.button", function (a) {
-          if (h.disabled) 
+          if (h.disabled)
             return;
           f = !1,
           d = a.pageX,
           e = a.pageY
         }).bind("mouseup.button", function (a) {
-          if (h.disabled) 
+          if (h.disabled)
             return;
-          if (d !== a.pageX || e !== a.pageY) 
+          if (d !== a.pageX || e !== a.pageY)
             f = !0
         })),
         this.type === "checkbox"
           ? this
             .buttonElement
             .bind("click.button", function () {
-              if (h.disabled || f) 
+              if (h.disabled || f)
                 return !1;
               a(this).toggleClass("ui-state-active"),
               b
@@ -1066,7 +1066,7 @@
             ? this
               .buttonElement
               .bind("click.button", function () {
-                if (h.disabled || f) 
+                if (h.disabled || f)
                   return !1;
                 a(this).addClass("ui-state-active"),
                 b
@@ -1082,7 +1082,7 @@
                   .attr("aria-pressed", "false")
               })
             : (this.buttonElement.bind("mousedown.button", function () {
-              if (h.disabled) 
+              if (h.disabled)
                 return !1;
               a(this).addClass("ui-state-active"),
               c = this,
@@ -1090,13 +1090,13 @@
                 c = null
               })
             }).bind("mouseup.button", function () {
-              if (h.disabled) 
+              if (h.disabled)
                 return !1;
               a(this).removeClass("ui-state-active")
             }).bind("keydown.button", function (b) {
-              if (h.disabled) 
+              if (h.disabled)
                 return !1;
-              
+
               (b.keyCode == a.ui.keyCode.SPACE || b.keyCode == a.ui.keyCode.ENTER) && a(this).addClass("ui-state-active")
             }).bind("keyup.button", function () {
               a(this).removeClass("ui-state-active")
@@ -1147,7 +1147,7 @@
           this
             .buttonElement
             .attr("aria-pressed", c)
-        } else 
+        } else
           this.buttonElement = this.element
       },
       widget: function () {
@@ -1490,7 +1490,7 @@
         var c = this,
           d,
           e;
-        if (!1 === c._trigger("beforeClose", b)) 
+        if (!1 === c._trigger("beforeClose", b))
           return;
         return c.overlay && c
           .overlay
@@ -1535,7 +1535,7 @@
           }, a.ui.dialog.maxZ += 1, d.uiDialog.css("z-index", a.ui.dialog.maxZ), d.element.attr(f), d._trigger("focus", c), d)
       },
       open: function () {
-        if (this._isOpen) 
+        if (this._isOpen)
           return;
         var b = this,
           c = b.options,
@@ -1551,15 +1551,15 @@
         d.show(c.show),
         b.moveToTop(!0),
         c.modal && d.bind("keydown.ui-dialog", function (b) {
-          if (b.keyCode !== a.ui.keyCode.TAB) 
+          if (b.keyCode !== a.ui.keyCode.TAB)
             return;
           var c = a(":tabbable", this),
             d = c.filter(":first"),
             e = c.filter(":last");
-          if (b.target === e[0] && !b.shiftKey) 
+          if (b.target === e[0] && !b.shiftKey)
             return d.focus(1),
             !1;
-          if (b.target === d[0] && b.shiftKey) 
+          if (b.target === d[0] && b.shiftKey)
             return e.focus(1),
             !1
         }),
@@ -1599,7 +1599,7 @@
             })
             .appendTo(g);
           a.each(d, function (a, b) {
-            if (a === "click") 
+            if (a === "click")
               return;
             a in f
               ? e[a](b)
@@ -1713,7 +1713,7 @@
           ],
           e;
         if (b) {
-          if (typeof b == "string" || typeof b == "object" && "0" in b) 
+          if (typeof b == "string" || typeof b == "object" && "0" in b)
             c = b.split
               ? b.split(" ")
               : [
@@ -1730,7 +1730,7 @@
               offset: d.join(" ")
             };
           b = a.extend({}, a.ui.dialog.prototype.options.position, b)
-        } else 
+        } else
           b = a.ui.dialog.prototype.options.position;
         e = this
           .uiDialog
@@ -1830,8 +1830,8 @@
           .css({height: "auto", width: b.width})
           .height(),
         d = Math.max(0, b.minHeight - c);
-        if (b.height === "auto") 
-          if (a.support.minHeight) 
+        if (b.height === "auto")
+          if (a.support.minHeight)
             this
               .element
               .css({minHeight: d, height: "auto"});
@@ -1850,7 +1850,7 @@
               .element
               .height(Math.max(f, d))
           }
-        else 
+        else
           this
             .element
             .height(Math.max(b.height - c, 0));
@@ -1890,7 +1890,7 @@
       create: function (b) {
         this.instances.length === 0 && (setTimeout(function () {
           a.ui.dialog.overlay.instances.length && a(document).bind(a.ui.dialog.overlay.events, function (b) {
-            if (a(b.target).zIndex() < a.ui.dialog.overlay.maxZ) 
+            if (a(b.target).zIndex() < a.ui.dialog.overlay.maxZ)
               return !1
           })
         }, 1), a(document).bind("keydown.dialog-overlay", function (c) {
@@ -2007,10 +2007,10 @@
       },
       _setOption: function (a, b) {
         if (a == "selected") {
-          if (this.options.collapsible && b == this.options.selected) 
+          if (this.options.collapsible && b == this.options.selected)
             return;
           this.select(b)
-        } else 
+        } else
           this.options[a] = b,
           this._tabify()
       },
@@ -2077,7 +2077,7 @@
               h = g.split("#")[0],
               i;
             h && (h === location.toString().split("#")[0] || (i = a("base")[0]) && h === i.href) && (g = c.hash, c.href = g);
-            if (f.test(g)) 
+            if (f.test(g))
               d.panels = d
                 .panels
                 .add(d.element.find(d._sanitizeSelector(g)));
@@ -2093,7 +2093,7 @@
               d.panels = d
                 .panels
                 .add(k)
-            } else 
+            } else
               e
                 .disabled
                 .push(b)
@@ -2102,7 +2102,7 @@
           ? (
             this.element.addClass("ui-tabs ui-widget ui-widget-content ui-corner-all"), this.list.addClass("ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all"), this.lis.addClass("ui-state-default ui-corner-top"), this.panels.addClass("ui-tabs-panel ui-widget-content ui-corner-bottom"), e.selected === b
             ? (location.hash && this.anchors.each(function (a, b) {
-              if (b.hash == location.hash) 
+              if (b.hash == location.hash)
                 return e.selected = a,
                 !1
             }), typeof e.selected != "number" && e.cookie && (e.selected = parseInt(d._cookie(), 10)), typeof e.selected != "number" && this.lis.filter(".ui-tabs-selected").length && (e.selected = this.lis.index(this.lis.filter(".ui-tabs-selected"))), e.selected = e.selected || (
@@ -2140,7 +2140,7 @@
             : "removeClass"
         ]("ui-tabs-collapsible"),
         e.cookie && this._cookie(e.selected, e.cookie);
-        for (var g = 0, h; h = this.lis[g]; g++) 
+        for (var g = 0, h; h = this.lis[g]; g++)
           a(h)[
             a.inArray(g, e.disabled) != -1 && !a(h).hasClass("ui-tabs-selected")
               ? "addClass"
@@ -2240,7 +2240,7 @@
               g = d
                 .element
                 .find(d._sanitizeSelector(b.hash));
-            if (c.hasClass("ui-tabs-selected") && !e.collapsible || c.hasClass("ui-state-disabled") || c.hasClass("ui-state-processing") || d.panels.filter(":animated").length || d._trigger("select", null, d._ui(this, g[0])) === !1) 
+            if (c.hasClass("ui-tabs-selected") && !e.collapsible || c.hasClass("ui-state-disabled") || c.hasClass("ui-state-processing") || d.panels.filter(":animated").length || d._trigger("select", null, d._ui(this, g[0])) === !1)
               return this.blur(),
               !1;
             e.selected = d
@@ -2248,7 +2248,7 @@
               .index(this),
             d.abort();
             if (e.collapsible) {
-              if (c.hasClass("ui-tabs-selected")) 
+              if (c.hasClass("ui-tabs-selected"))
                 return e.selected = -1,
                 e.cookie && d._cookie(e.selected, e.cookie),
                 d
@@ -2259,7 +2259,7 @@
                   .dequeue("tabs"),
                 this.blur(),
                 !1;
-              if (!f.length) 
+              if (!f.length)
                 return e.cookie && d._cookie(e.selected, e.cookie),
                 d
                   .element
@@ -2271,7 +2271,7 @@
                 !1
             }
             e.cookie && d._cookie(e.selected, e.cookie);
-            if (g.length) 
+            if (g.length)
               f.length && d
                 .element
                 .queue("tabs", function () {
@@ -2283,7 +2283,7 @@
                   n(b, g)
                 }),
               d.load(d.anchors.index(this));
-            else 
+            else
               throw "jQuery UI Tabs: Mismatching fragment identifier.";
             a.browser.msie && this.blur()
           }),
@@ -2404,7 +2404,7 @@
       enable: function (b) {
         b = this._getIndex(b);
         var c = this.options;
-        if (a.inArray(b, c.disabled) == -1) 
+        if (a.inArray(b, c.disabled) == -1)
           return;
         return this
           .lis
@@ -2425,10 +2425,10 @@
       },
       select: function (a) {
         a = this._getIndex(a);
-        if (a == -1) 
-          if (this.options.collapsible && this.options.selected != -1) 
+        if (a == -1)
+          if (this.options.collapsible && this.options.selected != -1)
             a = this.options.selected;
-          else 
+          else
             return this;
       return this
           .anchors
@@ -2594,7 +2594,7 @@
       var e;
       do {
         e = a.curCSS(b, d);
-        if (e != "" && e != "transparent" || a.nodeName(b, "body")) 
+        if (e != "" && e != "transparent" || a.nodeName(b, "body"))
           break;
         d = "backgroundColor"
       } while (b = b.parentNode);
@@ -2611,20 +2611,20 @@
         d;
       if (a && a.length && a[0] && a[a[0]]) {
         var e = a.length;
-        while (e--) 
+        while (e--)
           c = a[e],
           typeof a[c] == "string" && (d = c.replace(/\-(\w)/g, function (a, b) {
             return b.toUpperCase()
           }), b[d] = a[c])
-      } else 
-        for (c in a) 
+      } else
+        for (c in a)
           typeof a[c] == "string" && (b[c] = a[c]);
     return b
     }
     function i(b) {
       var c,
         d;
-      for (c in b) 
+      for (c in b)
         d = b[c],
         (d == null || a.isFunction(d) || c in g || /scrollbar/.test(c) || !/color/i.test(c) && isNaN(parseFloat(d))) && delete b[c];
       return b
@@ -2634,14 +2634,14 @@
           _: 0
         },
         d;
-      for (d in b) 
+      for (d in b)
         a[d] != b[d] && (c[d] = b[d]);
       return c
     }
     function k(b, c, d, e) {
       typeof b == "object" && (e = c, d = null, c = b, b = c.effect),
       a.isFunction(c) && (e = c, d = null, c = {});
-      if (typeof c == "number" || a.fx.speeds[c]) 
+      if (typeof c == "number" || a.fx.speeds[c])
         e = d,
         d = c,
         c = {};
@@ -2950,11 +2950,11 @@
     a.extend(a.effects, {
       version: "1.8.20",
       save: function (a, b) {
-        for (var c = 0; c < b.length; c++) 
+        for (var c = 0; c < b.length; c++)
           b[c] !== null && a.data("ec.storage." + b[c], a[0].style[b[c]])
       },
       restore: function (a, b) {
-        for (var c = 0; c < b.length; c++) 
+        for (var c = 0; c < b.length; c++)
           b[c] !== null && a.css(b[c], a.data("ec.storage." + b[c]))
       },
       setMode: function (a, b) {
@@ -2996,7 +2996,7 @@
         return {x: d, y: c}
       },
       createWrapper: function (b) {
-        if (b.parent().is(".ui-effects-wrapper")) 
+        if (b.parent().is(".ui-effects-wrapper"))
           return b.parent();
         var c = {
             width: b.outerWidth(!0),
@@ -3067,7 +3067,7 @@
         },
         _show: a.fn.show,
         show: function (a) {
-          if (l(a)) 
+          if (l(a))
             return this
               ._show
               .apply(this, arguments);
@@ -3079,7 +3079,7 @@
         },
         _hide: a.fn.hide,
         hide: function (a) {
-          if (l(a)) 
+          if (l(a))
             return this
               ._hide
               .apply(this, arguments);
@@ -3091,7 +3091,7 @@
         },
         __toggle: a.fn.toggle,
         toggle: function (b) {
-          if (l(b) || typeof b == "boolean" || a.isFunction(b)) 
+          if (l(b) || typeof b == "boolean" || a.isFunction(b))
             return this
               .__toggle
               .apply(this, arguments);
@@ -3205,15 +3205,15 @@
         var f = 1.70158,
           g = 0,
           h = d;
-        if (b == 0) 
+        if (b == 0)
           return c;
-        if ((b /= e) == 1) 
+        if ((b /= e) == 1)
           return c + d;
         g || (g = e * .3);
         if (h < Math.abs(d)) {
           h = d;
           var f = g / 4
-        } else 
+        } else
           var f = g / (2 * Math.PI) * Math.asin(d / h);
         return -(h * Math.pow(2, 10 * (b -= 1)) * Math.sin((b * e - f) * 2 * Math.PI / g)) + c
       },
@@ -3221,15 +3221,15 @@
         var f = 1.70158,
           g = 0,
           h = d;
-        if (b == 0) 
+        if (b == 0)
           return c;
-        if ((b /= e) == 1) 
+        if ((b /= e) == 1)
           return c + d;
         g || (g = e * .3);
         if (h < Math.abs(d)) {
           h = d;
           var f = g / 4
-        } else 
+        } else
           var f = g / (2 * Math.PI) * Math.asin(d / h);
         return h * Math.pow(2, -10 * b) * Math.sin((b * e - f) * 2 * Math.PI / g) + d + c
       },
@@ -3237,15 +3237,15 @@
         var f = 1.70158,
           g = 0,
           h = d;
-        if (b == 0) 
+        if (b == 0)
           return c;
-        if ((b /= e / 2) == 2) 
+        if ((b /= e / 2) == 2)
           return c + d;
         g || (g = e * .3 * 1.5);
         if (h < Math.abs(d)) {
           h = d;
           var f = g / 4
-        } else 
+        } else
           var f = g / (2 * Math.PI) * Math.asin(d / h);
         return b < 1
           ? -0.5 * h * Math.pow(2, 10 * (b -= 1)) * Math.sin((b * e - f) * 2 * Math.PI / g) + c
@@ -3382,12 +3382,12 @@
 
     // make sure _local_preferences is defined. We can't just declare var foo = , because
     // that would overwrite any locally set values.
-    if ('undefined' == typeof _local_preferences) 
+    if ('undefined' == typeof _local_preferences)
       _local_preferences = {};
     _local_preferences = preprocess(_local_preferences);
 
     // make sure _preferences is defined
-    if ('undefined' == typeof _page_preferences) 
+    if ('undefined' == typeof _page_preferences)
       _page_preferences = {};
     _page_preferences = preprocess(_page_preferences);
 
@@ -3635,9 +3635,9 @@ function hse_is_allowed_host(url, hostnamesWhitelist) {
 
     // Fully qualified, no need to do anything
     // Using string methods is dramatically quicker than regexps
-    if (url.indexOf('://') > -1) 
+    if (url.indexOf('://') > -1)
       return url;
-    
+
     // If it begins with a slash, it's a root relative URL
     // but since sometimes (eg on local or testing servers) the site root isn't
     // always at the server root (eg http://localhost/development/hsesite/index.htm)
@@ -3715,7 +3715,7 @@ function hse_is_allowed_host(url, hostnamesWhitelist) {
       $.each(_classes, function () {
         // If one of the class names begins with the keyword,
         // add it to the list of unique indexes
-        if (this.indexOf(_keyword) === 0) 
+        if (this.indexOf(_keyword) === 0)
           _uniqueIndexes[this] = 1;
         }
       );
@@ -3828,9 +3828,9 @@ Note: aria-label is only required where same role used more than once
       _appendTo = _settings.append();
 
     // Do we have any links to treat?
-    if (!_linkset.length) 
+    if (!_linkset.length)
       return;
-    
+
     // Start to build the HTML to insert by building a heading
     var _HTMLtoInsert = '<p class="hideFromScreen footnotes">Link URLs in this page</p><ol class="hideFromScreen">',
       _footnoteCount = 0;
@@ -4105,7 +4105,7 @@ Note: aria-label is only required where same role used more than once
 
         // Close the menu if anywhere else on the page clicked
         $(document).click(function () {
-          if (isOpen()) 
+          if (isOpen())
             close();
           }
         );
@@ -4167,9 +4167,9 @@ Note: aria-label is only required where same role used more than once
 
         // If the form field is initially empty, insert the title as a label
         //if (!$("div#globalSearch")&&(theVal == '')) theField.val(theDefaultTitle); added by Dave Walker but superceded by commenting out of q.toggleVal()
-        if (theVal == '') 
+        if (theVal == '')
           theField.val(theDefaultTitle);
-        
+
         // Attach events to focus and blur events
         theField
           .focus(function () {
@@ -4185,9 +4185,9 @@ Note: aria-label is only required where same role used more than once
           .blur(function () {
             var $this = $(this);
             // restore to the default value if current value is empty
-            if ($this.val() == "") 
+            if ($this.val() == "")
               theField.val(theDefaultTitle);
-            
+
             // if focusClass is set, remove class
             $this.removeClass(f);
           });
@@ -4196,7 +4196,7 @@ Note: aria-label is only required where same role used more than once
         theField
           .parents('form')
           .submit(function () {
-            if (theVal == theDefaultTitle) 
+            if (theVal == theDefaultTitle)
               theField.val("");
             }
           );
@@ -4211,17 +4211,17 @@ Note: aria-label is only required where same role used more than once
  * @addon
 */
   jQuery.id = function (el) {
-    if (el && el.id) 
+    if (el && el.id)
       return el.id;
-    
+
     var _seed = $(document).data('seed');
-    if (!_seed) 
+    if (!_seed)
       _seed = Math.round(Math.random() * 10000);
-    
+
     $(document).data('seed', ++_seed);
     var _id = 'id_' + $(document).data('seed');
 
-    if (el) 
+    if (el)
       el.id = _id;
     return _id;
   };
@@ -4244,7 +4244,7 @@ For managing the loading, queuing and caching of external scripts */
  */
   (function (window, document, TRUE, FALSE, NULL, STR_APPLY, STR_DOMINOES, undefined) {
 
-    if (!window[STR_DOMINOES]) 
+    if (!window[STR_DOMINOES])
 
       (function (STR_ASYNC, STR_CACHE, STR_CALL, STR_CHAIN, STR_CHARSET, STR_CREATE_ELEMENT, STR_GET_ELEMENTS_BY_TAG_NAME, STR_HREF, STR_LENGTH, STR_ON_LOAD, STR_ON_READY_STATE_CHANGE, STR_PLUS, STR_PUSH, STR_READY_STATE, STR_URL) {
 
@@ -5263,7 +5263,7 @@ For managing the loading, queuing and caching of external scripts */
         t.hasAttribute("data-multi"),
         t.hasAttribute("data-transition")) {
           var y = t.querySelectorAll(d);
-          for (f = 0; f < y.length; f++) 
+          for (f = 0; f < y.length; f++)
             y[f]
               .classList
               .add(n + "--transition")
@@ -5272,7 +5272,7 @@ For managing the loading, queuing and caching of external scripts */
           r.setupPanels(t.id, a, h, A), r.setupHeadingButton(s, A), u = e.querySelectorAll("#" + t.id + "> li").length
           ? e.querySelectorAll("#" + t.id + " li > " + o + " ." + l)
           : e.querySelectorAll("#" + t.id + " > " + o + " ." + l),
-        f = 0; f < u.length; f++) 
+        f = 0; f < u.length; f++)
           u[f].addEventListener("click", r.actions),
           u[f].addEventListener("keydown", r.keytrolls)
       }
@@ -5283,7 +5283,7 @@ For managing the loading, queuing and caching of external scripts */
         o,
         d,
         c;
-      for (i = 0; i < e.length; i++) 
+      for (i = 0; i < e.length; i++)
         o = t + "_panel_" + (
         i + 1),
         d = a,
@@ -5308,7 +5308,7 @@ For managing the loading, queuing and caching of external scripts */
         o,
         d,
         c;
-      for (c = 0; c < t.length; c++) 
+      for (c = 0; c < t.length; c++)
         i = (r = t[c]).nextElementSibling.id,
         n = e
           .getElementById(i)
@@ -5353,8 +5353,8 @@ For managing the loading, queuing and caching of external scripts */
         l = o.getAttribute("aria-controls"), g(o, "true"), "true" === o.getAttribute("aria-expanded")
         ? (u(o, "false"), s(r, "true"))
         : (u(o, "true"), s(r, "false"), e.getElementById(a).hasAttribute("data-constant") && A(o, "true")),
-      e.getElementById(a).hasAttribute("data-constant") || !e.getElementById(a).hasAttribute("data-multi"))) 
-        for (n = 0; n < i.length; n++) 
+      e.getElementById(a).hasAttribute("data-constant") || !e.getElementById(a).hasAttribute("data-multi")))
+        for (n = 0; n < i.length; n++)
           o !== i[n] && (g(i[n], "false"), l = i[n].getAttribute("aria-controls"), A(i[n], "false"), u(i[n], "false"), s(e.getElementById(l), "true"))
     },
     r.keytrolls = function (t) {

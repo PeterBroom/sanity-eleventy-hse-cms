@@ -23,24 +23,10 @@ async function getPages () {
     pageTitleAccronym,
     accronymReplace,
     accronymFind,
-    navHighlight{
-      ...,
-      "slug": ^->slug,
-      "title": ^->title,
-    },
-    belongsTo {
-      ...,
-      "slug": ^->slug,
-      "title": ^->title,
-      "shortTitle": ^->shortTitle
-    },
     slug,
-    breadcrumb[]{
-      ...,
-      "slug": ^->slug,
-      "title": ^->title,
-      "shortTitle": ^->shortTitle
-    },
+    "navHighlight": navHighlight->{title, slug},
+    "belongsTo": belongsTo->{title, shortTitle, slug},
+    "breadcrumb": breadcrumb[]->{title, shortTitle, slug},
     "parentSlug": @.belongsTo->slug,
     metaDescription,
     metaKeywords,
@@ -65,18 +51,14 @@ async function getPages () {
           "slug": @.moreInfo.target->slug
       },
       _type == "linkBlock" => {
-        links[]{
-          ...,
-          "slug": ^->slug,
-          "title": ^->title,
-        },
+        links[]->{slug,title},
         more {
           ...,
           "slug": @.moreRef->slug
         }
       }
     }
-  }`
+  }`;
   const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))
