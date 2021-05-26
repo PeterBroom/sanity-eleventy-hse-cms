@@ -20,7 +20,8 @@
     "table",
     "highcharts-editor",
     "@sanity/production-preview",
-    "conditional-field"
+    "conditional-field",
+    "cloudinary"
   ],
   "parts": [
     {

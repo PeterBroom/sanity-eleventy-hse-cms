@@ -31,6 +31,7 @@
     "react-dom": "^16.14.0",
     "react-icons": "^4.2.0",
     "react-use-gesture": "^9.1.3",
+    "sanity-plugin-cloudinary": "^0.2.1",
     "sanity-plugin-conditional-field": "^0.0.1",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.11",
     "sanity-plugin-dashboard-widget-netlify": "^1.0.1",
