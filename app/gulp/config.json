@@ -16,44 +16,44 @@
     },
     "secureroot": {
         "all": [
-            "./src/secureroot/**/*+(js|css|html|png|jpg|jpeg|gif|svg|ico)"
+            "./src/**/*+(js|css|html|png|jpg|jpeg|gif|svg|ico)"
         ],
         "assetPath": "../web/_site/assets/",
         "output": "../web/_site/assets",
         "scripts": {
             "all": [
-                "./src/secureroot/v5-scripts/google-custom-search.js",
-                "./src/secureroot/v5-scripts/base64-poly.js",
-                "./src/secureroot/v5-scripts/v5-hse-primary.min.js",
-                "./src/secureroot/v5-scripts/slinky-ie11-fix.js",
-                "./src/secureroot/v5-scripts/top-tasks.js",
-                "./src/secureroot/v5-scripts/left-nav.js",
-                "./src/secureroot/v5-scripts/aria.accordion.min.js"
+                "./src/v5-scripts/google-custom-search.js",
+                "./src/v5-scripts/base64-poly.js",
+                "./src/v5-scripts/v5-hse-primary.min.js",
+                "./src/v5-scripts/slinky-ie11-fix.js",
+                "./src/v5-scripts/top-tasks.js",
+                "./src/v5-scripts/left-nav.js",
+                "./src/v5-scripts/aria.accordion.min.js"
             ],
-            "entry": "./src/secureroot/v5-js/v5-footer.js",
+            "entry": "./src/v5-js/v5-footer.js",
             "output": "../web/_site/assets/v5-js"
         },
         "styles": {
-            "all": "./src/secureroot/v5-css/scss/**/*.scss",
-            "entry": "./src/secureroot/v5-css/scss/v5.scss",
+            "all": "./src/v5-css/scss/**/*.scss",
+            "entry": "./src/v5-css/scss/v5.scss",
             "output": "../web/_site/assets/v5-css/",
-            "vendor": "./src/secureroot/v5-css/vendor/**/*.css",
+            "vendor": "./src/v5-css/vendor/**/*.css",
             "vendorOutput": "../web/_site/assets/v5-css/vendor/"
         },
         "images": {
             "v4": {
-                "all": "./src/secureroot/v4-images/**/*.+(png|jpg|jpeg|gif|svg|ico)",
-                "entry": "./src/secureroot/v4-images/",
+                "all": "./src/v4-images/**/*.+(png|jpg|jpeg|gif|svg|ico)",
+                "entry": "./src/v4-images/",
                 "output": "../web/_site/assets/v4-images/"
             },
             "v4homepage": {
-                "all": "./src/secureroot/v4-homepage/**/*.+(png|jpg|jpeg|gif|svg|ico)",
-                "entry": "./src/secureroot/v4-homepage/",
+                "all": "./src/v4-homepage/**/*.+(png|jpg|jpeg|gif|svg|ico)",
+                "entry": "./src/v4-homepage/",
                 "output": "../web/_site/assets/v4-homepage/"
             },
             "v5": {
-                "all": "./src/secureroot/v5-images/**/*.+(png|jpg|jpeg|gif|svg|ico)",
-                "entry": "./src/secureroot/v5-images/",
+                "all": "./src/v5-images/**/*.+(png|jpg|jpeg|gif|svg|ico)",
+                "entry": "./src/v5-images/",
                 "output": "../web/_site/assets/v5-images/"
             }
         }
