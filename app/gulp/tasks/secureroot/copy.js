@@ -29,6 +29,7 @@ function picturefill() {
     dest(`${config.secureroot.assetPath}/v5-js/vendor/picturefill`)
   );
 }
+
 function highCharts() {
   return src(highchartsAssets)
     .pipe(dest(`${config.secureroot.assetPath}/v5-js/vendor/highcharts`))
@@ -49,5 +50,23 @@ function vendorJS() {
   .pipe(dest(config.shared.js.vendorOutput));
 }
 
-const toReturn = series(vendorCSS, vendorJS, moment, highCharts, picturefill);
+function jQuery() {
+  return src([`${config.secureroot.scripts.path}/jquery.min.js`]).pipe(
+    dest(`${config.secureroot.assetPath}/v5-js`)
+  );
+}
+function slinky() {
+  return src([`${config.secureroot.scripts.path}/v5-footer-slinky-js.min.js`]).pipe(
+    dest(`${config.secureroot.assetPath}/v5-js`)
+  );
+}
+const toReturn = series(
+  vendorCSS,
+  vendorJS,
+  moment,
+  highCharts,
+  picturefill,
+  jQuery,
+  slinky
+);
 task('hseCopy', toReturn)
