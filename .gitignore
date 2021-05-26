@@ -9,3 +9,4 @@
 yarn.lock
 /app/node_modules
 /app/report.html
+app/node_modules/
