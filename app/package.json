@@ -37,7 +37,6 @@
     "gulp-sizereport": "^1.2.1",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-terser": "^1.2.0",
-    "gulp-zip": "^5.0.2",
     "imagemin-jpeg-recompress": "^7.0.0",
     "imagemin-jpegtran": "^7.0.0",
     "imagemin-pngquant": "^9.0.0",
