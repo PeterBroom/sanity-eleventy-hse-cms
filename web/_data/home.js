@@ -19,11 +19,7 @@ async function getHome () {
     _type,
     _updatedAt,
     slug,
-    popular[]{
-      ...,
-      "slug": ^->slug,
-      "title": ^->title
-    },
+    popular[]->{slug, title},
     hero,
     metaDescription,
     metaKeywords,
