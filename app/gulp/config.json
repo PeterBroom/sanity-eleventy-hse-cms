@@ -21,6 +21,7 @@
         "assetPath": "../web/_site/assets/",
         "output": "../web/_site/assets",
         "scripts": {
+            "path": "./src/v5-scripts",
             "all": [
                 "./src/v5-scripts/google-custom-search.js",
                 "./src/v5-scripts/base64-poly.js",
