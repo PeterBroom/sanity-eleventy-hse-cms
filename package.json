@@ -8,7 +8,7 @@
     "dev": "lerna run dev --parallel",
     "format": "lerna run format",
     "build-studio": "lerna bootstrap && cd studio && npm run build",
-    "build-web": "lerna bootstrap && cd web && npm run build && cd ../app && npm run build",
+    "build-web": "lerna bootstrap && cd web && npm run build && cd ../app && npm rebuild node-sass && npm run build",
     "build-app": "lerna bootstrap && cd app && npm run build",
     "lint": "lerna run lint",
     "postinstall": "lerna bootstrap",
