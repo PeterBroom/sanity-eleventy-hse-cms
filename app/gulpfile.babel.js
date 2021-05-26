@@ -16,8 +16,5 @@ requireDir('./gulp/tasks', { recurse: true });
 // Default task
 task('default', series(hseBuild, commonTasks));
 
-// Development task
-// task('development', series(devguideBuild, commonTasks));
-
 // Production task
 task('production', series(hseBuild));
