@@ -3,11 +3,13 @@
   "name": "sanity-eleventy-hse-cms-web",
   "version": "1.0.0",
   "scripts": {
+    "app": "lerna run app --parallel",
     "build": "lerna run build --parallel",
     "dev": "lerna run dev --parallel",
     "format": "lerna run format",
     "build-studio": "lerna bootstrap && cd studio && npm run build",
     "build-web": "lerna bootstrap && cd web && npm run build",
+    "build-app": "lerna bootstrap && cd app && npm run build",
     "lint": "lerna run lint",
     "postinstall": "lerna bootstrap",
     "test": "echo \"Error: no test specified\" && exit 1"
