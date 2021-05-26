@@ -26,9 +26,10 @@ templateClass: tmpl-home
                 <a href="{{home[0].hero.heroLink.target}}" class="noIcon">
 
                     <div class="homepageBannerImage">
+                        {{responsiveImageDimensions.desktop.width|dump(2)}}
                         <picture>
-                            <source media="(min-width: 980px)" srcset="{{imageDesktop}} 2x">
-                            <source media="(max-width: 980px)" srcset="{{imageMobile}} 2x">
+                            <source media="(min-width: {{responsiveImageDimensions.desktop.width}}px)" srcset="{{imageDesktop}} 2x">
+                            <source media="(max-width: {{responsiveImageDimensions.desktop.width}}px)" srcset="{{imageMobile}} 2x">
                             <img src="{{imageMobile}}" alt="Image of a person washing their hands with sanitizer" loading="lazy">
                         </picture>
                     </div>

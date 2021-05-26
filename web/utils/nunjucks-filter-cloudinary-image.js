@@ -9,6 +9,6 @@ function cloudinaryImage(file, file, width) {
     const folderName = file.split(path.sep)[7]; // split file path to get folder at position 7
     const fileName = path.parse(file).base;
 
-    return `${BASE_URL}c_fill,g_auto,w_${width ? width : FALLBACK_WIDTH}/${folderName}`
+    return `${BASE_URL}c_fill,g_auto,w_${width ? width : FALLBACK_WIDTH}/${folderName}`;
 }
 module.exports = cloudinaryImage
