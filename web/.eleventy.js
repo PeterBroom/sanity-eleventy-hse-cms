@@ -2,11 +2,14 @@ const { DateTime } = require("luxon");
 const util = require('util')
 const CleanCSS = require("clean-css");
 const searchFilter = require('./_data/searchPages');
-const abbr = require('./utils/nunjucks-abbr-filter.js');
+const abbr = require('./utils/nunjucks-filter-abbr.js');
+const cloudinaryImage = require('./utils/nunjucks-filter-cloudinary-image.js');
 
 module.exports = function(eleventyConfig) {
 
   eleventyConfig.addNunjucksFilter('abbr', abbr);
+  eleventyConfig.addNunjucksFilter('cloudinaryImage', cloudinaryImage);
+  cloudinaryImage
 
   // https://www.11ty.io/docs/quicktips/inline-css/
   eleventyConfig.addFilter("cssmin", function(code) {
