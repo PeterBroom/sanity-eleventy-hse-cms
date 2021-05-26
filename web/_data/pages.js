@@ -51,11 +51,7 @@ async function getPages () {
           "slug": @.moreInfo.target->slug
       },
       _type == "linkBlock" => {
-        links[]{
-          ...,
-          "slug": ^->slug,
-          "title": ^->title,
-        },
+        links[]->{slug,title},
         more {
           ...,
           "slug": @.moreRef->slug
