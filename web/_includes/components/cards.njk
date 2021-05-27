@@ -13,7 +13,7 @@
                     {% set lastCol = loop.index % break %}
                     <div class="card component {{component.backgroundColour.value}}" data-grid="{{ component.cardGrid.columns }}{{' last' if lastCol === 0}}">
                         <h3>
-                            <a href="/{{item.moreInfo.slug.current}}">{{item.heading}}</a>
+                            <a href="/{{item.moreInfo.slug.current}}{% if item.moreInfo.tracking %}{{ item.moreInfo.tracking }}{% endif %}">{{item.heading}}</a>
                         </h3>
                         {% if item.copy %}
                             <p>{{item.copy}}</p>
@@ -22,10 +22,12 @@
                         {% if item.moreInfo.title %}
                             <p class="more">
                                 {% if item.moreInfo.title %}
-                                    <a href="/{{item.moreInfo.slug.current}}">{{ item.moreInfo.title }}</a>
+                                    {% set moreInfoTitle = item.moreInfo.title %}
                                 {% else %}
-                                    <a href="/{{item.moreInfo.slug.current}}">{{ item.heading }}</a>
+                                    {% set moreInfoTitle = item.heading %}
+
                                 {% endif %}
+                                <a href="/{{item.moreInfo.slug.current}}{% if item.moreInfo.tracking %}{{ item.moreInfo.tracking }}{% endif %}">{{ moreInfoTitle }}</a>
                             </p>
                         {% endif %}
                     </div>
@@ -40,7 +42,7 @@
 
             {% if component.furtherInfo.slug.current %}
                 <p class="moreLink">
-                    <a href="{{component.furtherInfo.slug.current}}">{{component.furtherInfo.title}}</a>
+                    <a href="/{{component.furtherInfo.slug.current}}{% if component.furtherInfo.tracking %}{{ component.furtherInfo.tracking }}{% endif %}">{{component.furtherInfo.title}}</a>
                 </p>
             {% endif %}
         </div>

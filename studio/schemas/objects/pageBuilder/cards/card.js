@@ -53,6 +53,12 @@ export default {
         name: 'target',
         title: 'Target page',
         to: [{type: 'section'}, {type: 'homepage'}, {type: 'page'}]
+      },
+      {
+        type: 'string',
+        name: 'tracking',
+        title: 'Tracking code',
+        description: 'Add tracking codes as a url string. Must start with a question mark.'
       }]
     },
   ],
