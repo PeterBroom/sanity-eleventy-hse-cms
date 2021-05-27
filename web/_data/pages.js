@@ -34,6 +34,7 @@ async function getPages () {
       ...,
       _type == "cards" => {
         furtherInfo {
+          ...,
           "slug": @.target->slug,
           "title": @.target->title,
         },
@@ -41,14 +42,24 @@ async function getPages () {
           ...,
           "slug": @.target->slug,
           moreInfo {
+            ...,
             title,
             "slug": @.target->slug,
           },
         }
       },
       _type == "bodyCopy" => {
+        ...,
+        "slug": @.moreInfo.target->slug,
+        editorInterface[]{
           ...,
-          "slug": @.moreInfo.target->slug
+          markDefs[]{
+            ...,
+            _type == "internalLink" => {
+                "slug": @.reference->slug,
+            }
+          }
+        }
       },
       _type == "linkBlock" => {
         links[]->{slug,title},

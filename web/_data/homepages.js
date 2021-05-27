@@ -30,6 +30,7 @@ async function getHomepages () {
       ...,
       _type == "cards" => {
         furtherInfo {
+          ...,
           "slug": @.target->slug,
           "title": @.target->title,
         },
@@ -37,6 +38,7 @@ async function getHomepages () {
           ...,
           "slug": @.target->slug,
           moreInfo {
+            ...,
             title,
             "slug": @.target->slug,
           },
