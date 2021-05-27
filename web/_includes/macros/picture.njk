@@ -1,0 +1,8 @@
+{% macro picture(imageMobile, imageTablet, imageDesktop, imageWidth, imageHeight) %}
+    <picture>
+        <source media="(min-width: {{breakpoints.desktop}}px)" srcset="{{imageDesktop}}, {{imageDesktop2x}} 2x">
+        <source media="(max-width: {{breakpoints.tablet}}px)" srcset="{{imageTablet}}, {{imageTablet2x}} 2x">
+        <source media="(max-width: {{breakpoints.mobile}}px)" srcset="{{imageMobile}}, {{imageMobile2x}} 2x">
+        <img src="{{imageMobile}}" width="{{imageWidth}}" height="{{imageHeight}}" alt="Image of a person washing their hands with sanitizer" loading="lazy">
+    </picture>
+{% endmacro %}

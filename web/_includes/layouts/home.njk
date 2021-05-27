@@ -2,8 +2,8 @@
 layout: layouts/base.njk
 templateClass: tmpl-home
 ---
+{% import "../macros/picture.njk" as picture %}
 {% set components = home[0].pageBuilder %}
-
 <div class="content-container">
     <div data-column="full">
         <div class="row">
@@ -17,21 +17,19 @@ templateClass: tmpl-home
                     {% endfor %}
                 </ul>
             </nav>
-
-            {# <pre>{{home[0].hero.heroImage | dump(2)}}</pre> #}
             {% set src = home[0].hero.heroImage.secure_url %}
-            {% set imageDesktop = src | cloudinaryImage(src, 1200) | safe %}
-            {% set imageMobile = src | cloudinaryImage(src, 680) | safe %}
+            {% set imageWidth = src.width %}
+            {% set imageHeight = src.height %}
+            {% set imageDesktop2x = src | cloudinaryImage(src, responsiveImageDimensions.desktop.width) | safe %}
+            {% set imageDesktop = src | cloudinaryImage(src, responsiveImageDimensions.desktop.width) | safe %}
+            {% set imageTablet2x = src | cloudinaryImage(src, responsiveImageDimensions.tablet.width) | safe %}
+            {% set imageTablet = src | cloudinaryImage(src, responsiveImageDimensions.tablet.width) | safe %}
+            {% set imageMobile2x = src | cloudinaryImage(src, responsiveImageDimensions.mobile.width) | safe %}
+            {% set imageMobile = src | cloudinaryImage(src, responsiveImageDimensions.mobile.width) | safe %}
             <div class="homepageBanner noBoxPadding last{% if home[0].hero.heroClass %} {{home[0].hero.heroClass}}{% endif %}" data-grid="8 last">
                 <a href="{{home[0].hero.heroLink.target}}" class="noIcon">
-
                     <div class="homepageBannerImage">
-                        {{responsiveImageDimensions.desktop.width|dump(2)}}
-                        <picture>
-                            <source media="(min-width: {{responsiveImageDimensions.desktop.width}}px)" srcset="{{imageDesktop}} 2x">
-                            <source media="(max-width: {{responsiveImageDimensions.desktop.width}}px)" srcset="{{imageMobile}} 2x">
-                            <img src="{{imageMobile}}" alt="Image of a person washing their hands with sanitizer" loading="lazy">
-                        </picture>
+                        {{ picture.picture(imageMobile, imageTablet, imageDesktop, imageWidth, imageHeight) }}
                     </div>
                     <div class="homepageBannerInner">
                         <h2>{{home[0].hero.title.text}}</h2>
