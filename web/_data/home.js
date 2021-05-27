@@ -28,6 +28,7 @@ async function getHome () {
       ...,
       _type == "cards" => {
         furtherInfo {
+          ...,
           "slug": @.target->slug,
           "title": @.target->title,
         },
@@ -35,13 +36,14 @@ async function getHome () {
           ...,
           "slug": @.target->slug,
           moreInfo {
+            ...,
             title,
             "slug": @.target->slug,
           },
         }
       },
     }
-  }`
+  }`;
   const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))
