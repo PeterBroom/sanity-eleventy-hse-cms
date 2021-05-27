@@ -19,7 +19,7 @@ templateClass: tmpl-home
             </nav>
 
             <div class="homepageBanner noBoxPadding last coronaPoster" data-grid="8 last">
-                <a href="{{home[0].hero.heroLink.target}}" class="noIcon">
+                <a href="{{home[0].hero.heroLink.target}}{% if home[0].hero.heroLink.tracking %}{{home[0].hero.heroLink.tracking}}{% endif %}" class="noIcon">
                     <div class="homepageBannerImage">
                         <picture>
                             <source media="(min-width: 980px)" srcset="https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer.png, https://www.hse.gov.uk/assets/v4-homepage/images/corona-hand-sanitizer-2x.png 2x">

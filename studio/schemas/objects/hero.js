@@ -9,6 +9,11 @@ export default {
       title: 'Title',
     },
     {
+      name: 'heroClass',
+      type: 'string',
+      title: 'Hero class',
+    },
+    {
       type: 'portableText',
       name: 'editorInterface',
       title: 'Editor Interface',
@@ -21,6 +26,11 @@ export default {
         type: 'string',
         name: 'target',
         title: 'Target page'
+      },{
+        type: 'string',
+        name: 'tracking',
+        title: 'Tracking code',
+        description: 'Add tracking codes as a url string. Must start with a question mark.'
       }]
     },
     {
