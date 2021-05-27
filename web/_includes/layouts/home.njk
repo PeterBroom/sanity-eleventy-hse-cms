@@ -54,7 +54,7 @@ templateClass: tmpl-home
                             {% set break = 12 / home[0].solutions.grid.columns %}
                             {% set lastCol = loop.index % break %}
                             <li data-grid="{{home[0].solutions.grid.columns}}{{' last' if lastCol === 0}}">
-                                <a class="bg-{{items.backgroundColour.value}}" href="{{items.link}}">{{items.title}}
+                                <a class="bg-{{items.backgroundColour.value}}" href="{{items.link}}{% if items.tracking.code %}{{items.tracking.code}}{% endif %}">{{items.title}}
                                     {% if items.hiddenTitlePart %}
                                         <span class="visually-hidden">{{items.hiddenTitlePart}}</span>
                                     {% endif %}
