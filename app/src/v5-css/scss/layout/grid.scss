@@ -37,6 +37,7 @@ $susy: (
 .row {
   display: flex;
   flex-direction: column;
+  width: 100%;
   @media (min-width: $tablet) {
     flex-direction: row;
   }
