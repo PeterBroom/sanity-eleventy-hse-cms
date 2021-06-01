@@ -12,20 +12,9 @@ export default {
       type: 'string',
     },
     {
-      type: 'array',
+      type: 'linkList',
       name: 'links',
       title: 'Links',
-      of: [
-        {
-          name: 'target',
-          type: 'reference',
-          to: [
-            {type: 'section'},
-            {type: 'homepage'},
-            {type: 'page'},
-          ]
-        }
-      ],
     },
     {
       name: 'more',
@@ -44,10 +33,16 @@ export default {
           to: [{type: 'page'}]
         },
         {
+          type: 'string',
+          name: 'tracking',
+          title: 'Tracking code',
+          description: 'Add tracking codes as a url string. Must start with a question mark.'
+        },
+        {
           name: 'moreRefRelative',
           type: 'string',
           title: 'Relative link',
-        },
+        }
       ]
     },
     {
