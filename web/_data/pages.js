@@ -34,27 +34,40 @@ async function getPages () {
       ...,
       _type == "cards" => {
         furtherInfo {
-          "slug": @.target->slug,
-          "title": @.target->title,
+          ...,
+          internalLink->{title, slug}
         },
         cardItems[]{
           ...,
           "slug": @.target->slug,
           moreInfo {
+            ...,
             title,
-            "slug": @.target->slug,
+            internalLink->{title, slug}
           },
         }
       },
       _type == "bodyCopy" => {
+        ...,
+        moreInfo {
           ...,
-          "slug": @.moreInfo.target->slug
+          internalLink->{title, slug},
+        },
+        editorInterface[]{
+          ...,
+          markDefs[]{
+            ...,
+            _type == "internalLink" => {
+                "slug": @.reference->slug,
+            }
+          }
+        }
       },
       _type == "linkBlock" => {
         links[]->{slug,title},
         more {
           ...,
-          "slug": @.moreRef->slug
+          internalLink->{title, slug}
         }
       }
     }

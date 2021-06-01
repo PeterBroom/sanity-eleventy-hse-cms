@@ -18,6 +18,12 @@ export default {
       description: 'Will hide the title but not for the visually impaired.'
     },
     {
+      name: 'linkFooter',
+      type: 'boolean',
+      title: 'Have link in card footer',
+      description: 'Will place a link in footer of each card rather than header'
+    },
+    {
       name: 'cardItems',
       title: 'Card Items',
       type: 'array',
@@ -40,20 +46,8 @@ export default {
     },
     {
       name: 'furtherInfo',
-      type: 'object',
-      title: 'Further information',
-      fields: [{
-        name: 'title',
-        type: 'string',
-        title: 'Link text',
-        description: 'To use page title leave this field blank.'
-      },
-      {
-        type: 'reference',
-        name: 'target',
-        title: 'Target page',
-        to: [{type: 'section'}, {type: 'homepage'}, {type: 'page'}]
-      }]
+      type: 'link',
+      title: 'Further information'
     },
   ],
   preview: {

@@ -1,6 +1,5 @@
 import {AiOutlineHome} from 'react-icons/ai'
 
-import {navigation} from '../objects/navigation/sub/navigation.js'
 export default {
   title: 'Home',
   name: 'home',
@@ -10,19 +9,7 @@ export default {
     {
         name: 'popular',
         title: 'Popular',
-        type: 'array',
-        of: [
-        {
-          name: 'target',
-          type: 'reference',
-          to: [
-            {type: 'section'},
-            {type: 'homepage'},
-            {type: 'page'},
-          ]
-        }
-      ],
-      validation: Rule => Rule.required()
+        type: 'linkList'
     },
     {
         name: 'hero',

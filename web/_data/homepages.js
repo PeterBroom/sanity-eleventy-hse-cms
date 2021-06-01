@@ -30,15 +30,16 @@ async function getHomepages () {
       ...,
       _type == "cards" => {
         furtherInfo {
-          "slug": @.target->slug,
-          "title": @.target->title,
+          ...,
+          internalLink->{title, slug}
         },
         cardItems[]{
           ...,
           "slug": @.target->slug,
           moreInfo {
+            ...,
             title,
-            "slug": @.target->slug,
+            internalLink->{title, slug}
           },
         }
       }
@@ -46,6 +47,10 @@ async function getHomepages () {
     "bodyCopy": pageBuilder[]{
       ...,
       _type == "bodyCopy" => {
+        moreInfo {
+          ...,
+          internalLink->{title, slug},
+        },
         editorInterface[]{
           ...,
           markDefs[]{

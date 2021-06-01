@@ -1,4 +1,5 @@
 {% extends "./componentContainer.njk" %}
+
 {% block componentContent %}
     <section class="cards__container">
         <header class="cards__header {{ 'hidden' if component.titleHidden}}">
@@ -13,19 +14,19 @@
                     {% set lastCol = loop.index % break %}
                     <div class="card component {{component.backgroundColour.value}}" data-grid="{{ component.cardGrid.columns }}{{' last' if lastCol === 0}}">
                         <h3>
-                            <a href="/{{item.moreInfo.slug.current}}">{{item.heading}}</a>
+                            {% if component.linkFooter == true or item.moreInfo.internalLink == null %}
+                                {{item.heading}}
+                            {% else %}
+                                {{ linkmacro.link(item.moreInfo) }}
+                            {% endif %}
                         </h3>
                         {% if item.copy %}
                             <p>{{item.copy}}</p>
                         {% endif %}
 
-                        {% if item.moreInfo.title %}
+                        {% if component.linkFooter == true %}
                             <p class="more">
-                                {% if item.moreInfo.title %}
-                                    <a href="/{{item.moreInfo.slug.current}}">{{ item.moreInfo.title }}</a>
-                                {% else %}
-                                    <a href="/{{item.moreInfo.slug.current}}">{{ item.heading }}</a>
-                                {% endif %}
+                                {{ linkmacro.link(item.moreInfo, moreInfoTitle) }}
                             </p>
                         {% endif %}
                     </div>
@@ -38,9 +39,11 @@
                 {% endif %}
             {%- endfor %}
 
-            {% if component.furtherInfo.slug.current %}
+            {% if component.furtherInfo %}
                 <p class="moreLink">
-                    <a href="{{component.furtherInfo.slug.current}}">{{component.furtherInfo.title}}</a>
+                    {{ linkmacro.link(component.furtherInfo) }}
+
+                    {# <a href="/{{component.furtherInfo.slug.current}}{% if component.furtherInfo.tracking %}{{ component.furtherInfo.tracking }}{% endif %}">{{component.furtherInfo.title}}</a> #}
                 </p>
             {% endif %}
         </div>

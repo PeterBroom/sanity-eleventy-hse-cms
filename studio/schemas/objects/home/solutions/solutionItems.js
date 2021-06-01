@@ -2,6 +2,9 @@ export default {
     name: 'solutionItem',
     title: 'Item',
     type: 'object',
+    fieldsets: [
+        {name: 'link', title: 'Link'},
+    ],
     fields: [
         {
             name: 'title',
@@ -17,6 +20,13 @@ export default {
             name: 'link',
             title: 'Link',
             type: 'string',
+            fieldset: 'link'
+        },
+        {
+            type: 'analytics',
+            name: 'tracking',
+            title: 'Tracking',
+            fieldset: 'link'
         },
         {
             name: 'backgroundColour',

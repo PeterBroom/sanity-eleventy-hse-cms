@@ -19,7 +19,10 @@ async function getHome () {
     _type,
     _updatedAt,
     slug,
-    popular[]->{slug, title},
+    popular[]{
+      ...,
+      internalLink->{title, slug}
+    },
     hero,
     metaDescription,
     metaKeywords,
@@ -28,20 +31,21 @@ async function getHome () {
       ...,
       _type == "cards" => {
         furtherInfo {
-          "slug": @.target->slug,
-          "title": @.target->title,
+          ...,
+          internalLink->{title, slug}
         },
         cardItems[]{
           ...,
           "slug": @.target->slug,
           moreInfo {
+            ...,
             title,
-            "slug": @.target->slug,
+            internalLink->{title, slug}
           },
         }
       },
     }
-  }`
+  }`;
   const order = `| order(_updatedAt asc)`
   const query = [filter, projection, order].join(' ')
   const docs = await client.fetch(query).catch(err => console.error(err))

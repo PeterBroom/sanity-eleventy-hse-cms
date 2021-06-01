@@ -26,6 +26,12 @@ import navigationSection from './objects/navigation/sub/navigationSection'
 
 import gridLayout from './objects/gridLayout'
 
+import analytics from './objects/link/analytics'
+import internalLink from './objects/link/internalLink'
+import externalLink from './objects/link/externalLink'
+import link from './objects/link/link'
+import linkList from './objects/link/linkList'
+
 import solutions from './objects/home/solutions/solutions'
 import solutionItems from './objects/home/solutions/solutionItems'
 
@@ -90,6 +96,11 @@ import divider from './objects/pageBuilder/divider'
 export default createSchema({
   name: 'HSE Schema',
   types: schemaTypes.concat([
+    link,
+    analytics,
+    internalLink,
+    externalLink,
+    linkList,
     gridLayout,
     backgroundColour,
     altBackgroundColour,
