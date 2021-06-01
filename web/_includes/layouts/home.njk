@@ -2,7 +2,9 @@
 layout: layouts/base.njk
 templateClass: tmpl-home
 ---
+
 {% set components = home[0].pageBuilder %}
+{% import '../macros/link.njk' as link %}
 
 <div class="content-container">
     <div data-column="full">
@@ -12,7 +14,7 @@ templateClass: tmpl-home
                 <ul class="linkList">
                     {% for item in home[0].popular %}
                         <li>
-                            <a href="./{{item.slug.current}}">{{item.title}}</a>
+                            {{ link.link(item) }}
                         </li>
                     {% endfor %}
                 </ul>
@@ -45,25 +47,22 @@ templateClass: tmpl-home
         {% include "../components/pageBuilder.njk" %}
 
         <div class="row">
-            <div class="component" data-grid="12 last">
-                <nav aria-label="Solutions from HSE">
-                    <h2>{{home[0].solutions.title}}</h2>
-                    {# <pre>{{home[0].solutions|dump(2)}}</p> #}
-                    <ul class="hsl-links row">
-                        {% for items in home[0].solutions.solutionItems %}
-                            {% set break = 12 / home[0].solutions.grid.columns %}
-                            {% set lastCol = loop.index % break %}
-                            <li data-grid="{{home[0].solutions.grid.columns}}{{' last' if lastCol === 0}}">
-                                <a class="bg-{{items.backgroundColour.value}}" href="{{items.link}}{% if items.tracking.code %}{{items.tracking.code}}{% endif %}">{{items.title}}
-                                    {% if items.hiddenTitlePart %}
-                                        <span class="visually-hidden">{{items.hiddenTitlePart}}</span>
-                                    {% endif %}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </nav>
-            </div>
+            <nav aria-label="Solutions from HSE" class="component" data-grid="12 last">
+                <h2>{{home[0].solutions.title}}</h2>
+                <ul class="hsl-links row">
+                    {% for items in home[0].solutions.solutionItems %}
+                        {% set break = 12 / home[0].solutions.grid.columns %}
+                        {% set lastCol = loop.index % break %}
+                        <li class="bg-{{items.backgroundColour.value}}" data-grid="{{home[0].solutions.grid.columns}}{{' last' if lastCol === 0}}">
+                            <a href="{{items.link}}{% if items.tracking %}{{items.tracking}}{% endif %}">{{items.title}}
+                                {% if items.hiddenTitlePart %}
+                                    <span class="visually-hidden">{{items.hiddenTitlePart}}</span>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
