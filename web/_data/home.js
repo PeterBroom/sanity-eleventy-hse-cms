@@ -19,7 +19,10 @@ async function getHome () {
     _type,
     _updatedAt,
     slug,
-    popular[]->{slug, title},
+    popular[]{
+      ...,
+      internalLink->{title, slug}
+    },
     hero,
     metaDescription,
     metaKeywords,
@@ -29,8 +32,7 @@ async function getHome () {
       _type == "cards" => {
         furtherInfo {
           ...,
-          "slug": @.target->slug,
-          "title": @.target->title,
+          internalLink->{title, slug}
         },
         cardItems[]{
           ...,
@@ -38,7 +40,7 @@ async function getHome () {
           moreInfo {
             ...,
             title,
-            "slug": @.target->slug,
+            internalLink->{title, slug}
           },
         }
       },

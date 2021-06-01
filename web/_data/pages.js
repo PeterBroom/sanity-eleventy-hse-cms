@@ -35,8 +35,7 @@ async function getPages () {
       _type == "cards" => {
         furtherInfo {
           ...,
-          "slug": @.target->slug,
-          "title": @.target->title,
+          internalLink->{title, slug}
         },
         cardItems[]{
           ...,
@@ -44,13 +43,16 @@ async function getPages () {
           moreInfo {
             ...,
             title,
-            "slug": @.target->slug,
+            internalLink->{title, slug}
           },
         }
       },
       _type == "bodyCopy" => {
         ...,
-        "slug": @.moreInfo.target->slug,
+        moreInfo {
+          ...,
+          internalLink->{title, slug},
+        },
         editorInterface[]{
           ...,
           markDefs[]{
@@ -65,7 +67,7 @@ async function getPages () {
         links[]->{slug,title},
         more {
           ...,
-          "slug": @.moreRef->slug
+          internalLink->{title, slug}
         }
       }
     }

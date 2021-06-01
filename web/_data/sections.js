@@ -31,8 +31,7 @@ async function getSections () {
       _type == "cards" => {
         furtherInfo {
           ...,
-          "slug": @.target->slug,
-          "title": @.target->title,
+          internalLink->{title, slug}
         },
         cardItems[]{
           ...,
@@ -40,7 +39,7 @@ async function getSections () {
           moreInfo {
             ...,
             title,
-            "slug": @.target->slug,
+            internalLink->{title, slug}
           },
         }
       },
