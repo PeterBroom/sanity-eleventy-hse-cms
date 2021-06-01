@@ -17,7 +17,7 @@
                             {% if component.linkFooter == true or item.moreInfo.internalLink == null %}
                                 {{item.heading}}
                             {% else %}
-                                {{ linkmacro.link(item.moreInfo) }}
+                                {{ linkMacro.link(item.moreInfo) }}
                             {% endif %}
                         </h3>
                         {% if item.copy %}
@@ -26,7 +26,7 @@
 
                         {% if component.linkFooter == true %}
                             <p class="more">
-                                {{ linkmacro.link(item.moreInfo, moreInfoTitle) }}
+                                {{ linkMacro.link(item.moreInfo, moreInfoTitle) }}
                             </p>
                         {% endif %}
                     </div>
@@ -41,7 +41,7 @@
 
             {% if component.furtherInfo %}
                 <p class="moreLink">
-                    {{ linkmacro.link(component.furtherInfo) }}
+                    {{ linkMacro.link(component.furtherInfo) }}
 
                     {# <a href="/{{component.furtherInfo.slug.current}}{% if component.furtherInfo.tracking %}{{ component.furtherInfo.tracking }}{% endif %}">{{component.furtherInfo.title}}</a> #}
                 </p>
