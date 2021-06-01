@@ -30,15 +30,16 @@ async function getSections () {
       ...,
       _type == "cards" => {
         furtherInfo {
-          "slug": @.target->slug,
-          "title": @.target->title,
+          ...,
+          internalLink->{title, slug}
         },
         cardItems[]{
           ...,
           "slug": @.target->slug,
           moreInfo {
+            ...,
             title,
-            "slug": @.target->slug,
+            internalLink->{title, slug}
           },
         }
       },

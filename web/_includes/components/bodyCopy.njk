@@ -1,4 +1,5 @@
 {% extends "./componentContainer.njk" %}
+
 {% block componentContent %}
     {% if component.title %}
         {% if component.title.accronym %}
@@ -13,11 +14,7 @@
 
     {% if component.moreInfo %}
         <p class="more">
-            {% if component.moreInfo.title %}
-                <a href="/{{component.slug.current}}">{{ component.moreInfo.title }}</a>
-            {% else %}
-                <a href="/{{component.moreInfo.slug.current}}">{{ component.moreInfo.heading }}</a>
-            {% endif %}
+            {{ linkmacro.link(component.moreInfo) }}
         </p>
     {% endif %}
 {% endblock %}

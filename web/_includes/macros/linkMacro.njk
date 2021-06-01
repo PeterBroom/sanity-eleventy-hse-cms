@@ -1,0 +1,10 @@
+{% macro link(item) %}
+    {% set internalLink = '/' + item.internalLink.slug.current %}
+    {% set internalLinkTitle = item.internalLink.title %}
+    {% set externalLink = item.externalLink %}
+    {% set analyticsCode = item.analytics %}
+    {% set customTitle = item.title %}
+    <a href="{{ externalLink if externalLink else internalLink }}{{analyticsCode}}">
+        {{ customTitle if customTitle else internalLinkTitle }}
+    </a>
+{% endmacro %}
