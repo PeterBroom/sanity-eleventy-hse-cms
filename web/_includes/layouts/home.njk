@@ -4,7 +4,7 @@ templateClass: tmpl-home
 ---
 
 {% set components = home[0].pageBuilder %}
-{% import '../macros/link.njk' as link %}
+{% import '../macros/linkMacro.njk' as link %}
 
 <div class="content-container">
     <div data-column="full">
@@ -14,7 +14,7 @@ templateClass: tmpl-home
                 <ul class="linkList">
                     {% for item in home[0].popular %}
                         <li>
-                            {{ link.link(item) }}
+                            {{ linkMacro.link(item) }}
                         </li>
                     {% endfor %}
                 </ul>
