@@ -63,8 +63,6 @@ import subscribe from './objects/pageBuilder/subscribe/subscribe'
 
 import hero from './objects/hero'
 
-import form from './objects/pageBuilder/form'
-
 import linkBlock from './objects/pageBuilder/linkBlock/linkBlock'
 
 import cards from './objects/pageBuilder/cards/card'
@@ -150,7 +148,6 @@ export default createSchema({
     textarea,
     bodyCopy,
     subscribe,
-    form,
     cards,
     cardItems,
     linkBlock,
