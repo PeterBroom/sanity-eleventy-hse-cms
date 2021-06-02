@@ -1,7 +1,10 @@
+import {AiOutlineCalendar} from 'react-icons/ai';
+
 export default {
     name: 'inputDate',
     title: 'Date',
     type: 'object',
+    icon: AiOutlineCalendar,
     fields: [
         {
             name: 'label',
