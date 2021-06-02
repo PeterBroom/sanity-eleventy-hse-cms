@@ -1,10 +1,10 @@
-import {IoIosArrowDropdown} from 'react-icons/io'
+import {BsCardList} from 'react-icons/bs'
 
 export default {
   name: 'accordion',
   type: 'object',
   title: 'Accordion',
-  icon: IoIosArrowDropdown,
+  icon: BsCardList,
   fields: [
     {
       name: 'title',
@@ -15,7 +15,7 @@ export default {
       name: 'accordionArray',
       type: 'array',
       title: 'Items',
-      of: [{type: 'accordionItem'}]
+      of: [{ type: 'accordionItem' }]
     },
     {
       name: 'grid',
@@ -28,11 +28,11 @@ export default {
       title: 'title',
       subtitle: 'grid'
     },
-    prepare (selection) {
-      const {title, subtitle} = selection
-      const previewTitle = title ? title : 'Accordion';
-      const last = subtitle.gridLast ? 'last' : '';
-      const column = subtitle.columns ? subtitle.columns : '12';
+    prepare(selection) {
+      const { title, subtitle } = selection
+      const previewTitle = title ? title : 'Accordion'
+      const last = subtitle.gridLast ? 'last' : ''
+      const column = subtitle.columns ? subtitle.columns : '12'
       const gridPreview = `${column} ${last}`
       return {
         title: `${previewTitle}`,

@@ -8,10 +8,10 @@ export default {
   type: 'document',
   icon: AiOutlineFileText,
   fieldsets: [
-    {name: 'pageTitle', title: 'Page title'},
-    {name: 'pageNavigation', title: 'Page navigation'},
-    {name: 'pageContent', title: 'Page content'},
-    {name: 'pageMeta', title: 'Meta data'}
+    { name: 'pageTitle', title: 'Page title' },
+    { name: 'pageNavigation', title: 'Page navigation' },
+    { name: 'pageContent', title: 'Page content' },
+    { name: 'pageMeta', title: 'Meta data' }
   ],
   fields: [
     {
@@ -63,7 +63,7 @@ export default {
       type: 'reference',
       description: 'This will highlight the nav in the header for a section',
       fieldset: 'pageNavigation',
-      to: [{type: 'section'}]
+      to: [{ type: 'section' }]
     },
     {
       name: 'belongsTo',
@@ -89,7 +89,7 @@ export default {
       fieldset: 'pageNavigation',
       readOnly: false,
       options: {
-        source: (doc) => doc.title,
+        source: doc => doc.title,
         maxLength: 96,
         auto: true
       },
@@ -105,11 +105,7 @@ export default {
         {
           name: 'target',
           type: 'reference',
-          to: [
-            {type: 'section'},
-            {type: 'homepage'},
-            {type: 'page'},
-          ]
+          to: [{ type: 'section' }, { type: 'homepage' }, { type: 'page' }]
         }
       ],
       validation: Rule => Rule.required()
@@ -122,28 +118,37 @@ export default {
       description: 'Add components to your page to build up your content',
       of: [
         {
+          type: 'accordion'
+        },
+        {
           type: 'bodyCopy'
         },
         {
           type: 'cards'
         },
         {
-          type: 'accordion'
-        },
-        {
           type: 'chart'
         },
         {
-          type: 'subscribe'
+          type: 'divider'
+        },
+        {
+          type: 'formBuilder'
         },
         {
           type: 'linkBlock'
         },
         {
-          type: 'youtube'
+          type: 'notificationBanner'
         },
         {
-          type: 'formBuilder'
+          type: 'subscribe'
+        },
+        {
+          type: 'tabs'
+        },
+        {
+          type: 'youtube'
         }
       ],
       options: {
@@ -167,9 +172,14 @@ export default {
       name: 'metaDescription',
       title: 'Description',
       type: 'text',
-      description: 'Descriptions are important for page searches and search engines. Please enter a description for this pages content between 50 and 250 characters.',
+      description:
+        'Descriptions are important for page searches and search engines. Please enter a description for this pages content between 50 and 250 characters.',
       fieldset: 'pageMeta',
-      validation: Rule => Rule.required().min(50).max(250).warning('Longer descriptions are usually better')
+      validation: Rule =>
+        Rule.required()
+          .min(50)
+          .max(250)
+          .warning('Longer descriptions are usually better')
     },
     {
       name: 'metaKeywords',
@@ -178,7 +188,7 @@ export default {
       fieldset: 'pageMeta',
       validation: Rule => Rule.required().min(3),
       type: 'array',
-      of: [{type: 'string'}],
+      of: [{ type: 'string' }],
       options: {
         layout: 'tags'
       }
@@ -220,10 +230,11 @@ export default {
       subtitle: 'updatedAt',
       slug: 'slug'
     },
-    prepare ({title = 'No title'}) {
+    prepare({ title = 'No title' }) {
       return {
         title
       }
     }
   }
 }
+
