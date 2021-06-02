@@ -1,0 +1,24 @@
+{% extends "./componentContainer.njk" %}
+{% block componentContent %}
+    {# <pre>{{component|dump(2)}}</pre> #}
+
+    <div class="tabs">
+        <h2 class="tabs__heading">{{component.title}}</h2>
+        <ul class="tabs__list">
+            {% for item in component.tabArray %}
+                <li class="tabs__list-item {{ selected if loop.first }}">
+                    <a class="tabs__tab" href="#{{item._key}}">{{item.tabHeading}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        {% for item in component.tabArray %}
+            <section class="tabs__panel" id="{{item._key}}">
+                <header>
+                    <h2>{{item.tabHeading}}</h2>
+                </header>
+                {{ item.tabContent | markdownify | safe }}
+
+            </section>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -35,6 +35,9 @@
         {% if component._type === 'formBuilder' %}
             {% include "./forms/formBuilder.njk" %}
         {% endif %}
+        {% if component._type === 'tabs' %}
+            {% include "./tabs.njk" %}
+        {% endif %}
 
         {% if component.grid.gridLast === true and not loop.last %}
         </div>

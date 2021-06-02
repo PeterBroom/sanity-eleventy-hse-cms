@@ -1,21 +1,22 @@
 import {BsCardList} from 'react-icons/bs'
 
 export default {
-  name: 'accordion',
+  name: 'tabs',
   type: 'object',
-  title: 'Accordion',
+  title: 'Tabs',
   icon: BsCardList,
   fields: [
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
+      description: 'The title will be hidden from the screen but not from screen readers'
     },
     {
-      name: 'accordionArray',
+      name: 'tabArray',
       type: 'array',
-      title: 'Items',
-      of: [{ type: 'accordionItem' }]
+      title: 'Tab items',
+      of: [{ type: 'tabItem' }]
     },
     {
       name: 'grid',
@@ -30,7 +31,7 @@ export default {
     },
     prepare(selection) {
       const { title, subtitle } = selection
-      const previewTitle = title ? title : 'Accordion'
+      const previewTitle = title ? title : 'Tab'
       const last = subtitle.gridLast ? 'last' : ''
       const column = subtitle.columns ? subtitle.columns : '12'
       const gridPreview = `${column} ${last}`

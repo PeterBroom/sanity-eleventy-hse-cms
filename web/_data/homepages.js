@@ -76,6 +76,14 @@ async function getHomepages () {
         if (component._type === "bodyCopy") {
           component.editorInterface = BlocksToMarkdown(component.editorInterface, { serializers, ...client.config() })
         }
+        if (component._type === "tabs") {
+          component.tabArray.forEach((content) => {
+            content.tabContent = BlocksToMarkdown(content.tabContent, {
+              serializers,
+              ...client.config(),
+            });
+          });
+        }
       });
     }
   })

@@ -63,14 +63,15 @@ import subscribe from './objects/pageBuilder/subscribe/subscribe'
 
 import hero from './objects/hero'
 
-import form from './objects/pageBuilder/form'
-
 import linkBlock from './objects/pageBuilder/linkBlock/linkBlock'
 
 import cards from './objects/pageBuilder/cards/card'
 import cardItems from './objects/pageBuilder/cards/cardItems'
 
 import charts from './objects/pageBuilder/charts/chart'
+
+import tabs from './objects/pageBuilder/tabs/tabs'
+import tabItem from './objects/pageBuilder/tabs/tabItem'
 
 import accordion from './objects/pageBuilder/accordion/accordion'
 import accordionItem from './objects/pageBuilder/accordion/accordionItem'
@@ -147,7 +148,6 @@ export default createSchema({
     textarea,
     bodyCopy,
     subscribe,
-    form,
     cards,
     cardItems,
     linkBlock,
@@ -155,8 +155,12 @@ export default createSchema({
     youtube,
     accordion,
     accordionItem,
+    tabs,
+    tabItem,
     notificationBanner,
     divider
     // mainImage
   ])
 })
+
+
