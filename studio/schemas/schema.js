@@ -72,6 +72,9 @@ import cardItems from './objects/pageBuilder/cards/cardItems'
 
 import charts from './objects/pageBuilder/charts/chart'
 
+import tabs from './objects/pageBuilder/tabs/tabs'
+import tabItem from './objects/pageBuilder/tabs/tabItem'
+
 import accordion from './objects/pageBuilder/accordion/accordion'
 import accordionItem from './objects/pageBuilder/accordion/accordionItem'
 
@@ -155,8 +158,12 @@ export default createSchema({
     youtube,
     accordion,
     accordionItem,
+    tabs,
+    tabItem,
     notificationBanner,
     divider
     // mainImage
   ])
 })
+
+
