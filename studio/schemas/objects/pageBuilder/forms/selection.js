@@ -1,15 +1,15 @@
-import {IoGridOutline} from 'react-icons/io5'
+import { VscChecklist } from 'react-icons/vsc'
 
 export default {
   name: 'selection',
   title: 'Selection field',
   type: 'object',
-  icon: IoGridOutline,
+  icon: VscChecklist,
   fields: [
     {
       name: 'label',
       title: 'Label',
-      type: 'string',
+      type: 'string'
     },
     {
       name: 'hint',
@@ -23,28 +23,28 @@ export default {
       type: 'inputWidth'
     },
     {
-        name: 'ariaAttributes',
-        title: 'Field attributes',
-        type: 'ariaAttributes'
+      name: 'ariaAttributes',
+      title: 'Field attributes',
+      type: 'ariaAttributes'
     },
     {
-        name: 'type',
-        title: 'Field type',
-        type: 'selectionType'
+      name: 'type',
+      title: 'Field type',
+      type: 'selectionType'
     },
     {
       name: 'selectionItems',
       title: 'Selection items',
       type: 'array',
-      of: [{type: 'selection.item'}]
+      of: [{ type: 'selection.item' }]
     }
   ],
   preview: {
     select: {
-      title: 'label',
+      title: 'label'
     },
-    prepare (selection) {
-      const {title} = selection
+    prepare(selection) {
+      const { title } = selection
       return {
         title: title
       }

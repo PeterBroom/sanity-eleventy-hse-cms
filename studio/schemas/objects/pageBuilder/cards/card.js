@@ -1,15 +1,15 @@
-import {IoGridOutline} from 'react-icons/io5'
+import {BsCardList} from 'react-icons/bs'
 
 export default {
   name: 'cards',
   title: 'Cards',
   type: 'object',
-  icon: IoGridOutline,
+  icon: BsCardList,
   fields: [
     {
       name: 'title',
       title: 'Title',
-      type: 'string',
+      type: 'string'
     },
     {
       name: 'titleHidden',
@@ -27,7 +27,7 @@ export default {
       name: 'cardItems',
       title: 'Card Items',
       type: 'array',
-      of: [{type: 'card.item'}]
+      of: [{ type: 'card.item' }]
     },
     {
       name: 'cardGrid',
@@ -48,19 +48,19 @@ export default {
       name: 'furtherInfo',
       type: 'link',
       title: 'Further information'
-    },
+    }
   ],
   preview: {
     select: {
       title: 'title',
       subtitle: 'grid'
     },
-    prepare (selection) {
-      const {title, subtitle} = selection
-      const last = subtitle.gridLast ? 'last' : '';
-      const column = subtitle.columns ? subtitle.columns : '12';
+    prepare(selection) {
+      const { title, subtitle } = selection
+      const last = subtitle.gridLast ? 'last' : ''
+      const column = subtitle.columns ? subtitle.columns : '12'
       const gridPreview = `${column} ${last}`
-      const previewTitle = title ? title : 'Cards';
+      const previewTitle = title ? title : 'Cards'
       return {
         title: `${previewTitle}`,
         subtitle: `Grid of ${gridPreview}`
