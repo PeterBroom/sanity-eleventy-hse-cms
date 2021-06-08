@@ -6,11 +6,21 @@
 <!doctype html>
 <html lang="en">
   <head>
+    {% include '../components/analytics-header.njk' %}
     {% include '../components/metadata.njk' %}
     {% include '../components/styles.njk' %}
     <title>{{ renderData.title or title or settingsMeta.title }}</title>
   </head>
   <body class="{{templateClass}}">
+    <!-- BEGIN GTM -->
+    {% set googleCode = envCredentials.gtm %}
+    <noscript aria-hidden="true" aria-label="{{googleCode}}">
+      <iframe title="{{googleCode}}"
+        src="https://www.googletagmanager.com/ns.html?id={{googleCode}}" height="0"
+        width="0" style="display:none;visibility:hidden" aria-hidden="true"></iframe>
+    </noscript>
+    <!-- END GTM -->
+
     {% include '../components/header.njk' %}
     {% include '../components/breadcrumb.njk' %}
 
@@ -26,6 +36,7 @@
     {% include '../components/footer.njk' %}
     {% include '../components/scripts-footer.njk' %}
     {% include '../components/search-script.njk' %}
+    {% include '../components/analytics-footer.njk' %}
 
     <!-- Current page: {{ page.url | url }} -->
   </body>
