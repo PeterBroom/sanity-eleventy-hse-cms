@@ -20,6 +20,7 @@
         ],
         "assetPath": "../web/_site/assets/",
         "output": "../web/_site/assets",
+        "ajax": "./src/ajax/",
         "scripts": {
             "path": "./src/v5-scripts",
             "all": [
