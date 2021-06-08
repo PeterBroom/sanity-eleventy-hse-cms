@@ -60,6 +60,13 @@ function slinky() {
     dest(`${config.secureroot.assetPath}/v5-js`)
   );
 }
+
+function globalMessage() {
+  return src([`${config.secureroot.ajax}/global-message.json`]).pipe(
+    dest(`${config.secureroot.assetPath}/ajax`)
+  );
+}
+
 const toReturn = series(
   vendorCSS,
   vendorJS,
@@ -67,6 +74,7 @@ const toReturn = series(
   highCharts,
   picturefill,
   jQuery,
-  slinky
+  slinky,
+  globalMessage
 );
 task('hseCopy', toReturn)
