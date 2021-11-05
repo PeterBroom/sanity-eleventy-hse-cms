@@ -1,9 +1,9 @@
 {% import '../macros/linkMacro.njk' as linkMacro %}
 {% if component.backgroundColour.value %}
     {% set bgColour = 'bg-'+component.backgroundColour.value %}
-{% else %}
-    {% set bgColour = 'bg-white' %}
 {% elseif component._type === 'cards' %}
+    {% set bgColour = 'bg-white' %}
+{% else %}
     {% set bgColour = 'bg-white' %}
 {% endif %}
 
