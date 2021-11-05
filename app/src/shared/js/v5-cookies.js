@@ -3,6 +3,6 @@ import { notificationBanner } from  './combined/cookies/notification-banner.js';
 // Window load
 window.addEventListener('DOMContentLoaded',() => {
  // initiate cookies
-  cookiePreferences();
-  notificationBanner();
+  // cookiePreferences();
+  // notificationBanner();
 }); // end window load
