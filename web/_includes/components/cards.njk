@@ -1,5 +1,5 @@
 {% extends "./componentContainer.njk" %}
-
+{% set bgcolour = 'bg-' + component.backgroundColour.value %}
 {% block componentContent %}
     <section class="cards__container">
         <header class="cards__header {{ 'hidden' if component.titleHidden}}">
@@ -12,7 +12,7 @@
                     {% endif %}
                     {% set break = 12 / component.cardGrid.columns %}
                     {% set lastCol = loop.index % break %}
-                    <div class="card component {{component.backgroundColour.value}}" data-grid="{{ component.cardGrid.columns }}{{' last' if lastCol === 0}}">
+                    <div class="card component {{bgcolour}}" data-grid="{{ component.cardGrid.columns }}{{' last' if lastCol === 0}}">
                         <h3>
                             {% if component.linkFooter == true or item.moreInfo.internalLink == null %}
                                 {{item.heading}}
