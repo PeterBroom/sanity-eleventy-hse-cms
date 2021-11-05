@@ -3,7 +3,10 @@
     {% set bgColour = 'bg-'+component.backgroundColour.value %}
 {% else %}
     {% set bgColour = 'bg-white' %}
+{% elseif component._type === 'cards' %}
+    {% set bgColour = 'bg-white' %}
 {% endif %}
+
 <div class="component {{bgColour}}" data-grid="{{ component.grid.columns }}{{' last' if component.grid.gridLast === true}}">
     {% block componentContent %}
         {{componentContent}}
