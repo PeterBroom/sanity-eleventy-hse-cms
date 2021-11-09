@@ -24,6 +24,7 @@ async function getPages () {
     accronymReplace,
     accronymFind,
     subMenu,
+    subMenuInherit,
     slug,
     "navHighlight": navHighlight->{title, slug},
     "belongsTo": belongsTo->{title, shortTitle, slug},

@@ -21,6 +21,8 @@ async function getHomepages () {
     title,
     shortTitle,
     slug,
+    subMenu,
+    subMenuInherit,
     "navHighlight": navHighlight->{title, slug},
     "breadcrumb": breadcrumb->{title, shortTitle, slug},
     "parentSlug": @.belongsTo->slug,

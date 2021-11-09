@@ -8,10 +8,10 @@ export default {
   type: 'document',
   icon: AiOutlineHome,
   fieldsets: [
-    { name: 'pageTitle', title: 'Page title' },
-    { name: 'pageNavigation', title: 'Page navigation' },
-    { name: 'pageContent', title: 'Page content' },
-    { name: 'pageMeta', title: 'Meta data' }
+    {name: 'pageTitle', title: 'Page title'},
+    {name: 'pageNavigation', title: 'Page navigation'},
+    {name: 'pageContent', title: 'Page content'},
+    {name: 'pageMeta', title: 'Meta data'}
   ],
   fields: [
     {
@@ -62,7 +62,7 @@ export default {
       title: 'Navigation highlight',
       type: 'reference',
       description: 'This will highlight the nav in the header for a section',
-      to: [{ type: 'section' }],
+      to: [{type: 'section'}],
       fieldset: 'pageNavigation'
     },
     {
@@ -98,7 +98,7 @@ export default {
         {
           name: 'target',
           type: 'reference',
-          to: [{ type: 'section' }, { type: 'homepage' }, { type: 'page' }]
+          to: [{type: 'section'}, {type: 'homepage'}, {type: 'page'}]
         }
       ],
       validation: Rule => Rule.required(),
@@ -116,6 +116,13 @@ export default {
       ],
       inputComponent: navigation,
       fieldset: 'pageNavigation'
+    },
+    {
+      name: 'subMenuInherit',
+      title: 'Inherit parent sub menu',
+      type: 'boolean',
+      fieldset: 'pageNavigation',
+      inputComponent: navigation
     },
     {
       name: 'pageBuilder',
@@ -179,7 +186,7 @@ export default {
       fieldset: 'pageMeta',
       validation: Rule => Rule.required().min(3),
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{type: 'string'}],
       options: {
         layout: 'tags'
       }
@@ -213,7 +220,7 @@ export default {
       subtitle: 'publishedAt',
       slug: 'slug'
     },
-    prepare({ title = 'No title' }) {
+    prepare ({title = 'No title'}) {
       return {
         title
       }

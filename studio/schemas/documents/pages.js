@@ -172,6 +172,13 @@ export default {
       inputComponent: navigation
     },
     {
+      name: 'subMenuInherit',
+      title: 'Inherit parent sub menu',
+      type: 'boolean',
+      fieldset: 'pageNavigation',
+      inputComponent: navigation
+    },
+    {
       name: 'metaDescription',
       title: 'Description',
       type: 'text',

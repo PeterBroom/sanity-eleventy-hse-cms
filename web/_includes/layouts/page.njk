@@ -5,7 +5,7 @@ templateClass: tmpl-page
 {% set components = pages.pageBuilder %}
 
 <div class="content-container">
-  {% if pages.subMenu !== null %}
+  {% if pages.subMenu !== null or pages.subMenuInherit === true %}
     <div data-column="one-quarter">
       {% include '../components/subnavPage.njk' %}
     </div>
