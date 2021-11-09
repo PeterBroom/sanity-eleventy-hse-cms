@@ -23,6 +23,7 @@ async function getPages () {
     pageTitleAccronym,
     accronymReplace,
     accronymFind,
+    subMenu,
     slug,
     "navHighlight": navHighlight->{title, slug},
     "belongsTo": belongsTo->{title, shortTitle, slug},
@@ -45,6 +46,18 @@ async function getPages () {
             title,
             internalLink->{title, slug}
           },
+        }
+      },
+      _type == "pagination" => {
+        ...,
+        paginationLinks{
+          ...,
+          pageRefPrevious {
+            internalLink->{title, slug},
+          },
+          pageRefNext {
+            internalLink->{title, slug}
+          }
         }
       },
       _type == "bodyCopy" => {
