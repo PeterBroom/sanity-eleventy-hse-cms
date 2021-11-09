@@ -8,10 +8,10 @@ export default {
   type: 'document',
   icon: AiOutlineFileText,
   fieldsets: [
-    { name: 'pageTitle', title: 'Page title' },
-    { name: 'pageNavigation', title: 'Page navigation' },
-    { name: 'pageContent', title: 'Page content' },
-    { name: 'pageMeta', title: 'Meta data' }
+    {name: 'pageTitle', title: 'Page title'},
+    {name: 'pageNavigation', title: 'Page navigation'},
+    {name: 'pageContent', title: 'Page content'},
+    {name: 'pageMeta', title: 'Meta data'}
   ],
   fields: [
     {
@@ -63,7 +63,7 @@ export default {
       type: 'reference',
       description: 'This will highlight the nav in the header for a section',
       fieldset: 'pageNavigation',
-      to: [{ type: 'section' }]
+      to: [{type: 'section'}]
     },
     {
       name: 'belongsTo',
@@ -105,7 +105,7 @@ export default {
         {
           name: 'target',
           type: 'reference',
-          to: [{ type: 'section' }, { type: 'homepage' }, { type: 'page' }]
+          to: [{type: 'section'}, {type: 'homepage'}, {type: 'page'}]
         }
       ],
       validation: Rule => Rule.required()
@@ -149,6 +149,9 @@ export default {
         },
         {
           type: 'youtube'
+        },
+        {
+          type: 'pagination'
         }
       ],
       options: {
@@ -188,7 +191,7 @@ export default {
       fieldset: 'pageMeta',
       validation: Rule => Rule.required().min(3),
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{type: 'string'}],
       options: {
         layout: 'tags'
       }
@@ -230,11 +233,10 @@ export default {
       subtitle: 'updatedAt',
       slug: 'slug'
     },
-    prepare({ title = 'No title' }) {
+    prepare ({title = 'No title'}) {
       return {
         title
       }
     }
   }
 }
-
