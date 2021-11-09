@@ -5,13 +5,16 @@ templateClass: tmpl-page
 {% set components = pages.pageBuilder %}
 
 <div class="content-container">
-  <div data-column="one-quarter">
-    {% include '../components/subnavPage.njk' %}
-  </div>
-  <div data-column="three-quarters">
+  {% if pages.subMenu !== null %}
+    <div data-column="one-quarter">
+      {% include '../components/subnavPage.njk' %}
+    </div>
+  {% endif %}
+
+  <div data-column="{% if pages.subMenu !== null %}three-quarters{% else %}full{% endif %}">
     <h1>
       {% if pages.pageTitleAccronym == true %}
-        {{ pages.title |abbr(pages.accronymFind, pages.accronymReplace ) | safe }}
+        {{ pages.title | abbr(pages.accronymFind, pages.accronymReplace ) | safe }}
       {% else %}
         {{ pages.title }}
       {% endif %}

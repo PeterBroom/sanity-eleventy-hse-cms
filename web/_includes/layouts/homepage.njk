@@ -6,10 +6,14 @@ templateClass: tmpl-page
 {% set components = homepages.pageBuilder %}
 
 <div class="content-container">
-  <div data-column="one-quarter">
-    {% include '../components/subnavHomepage.njk' %}
-  </div>
-  <div data-column="three-quarters">
+  {% if homepages.subMenu !== null %}
+    <div data-column="one-quarter">
+      {% include '../components/subnavHomepage.njk' %}
+    </div>
+  {% endif %}
+
+  <div data-column="{% if pages.subMenu !== null %}three-quarters{% else %}full{% endif %}">
+
     <h1>
       {% if homepages.pageTitleAccronym == true %}
         {{ homepages.title |abbr(homepages.accronymFind, homepages.accronymReplace ) | safe }}
