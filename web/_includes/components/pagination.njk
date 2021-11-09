@@ -1,0 +1,29 @@
+{% extends "./componentContainer.njk" %}
+{% block componentContent %}
+    <nav id="pagination" aria-label="Pagination Navigation" role="navigation">
+        {% if component.paginationLinks.pageRefPrevious.internalLink %}
+            <div class="previous-page">
+                <ul>
+                    <li>
+                        <a href="/{{component.paginationLinks.pageRefPrevious.internalLink.slug.current}}" id="previousPage" rel="previous">
+                            <span class="pagination-icon">Previous<span class="hide"> page</span></span>
+                            <span class="pagination-text">{{component.paginationLinks.pageRefPrevious.internalLink.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
+        {% if component.paginationLinks.pageRefNext.internalLink %}
+            <div class="next-page">
+                <ul>
+                    <li>
+                        <a href="/{{component.paginationLinks.pageRefNext.internalLink.slug.current}}" id="nextPage" rel="next">
+                            <span class="pagination-icon">Next <span class="hide">page</span></span>
+                            <span class="pagination-text">{{component.paginationLinks.pageRefNext.internalLink.title}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
+    </nav>
+{% endblock %}
