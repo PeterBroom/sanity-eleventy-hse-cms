@@ -1,0 +1,13 @@
+{
+  "types": [
+    {
+      "type": "page",
+      "field": "publishedAt"
+    },
+    {
+      "type": "homepage",
+      "field": "publishedAt"
+    }
+  ],
+  "filterWarnings": [{}]
+}
