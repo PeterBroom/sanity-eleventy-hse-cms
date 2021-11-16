@@ -7,7 +7,13 @@
                     <li>
                         <a href="/{{component.paginationLinks.pageRefPrevious.internalLink.slug.current}}" id="previousPage" rel="previous">
                             <span class="pagination-icon">Previous<span class="hide"> page</span></span>
-                            <span class="pagination-text">{{component.paginationLinks.pageRefPrevious.internalLink.title}}</span>
+                            <span class="pagination-text">
+                            {%if component.paginationLinks.pageRefPrevious.internalLink.shortTitle %}
+                                {{component.paginationLinks.pageRefPrevious.internalLink.shortTitle}}
+                            {% else %}
+                                {{component.paginationLinks.pageRefPrevious.internalLink.title}}
+                            {% endif %}
+                            </span>
                         </a>
                     </li>
                 </ul>
@@ -19,7 +25,13 @@
                     <li>
                         <a href="/{{component.paginationLinks.pageRefNext.internalLink.slug.current}}" id="nextPage" rel="next">
                             <span class="pagination-icon">Next <span class="hide">page</span></span>
-                            <span class="pagination-text">{{component.paginationLinks.pageRefNext.internalLink.title}}</span>
+                            <span class="pagination-text">
+                            {%if component.paginationLinks.pageRefNext.internalLink.shortTitle %}
+                                {{component.paginationLinks.pageRefNext.internalLink.shortTitle}}
+                            {% else %}
+                                {{component.paginationLinks.pageRefNext.internalLink.title}}
+                            {% endif %}
+                            </span>
                         </a>
                     </li>
                 </ul>

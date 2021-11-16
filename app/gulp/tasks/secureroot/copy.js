@@ -24,44 +24,44 @@ const highchartsAssets = [
   "./node_modules/highcharts/highcharts-more.js.map"
 ];
 
-function picturefill() {
+async function picturefill() {
   return src(['./node_modules/picturefill/dist/picturefill.min.js']).pipe(
     dest(`${config.secureroot.assetPath}/v5-js/vendor/picturefill`)
   );
 }
 
-function highCharts() {
+async function highCharts() {
   return src(highchartsAssets)
     .pipe(dest(`${config.secureroot.assetPath}/v5-js/vendor/highcharts`))
 }
 
-function moment() {
+async function moment() {
   return src(['./node_modules/moment/moment.js'])
   .pipe(dest(`${config.secureroot.assetPath}/v5-js/vendor/moment`));
 }
 
-function vendorCSS() {
+async function vendorCSS() {
   return src(config.secureroot.styles.vendor)
   .pipe(dest(config.secureroot.styles.vendorOutput));
 }
 
-function vendorJS() {
+async function vendorJS() {
   return src([config.shared.js.vendor])
   .pipe(dest(config.shared.js.vendorOutput));
 }
 
-function jQuery() {
+async function jQuery() {
   return src([`${config.secureroot.scripts.path}/jquery.min.js`]).pipe(
     dest(`${config.secureroot.assetPath}/v5-js`)
   );
 }
-function slinky() {
+async function slinky() {
   return src([`${config.secureroot.scripts.path}/v5-footer-slinky-js.min.js`]).pipe(
     dest(`${config.secureroot.assetPath}/v5-js`)
   );
 }
 
-function globalMessage() {
+async function globalMessage() {
   return src([`${config.secureroot.ajax}/global-message.json`]).pipe(
     dest(`${config.secureroot.assetPath}/ajax`)
   );

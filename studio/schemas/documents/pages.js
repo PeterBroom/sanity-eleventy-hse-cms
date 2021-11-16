@@ -159,6 +159,70 @@ export default {
       }
     },
     {
+      name: 'pageBuilderAsideInheritBoolean',
+      type: 'boolean',
+      title: 'Inherit aside',
+      description: 'Inherit aside from parent page',
+      fieldset: 'pageContent',
+    },
+    {
+      name: 'pageBuilderAsideBoolean',
+      type: 'boolean',
+      title: 'Aside',
+      description: 'Does this page require an aside?',
+      fieldset: 'pageContent',
+    },
+    {
+      name: 'pageBuilderAside',
+      type: 'array',
+      title: 'Aside',
+      fieldset: 'pageContent',
+      description: 'Add components to your page to build up your content',
+      of: [
+        {
+          type: 'accordion'
+        },
+        {
+          type: 'bodyCopy'
+        },
+        {
+          type: 'cards'
+        },
+        {
+          type: 'chart'
+        },
+        {
+          type: 'divider'
+        },
+        {
+          type: 'formBuilder'
+        },
+        {
+          type: 'linkBlock'
+        },
+        {
+          type: 'notificationBanner'
+        },
+        {
+          type: 'subscribe'
+        },
+        {
+          type: 'tabs'
+        },
+        {
+          type: 'youtube'
+        },
+        {
+          type: 'pagination'
+        }
+      ],
+      inputComponent: ConditionalField,
+      options: {
+        editModal: 'fullscreen',
+        condition: document => document.pageBuilderAsideBoolean === true
+      }
+    },
+    {
       name: 'subMenu',
       title: 'Sub menus',
       type: 'array',

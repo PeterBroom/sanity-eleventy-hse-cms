@@ -32,7 +32,61 @@ async function getPages () {
     "parentSlug": @.belongsTo->slug,
     metaDescription,
     metaKeywords,
+    pageBuilderAsideBoolean,
     pageBuilder[]{
+      ...,
+      _type == "cards" => {
+        furtherInfo {
+          ...,
+          internalLink->{title, slug}
+        },
+        cardItems[]{
+          ...,
+          "slug": @.target->slug,
+          moreInfo {
+            ...,
+            title,
+            internalLink->{title, slug}
+          },
+        }
+      },
+      _type == "pagination" => {
+        ...,
+        paginationLinks{
+          ...,
+          pageRefPrevious {
+            internalLink->{title, shortTitle, slug},
+          },
+          pageRefNext {
+            internalLink->{title, shortTitle, slug}
+          }
+        }
+      },
+      _type == "bodyCopy" => {
+        ...,
+        moreInfo {
+          ...,
+          internalLink->{title, slug},
+        },
+        editorInterface[]{
+          ...,
+          markDefs[]{
+            ...,
+            _type == "internalLink" => {
+                "slug": @.reference->slug,
+            }
+          }
+        }
+      },
+      _type == "linkBlock" => {
+        links[]->{slug,title},
+        more {
+          ...,
+          internalLink->{title, slug}
+        }
+      }
+    },
+    pageBuilderAside[]{
       ...,
       _type == "cards" => {
         furtherInfo {
@@ -78,7 +132,12 @@ async function getPages () {
         }
       },
       _type == "linkBlock" => {
-        links[]->{slug,title},
+        links[]{
+          ...,
+          internalLink->{
+            slug, title
+          }
+        },
         more {
           ...,
           internalLink->{title, slug}
@@ -96,6 +155,25 @@ async function getPages () {
     const pageBuilder = item.pageBuilder;
     if (pageBuilder) {
       pageBuilder.forEach((component)=> {
+        if (component._type === "bodyCopy") {
+          component.editorInterface = BlocksToMarkdown(component.editorInterface, { serializers, ...client.config() })
+        }
+        if (component._type === "tabs") {
+          component.tabArray.forEach((content)=>{
+            content.tabContent = BlocksToMarkdown(content.tabContent, {
+              serializers,
+              ...client.config(),
+            });
+          });
+        }
+        if (component._type === "formBuilder") {
+          component.introductoryText = BlocksToMarkdown(component.introductoryText, { serializers, ...client.config() })
+        }
+      });
+    }
+    const pageBuilderAside = item.pageBuilderAside;
+    if (pageBuilderAside) {
+      pageBuilderAside.forEach((component)=> {
         if (component._type === "bodyCopy") {
           component.editorInterface = BlocksToMarkdown(component.editorInterface, { serializers, ...client.config() })
         }

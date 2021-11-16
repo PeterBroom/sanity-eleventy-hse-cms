@@ -1,18 +1,31 @@
-<div class="resource-box block {{component.backgroundColour.value}}" data-grid="{{ component.grid.columns }}{{' last' if component.grid.gridLast === true}}">
+{% extends "./componentContainer.njk" %}
+
+{% block componentContent %}
     <h2>{{component.title}}</h2>
     {% if component.links %}
         <ul class="linkList">
             {% for item in component.links %}
                 <li>
-                    <a href="/{{item.slug.current}}">{{item.title}}</a>
+                {% if item.internalLink %}
+                    <a href="/{{item.internalLink.slug.current}}">
+                    {% if item.title %}
+                        {{item.title}}
+                    {% else %}
+                        {{item.internalLink.title}}
+                    {% endif %}
+                    </a>
+                {% endif %}
+                {% if item.externalLink %}
+                    <a href="/{{item.externalLink}}">{{item.title}}</a>
+                {% endif %}
                 </li>
             {% endfor %}
         </ul>
     {% endif %}
 
-    {% if component.more %}
+    {% if component.more.length > 0 %}
         <p class="more">
             <a href="/{{component.more.slug.current}}">{{component.more.moreTitle}}</a>
         </p>
     {% endif %}
-</div>
+{% endblock %}

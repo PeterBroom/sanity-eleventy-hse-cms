@@ -6,7 +6,7 @@ import concat from 'gulp-concat';
 import rename from 'gulp-rename';
 import { isDefault, isStaging, isDev, isProd } from '../base/mode.js';
 
-function hseScripts() {
+async function hseScripts() {
     return src(config.secureroot.scripts.all)
     .pipe(concat(config.secureroot.scripts.entry))
     .pipe(rename('v5-footer.min.js'))

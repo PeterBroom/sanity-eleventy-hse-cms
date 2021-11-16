@@ -11,7 +11,7 @@ import requireDir from 'require-dir';
 // index all gulp tasks
 requireDir('../', { recurse: true });
 
-function watchTask(){
+async function watchTask(){
     let rebuild;
     if (isDefault || isStaging) {
         rebuild = hseBuild;

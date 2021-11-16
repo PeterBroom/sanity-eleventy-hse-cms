@@ -15,7 +15,7 @@ v4output = config.secureroot.images.v4.output;
 v5output = config.secureroot.images.v5.output;
 v4Homepage = config.secureroot.images.v4homepage.output;
 
-function imagesV4() {
+async function imagesV4() {
   return src(config.secureroot.images.v4.all)
     .pipe(imagemin([
         imagemin.gifsicle(),
@@ -28,7 +28,7 @@ function imagesV4() {
     .pipe(dest(v4output));
 };
 
-function imagesV5(){
+async function imagesV5(){
   return src(config.secureroot.images.v5.all)
     .pipe(imagemin([
         imagemin.gifsicle(),
@@ -41,7 +41,7 @@ function imagesV5(){
     .pipe(dest(v5output));
 };
 
-function imagesV4Homepage() {
+async function imagesV4Homepage() {
   return src(config.secureroot.images.v4homepage.all)
     .pipe(imagemin([
         imagemin.gifsicle(),

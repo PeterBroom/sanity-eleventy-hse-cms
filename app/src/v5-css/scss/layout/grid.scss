@@ -11,13 +11,13 @@ $susy: (
   flex-grow: 1;
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  gap: 15px;
 }
 
 [data-grid] {
   display: flex;
   flex-direction: column;
-  margin-bottom: gutter();
+  margin-bottom: $vr*2;
 
   &:not([data-grid*="last"]) {
     margin-right: gutter();

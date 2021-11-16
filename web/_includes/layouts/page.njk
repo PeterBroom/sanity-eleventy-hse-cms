@@ -3,15 +3,19 @@ layout: layouts/base.njk
 templateClass: tmpl-page
 ---
 {% set components = pages.pageBuilder %}
+{% set asideComponents = pages.pageBuilderAside %}
+
 
 <div class="content-container">
-  {% if pages.subMenu !== null or pages.subMenuInherit === true %}
+  {% if pages.subMenu.length > 0 or pages.subMenuInherit === true %}
     <div data-column="one-quarter">
       {% include '../components/subnavPage.njk' %}
     </div>
   {% endif %}
 
   <div data-column="{% if pages.subMenu !== null %}three-quarters{% else %}full{% endif %}">
+    {# <p>parent {{pages.belongsTo | dump(2)}}</p>
+    <p>aside {{pages.pageBuilderAsideInheritBoolean}}</p> #}
     <h1>
       {% if pages.pageTitleAccronym == true %}
         {{ pages.title | abbr(pages.accronymFind, pages.accronymReplace ) | safe }}
@@ -21,4 +25,10 @@ templateClass: tmpl-page
     </h1>
     {% include "../components/pageBuilder.njk" %}
   </div>
+
+  {% if pages.pageBuilderAsideBoolean === true or pages.pageBuilderAsideInheritBoolean === true %}
+    <div data-column="one-quarter" id="aside">
+    {% include "../components/pageBuilderAside.njk" %}
+    </div>
+  {% endif %}
 </div>

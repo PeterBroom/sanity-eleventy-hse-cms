@@ -14,7 +14,7 @@ if (isDev) {
     root = 'secureroot';
 }
 
-function sizeReport() {
+async function sizeReport() {
     return src(path.join(`./${root}/**/*.+(css|js)`))
     .pipe(report({ gzip: true }));
 }

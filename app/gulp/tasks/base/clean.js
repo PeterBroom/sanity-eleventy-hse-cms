@@ -1,14 +1,14 @@
 const del = require('del');
 import * as config from '../../config.json';
 
-function cleanScriptsSecure () {
+async function cleanScriptsSecure () {
     return del([config.secureroot.scripts.output]);
 };
 
-function cleanStylesSecure() {
+async function cleanStylesSecure() {
     return del([config.secureroot.styles.output]);
 };
 
-function cleanImagesSecure() {
+async function cleanImagesSecure() {
     return del([config.secureroot.images.output]);
 };

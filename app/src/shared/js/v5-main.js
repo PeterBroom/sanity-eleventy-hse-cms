@@ -1,3 +1,5 @@
+import './combined/polyfills.js';
+
 import CsvConvert from './combined/csv-convertor/csv-convertor';
 import ChartsDefault from './combined/charts/charts';
 import { mainMenu } from './combined/main-menu';
@@ -5,13 +7,29 @@ import { loadPicturefillFn } from './combined/utils/picture-elem.js';
 import { fileTypeFunction } from './combined/file-type.js';
 import { getInternetExplorerVersion } from './combined/utils/internet-explorer-detection.js';
 import { tableSortable } from './combined/tables/table-sortable.js';
+import { lightbox } from './combined/lightbox.js';
 import { feedbackSurvey } from './combined/feedback-survey.js';
 import { dialogModal } from './combined/dialogs.js';
 import { tabs } from './combined/tabs.js';
 import { backLinks } from './combined/back-link.js';
+import { ariaLabels } from './combined/aria-labels.js';
+import { googleSearch } from './combined/google-search.js';
+import { footnoteLinks } from './combined/footnote-links.js';
+import { footnoteAbbr } from './combined/footnote-abbr.js';
+import { topTasks } from './combined/top-tasks.js';
+import { equalHeights } from './combined/equal-heights.js';
+import { informationBanner } from './combined/information-banner.js';
+import { codeHighlighter } from './combined/code-highlighter.js';
+import { htmlFormsAntiSpam } from './combined/html-forms-anti-spam.js';
+import { subNavPosition } from './combined/subnav-position.js';
+import { accordion } from './combined/accordion.js';
+
 
 // Window load
-window.addEventListener('DOMContentLoaded',() => {
+window.addEventListener('DOMContentLoaded', () => {
+  // Selector to reference prgressive enhancements in css
+  const body = document.querySelector('body');
+  body.classList.add('hasScript');
 
   // picturefill.min.js
   const pictureElemSelector = document.getElementsByTagName('picture')[0];
@@ -19,21 +37,34 @@ window.addEventListener('DOMContentLoaded',() => {
     loadPicturefillFn();
   }
 
+  accordion();
+
+  informationBanner();
+
+  codeHighlighter();
+
+  // aria labels
+  ariaLabels();
+
+  // Top tasks
+  topTasks();
+
+  // Equal heights
+  equalHeights();
+
+  // footnotes (for printed pages)
+  footnoteLinks();
+  footnoteAbbr();
+
+  const googleSearchContainer = document.getElementById('globalSearch');
+  if (googleSearchContainer) {
+    googleSearch();
+  }
+
   // Back links
   const backLink = document.querySelector('#backTo');
   if (backLink) {
     backLinks();
-  }
-
-  // Aria
-  const cookieContainer = document.querySelector('#cookieContainer');
-  const breadcrumb = document.querySelector('#breadCrumb');
-  if (breadcrumb) {
-    const lastItem = breadcrumb.querySelector('li:last-of-type');
-    lastItem.setAttribute('aria-current','page');
-  }
-  if (cookieContainer) {
-    cookieContainer.setAttribute('aria-label','Cookie banner');
   }
 
   // small device menu
@@ -83,5 +114,11 @@ window.addEventListener('DOMContentLoaded',() => {
     fileTypeFunction();
   }
 
+  lightbox();
+
+  subNavPosition();
+
   feedbackSurvey();
+  htmlFormsAntiSpam();
+
 }); // end window load

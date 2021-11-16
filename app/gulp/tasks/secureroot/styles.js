@@ -12,7 +12,7 @@ const mode = require('gulp-mode')();
 
 sass.compiler = require('node-sass');
 
-function hseStyles() {
+async function hseStyles() {
   return src(config.secureroot.styles.entry)
     .pipe(mode.development(sourcemaps.init()))
     .pipe(

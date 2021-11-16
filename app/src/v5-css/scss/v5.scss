@@ -66,3 +66,9 @@
 @import "buttons.scss";
 @import "modal.scss";
 @import "dialogs.scss";
+
+#aside {
+    h2, h3 {
+        @extend .heading-s
+    }
+}

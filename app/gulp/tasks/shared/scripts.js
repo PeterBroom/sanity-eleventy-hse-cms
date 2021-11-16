@@ -7,7 +7,7 @@ import webpackConfigProd from './webpack.config.prod.js';
 import * as config from '../../config.json';
 import { isStaging, isDefault, isProd, isDev } from '../base/mode.js';
 
-function sharedScripts() {
+async function sharedScripts() {
 
     let webpackConfig;
     if (isDev || isStaging || isDefault) {
