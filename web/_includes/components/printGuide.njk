@@ -1,0 +1,9 @@
+{% extends "./componentContainer.njk" %}
+{% block componentContent %}
+<div class="box" id="printActions">
+    <h2 class="heading-m">Print entire guide</h2>
+    <p>You can download the entire guide as PDF or print out.</p>
+    <button class="btn btn-print btn-primary print-guide" data-print-guide="simple-health-safety-risk.json">Print this guide</button>
+    <button class="btn btn-download btn-primary download-guide" data-print-guide="simple-health-safety-risk.json">Download this guide</button>
+</div>
+{% endblock %}

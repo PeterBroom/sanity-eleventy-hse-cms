@@ -94,6 +94,8 @@ import formattedTitle from './objects/formattedTitle'
 
 import divider from './objects/pageBuilder/divider'
 
+import printGuide from './objects/pageBuilder/printGuide/printGuide'
+
 // import mainImage from './objects/mainImage'
 
 export default createSchema({
@@ -161,7 +163,8 @@ export default createSchema({
     tabItem,
     notificationBanner,
     divider,
-    pagination
+    pagination,
+    printGuide
     // mainImage
   ])
 })

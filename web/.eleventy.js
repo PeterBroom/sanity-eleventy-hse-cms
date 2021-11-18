@@ -2,6 +2,7 @@ const { DateTime } = require("luxon");
 const util = require('util')
 const CleanCSS = require("clean-css");
 const searchFilter = require('./_data/searchPages');
+const printGuidesFilter = require('./_data/printGuides');
 const abbr = require('./utils/nunjucks-abbr-filter.js');
 
 module.exports = function(eleventyConfig) {
@@ -14,6 +15,8 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter('search', searchFilter.search);
+
+  eleventyConfig.addFilter('printGuides', printGuidesFilter);
 
 
   eleventyConfig.addFilter("debug", function(value) {

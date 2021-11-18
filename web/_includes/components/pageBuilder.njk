@@ -41,6 +41,9 @@
         {% if component._type === 'pagination' %}
             {% include "./pagination.njk" %}
         {% endif %}
+                {% if component._type === 'printGuide' %}
+            {% include "./printGuide.njk" %}
+        {% endif %}
 
         {% if component.grid.gridLast === true and not loop.last %}
         </div>

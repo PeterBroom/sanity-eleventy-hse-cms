@@ -33,6 +33,7 @@ async function getPages () {
     metaDescription,
     metaKeywords,
     pageBuilderAsideBoolean,
+    printGuide,
     pageBuilder[]{
       ...,
       _type == "cards" => {
@@ -191,6 +192,7 @@ async function getPages () {
       });
     }
   })
+
   return preparePages
 }
 

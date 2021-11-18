@@ -152,6 +152,9 @@ export default {
         },
         {
           type: 'pagination'
+        },
+        {
+          type: 'printGuide'
         }
       ],
       options: {
@@ -214,6 +217,9 @@ export default {
         },
         {
           type: 'pagination'
+        },
+        {
+          type: 'printGuide'
         }
       ],
       inputComponent: ConditionalField,
