@@ -13,7 +13,7 @@ async function getGuides () {
   const filter = groq`*[_type == "page" && 'printGuide' in pageBuilder[]._type && defined(slug) && _updatedAt < now()]`
   const projection = groq`{
     'identifier': slug.current,
-    "printGuide": pageBuilder[_type match 'printGuide'][0]{
+    'printGuide': pageBuilder[_type match 'printGuide']{
         links[]-> {
           "slug": slug.current
         }
@@ -23,6 +23,7 @@ async function getGuides () {
   const docs = await client.fetch(query).catch(err => console.error(err))
   const reducedDocs = overlayDrafts(hasToken, docs)
   const prepareGuides = reducedDocs.map(generateGuide)
+  console.log(prepareGuides);
   return prepareGuides;
 }
 
