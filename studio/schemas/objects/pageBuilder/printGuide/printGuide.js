@@ -12,6 +12,13 @@ export default {
       type: 'string',
     },
     {
+      name: 'pageIdentifier',
+      title: 'Identifier',
+      type: 'reference',
+      weak: true,
+      to: [{type: 'page'}]
+    },
+    {
         name: 'links',
         title: 'Links',
         type: 'array',
@@ -22,6 +29,34 @@ export default {
                 title: 'Links'
             }
         ]
+    },
+    {
+      name: 'metadata',
+      title: 'Meta data',
+      type: 'object',
+      fields: [
+        {
+          name: 'title',
+          title: 'Title',
+          type: 'string',
+        },
+        {
+          name: 'description',
+          type: 'text',
+          title: 'Description',
+          description: 'Describe your blog for search engines and social media.'
+        },
+        {
+          name: 'keywords',
+          type: 'array',
+          title: 'Keywords',
+          description: 'Add keywords that describes your blog.',
+          of: [{type: 'string'}],
+          options: {
+            layout: 'tags'
+          }
+        }
+      ]
     },
     {
       name: 'grid',

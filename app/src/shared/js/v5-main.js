@@ -23,7 +23,7 @@ import { codeHighlighter } from './combined/code-highlighter.js';
 import { htmlFormsAntiSpam } from './combined/html-forms-anti-spam.js';
 import { subNavPosition } from './combined/subnav-position.js';
 import { accordion } from './combined/accordion.js';
-
+import { printGuide } from './combined/print-guide/print-guide.js';
 
 // Window load
 window.addEventListener('DOMContentLoaded', () => {
@@ -38,6 +38,8 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   accordion();
+
+  printGuide();
 
   informationBanner();
 
