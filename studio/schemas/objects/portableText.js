@@ -1,3 +1,15 @@
+import React from 'react'
+import { MdSuperscript, MdSubscript } from 'react-icons/md'
+
+const supRender = props => (
+  <sup>{props.children}</sup>
+)
+const subRender = props => (
+  <sub>{props.children}</sub>
+)
+
+console.log('MdSuperscript', MdSuperscript)
+
 export default {
   name: 'portableText',
   type: 'array',
@@ -15,6 +27,22 @@ export default {
         {title: 'Strong', value: 'strong'},
         {title: 'Emphasis', value: 'em'},
         {title: "Code", value: "code" },
+        {
+          title: "Superscript", 
+          value: "sup", 
+          blockEditor: {
+            icon: MdSuperscript,
+            render: supRender
+          }
+        },
+        {
+          title: "Subscript", 
+          value: "sub",
+          blockEditor: {
+            icon: MdSubscript,
+            render: subRender
+          }
+        },
       ],
       annotations: [
         {

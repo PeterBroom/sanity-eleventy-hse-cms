@@ -23,7 +23,7 @@ export function generatePDF(data, metadata, action) {
   //   null
   // );
 
-  const html = htmlToPdfMake(data);
+  const html = htmlToPdfMake(data, {defaultStyles});
   const keywords = metadata.keywords.join(','); 
   console.log('keywords', keywords);
   const docDefinition = {
@@ -34,7 +34,6 @@ export function generatePDF(data, metadata, action) {
       keywords: keywords,
     },
     styles: styles,
-    // defaultStyles: defaultStyles,
     pageSize: 'A4',
     pageOrientation: 'portrait',
     pageMargins: [25, 90, 25, 50],

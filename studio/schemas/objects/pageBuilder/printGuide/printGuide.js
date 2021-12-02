@@ -7,11 +7,6 @@ export default {
   icon: AiFillPrinter,
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    },
-    {
       name: 'pageIdentifier',
       title: 'Identifier',
       type: 'reference',
@@ -71,15 +66,15 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'grid'
+      title: '',
+      subtitle: 'grid',
     },
     prepare (selection) {
-      const {title, subtitle} = selection
+      const {subtitle} = selection
       const last = subtitle.gridLast ? 'last' : '';
       const column = subtitle.columns ? subtitle.columns : '12';
       const gridPreview = `${column} ${last}`
-      const previewTitle = title ? title : 'Print pages';
+      const previewTitle = 'Print entire guide';
       return {
         title: `${previewTitle}`,
         subtitle: `Grid of ${gridPreview}`
